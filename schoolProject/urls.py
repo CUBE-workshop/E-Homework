@@ -22,7 +22,7 @@ urlpatterns_auth = [
     url(r'^sign-in/do-sign-in/', do_sign_in, name='do-sign-in'),
     url(r'^sign-in/', sign_in),
     url(r'^sign-up/do-sign-up/', do_sign_up),
-    url(r'^sign-up/', sign_up),
+    url(r'^sign-up/', sign_up, name='sign-up'),
     url(r'^logout/', do_logout),
     url(r'get-school-list/', get_school_list),
     url(r'get-class-list/', get_class_list),
