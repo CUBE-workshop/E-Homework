@@ -1,0 +1,38 @@
+.container {
+    margin-top: 10ex;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#sign-in-form {
+    margin: 0 auto;
+    max-width: 24em;
+    text-align: center;
+    font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+}
+
+#sign-in-form input,
+#sign-in-form button {
+    height: 44px;
+    border-radius: 0;
+}
+
+#sign-in-form .form-group {
+    margin-bottom: -1px;
+}
+
+#sign-in-form button[type="submit"] {
+    width: 100%;
+    margin-top: 2ex;
+}
+
+#sign-in-form .form-group:first-of-type input {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+#sign-in-form .form-group:last-of-type input {
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>注册</title>
+    {% load staticfiles %}
+    <script src="{% static "js/jQuery.js" %}"></script>
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/login-stylesheet.css" %}">
+</head>
+<body>
+<div class="container sign-container">
+    <form class="form-sign" method="post" action="do-sign-up/">{% csrf_token %}
+        <h2 class="form-sign-heading">注册</h2>
+        <div class="form-group">
+            <select class="form-control" id="user-type" name="user-type">
+                <option value="none" id="user-type-placeholder" selected>用户类型</option>
+                <option value="student">学生</option>
+                <option value="teacher">教师</option>
+                <option value="school">学校</option>
+            </select>
+        </div>
+        <div class="form-group" id="school-in-choosing" hidden>
+            <select class="form-control" id="school-in" name="school-in">
+            </select>
+        </div>
+        <div class="form-group" id="school-type-choosing" hidden>
+            <select class="form-control" id="school-type" name="school-type">
+                <option value="" selected="selected">小学</option>
+                <option value="初">初中</option>
+                <option value="高">高中</option>
+            </select>
+        </div>
+        <div class="form-group" id="class-in-choosing" hidden>
+            <select class="form-control" id="class-in" name="class-in">
+            </select>
+        </div>
+        <div class="form-group">
+            <div id="name-wrapper" hidden>
+                <label for="last-name" class="sr-only">姓</label>
+                <div>
+                    <input type="text" class="piled-input-head form-control" name="last-name" id="last-name"
+                           placeholder="last name"
+                           required>
+                </div>
+                <label for="first-name" class="sr-only">名</label>
+                <div>
+                    <input type="text" class="form-control" name="first-name" id="first-name"
+                           placeholder="first name" required>
+                </div>
+            </div>
+            <label for="username" class="sr-only">用户名</label>
+            <div>
+                <input type="text" class="piled-input-head form-control" id="username" name="username"
+                       placeholder="username"
+                       aria-required="true" required>
+            </div>
+            <label for="password" class="sr-only">密码</label>
+            <div>
+                <input type="password" class="form-control" name="password" id="password"
+                       placeholder="password" required>
+            </div>
+            <label for="password-confirm" class="sr-only">确认密码</label>
+            <div>
+                <input type="password" class="piled-input-tail form-control" name="password-confirm"
+                       id="password-confirm"
+                       placeholder="confirm password" required>
+            </div>
+
+        </div>
+        <div id="username-error" class="alert alert-danger" role="alert" hidden>
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            你的用户名已经被注册
+        </div>
+        <div id="password-error" class="alert alert-danger" role="alert" hidden>
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            你的密码安全性不够
+        </div>
+        <div id="password-confirm-error" class="alert alert-danger" role="alert" hidden>
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            你的密码输入不一致
+        </div>
+        <button class="btn btn-primary" type="submit" disabled="">注册</button>
+    </form>
+</div>
+<!--suppress JSUnresolvedVariable -->
+<script>
+    $(function () {
+        $.ajaxSetup({
+            async: false
+        });
+        const $success_icon = $("<span>", {"class": "glyphicon form-control-feedback glyphicon-ok"});
+        const $error_icon = $("<span>", {"class": "glyphicon form-control-feedback glyphicon-remove"});
+
+        function validate_object(elem, must_equal_to, validate_function, error_message_elem) {
+            var ret = {
+                element: elem,
+                state: "Empty",
+                must_equal_to: must_equal_to,
+                error_message_elem: error_message_elem
+            };
+            ret.validate_function = validate_function;
+            return ret;
+        }
+
+        const items_to_validate = [
+            validate_object($("#username"), null, function () {
+                var to_post = [{name: "csrfmiddlewaretoken", value: "{{ csrf_token }}"}, {
+                    name: "username",
+                    value: $("#username").val()
+                }];
+                var is_legal_user_name = true;
+                $.post("/validate-username/", to_post, function (data) {
+                    is_legal_user_name = data.is_legal_user_name;
+                });
+                return is_legal_user_name;
+            }, $("#username-error")),
+            validate_object($("#password"), null, function () {
+                var to_post = [{name: "csrfmiddlewaretoken", value: "{{ csrf_token }}"}, {
+                    name: "password",
+                    value: $("#password").val()
+                }];
+                var is_legal_password = true;
+                $.post("/validate-password/", to_post, function (data) {
+                    is_legal_password = data.is_legal_password;
+                });
+                return is_legal_password;
+            }, $("#password-error")),
+            validate_object($("#password-confirm"), "#password", null, $("#password-confirm-error")),
+            validate_object($("#last-name")),
+            validate_object($("#first-name"))
+        ];
+
+        function change_view_after_validate(elem, validate_state) {
+            elem.element.parent().removeClass("has-success").removeClass("has-error").removeClass("has-feedback");
+            elem.element.parent().children(".glyphicon").remove();
+            if (validate_state) {
+                elem.element.parent().addClass("has-success").addClass("has-feedback");
+                elem.element.after($success_icon.clone());
+                if (elem.error_message_elem) {
+                    elem.error_message_elem.hide();
+                }
+            } else {
+                elem.element.parent().addClass("has-error").addClass("has-feedback");
+                elem.element.after($error_icon.clone());
+                if (elem.error_message_elem) {
+                    elem.error_message_elem.show();
+                }
+            }
+        }
+
+        function isAllFilled() {
+            if ($("#user-type").val() == 'none') {
+                return false;
+            } else if (!$("#school-in").is(":hidden") && $("#school-in").val() == "none") {
+                return false;
+            } else if (!$("#class-in").is(":hidden") && $("#class-in").val() == "none") {
+                return false;
+            } else if (!$("#first-name").is(":hidden") && $("#first-name").val() == "") {
+                return false;
+            } else if (!$("#last-name").is(":hidden") && $("#last-name").val() == "") {
+                return false;
+            } else if ($("#username").val() == "") {
+                return false;
+            } else if ($("#password").val() == "") {
+                return false;
+            } else if ($("#password-confirm").val() == "") {
+                return false;
+            }
+            return true;
+        }
+
+        function changeButton() {
+            if ($("#username-error").css('display') != 'none' || $("#password-error").css('display') != 'none' || $("#password-confirm-error").css('display') != 'none' || !isAllFilled()) {
+                $(".form-sign button").attr('disabled', 'disabled')
+            } else {
+                $(".form-sign button").removeAttr('disabled')
+            }
+        }
+
+        items_to_validate.forEach(function (elem) {
+            elem.element.change(function () {
+                var pass = false;
+                if ($(this).val() != "") {
+                    pass = true;
+                    if (elem.validate_function != null) {
+                        pass = elem.validate_function();
+                    } else if (elem.must_equal_to != null) {
+                        if ($(elem.must_equal_to).val() != $(this).val()) {
+                            pass = false;
+                        }
+                    }
+                }
+                change_view_after_validate(elem, pass);
+                changeButton();
+            });
+        });
+        $("#password").change(function () {
+            $("#password-confirm").val("").next().remove();
+        });
+        $("#password-confirm").keyup(function () {
+            if ($("#password").val() == $("#password-confirm").val()) {
+                if ($("#username-error").css('display') == 'none' && $("#password-error").css('display') == 'none') {
+                    $(".form-sign button").removeAttr('disabled');
+                }
+            } else {
+                $(".form-sign button").attr('disabled', 'disabled');
+            }
+        });
+        const $school = $("#school-in-choosing");
+        const $class = $("#class-in-choosing");
+        $("#user-type").mousedown(function () {
+            if ($(this).val() == "none") {
+                $("#user-type-placeholder").remove();
+            }
+        }).mouseup(function () {
+            $("#school-in").html("<option value=\"none\" id=\"school-in-placeholder\" selected>学校</option>");
+            function showNameInputArea() {
+                $("#name-wrapper").show();
+                $("#username").removeClass("piled-input-head");
+            }
+
+            if ($(this).val() != "school") {
+                showNameInputArea();
+                $("#school-type-choosing").hide();
+                $.getJSON("/get-school-list/", function (data) {
+                    data.school_list.forEach(function (school) {
+                        $("#school-in").append("<option value=\"" + school.id + "\">" + school.name + "</option>");
+                    });
+                });
+                $school.show();
+            } else {
+                $class.hide();
+            }
+            if ($(this).val() == 'teacher') {
+                $class.hide();
+            } else if ($(this).val() == 'school') {
+                $("#name-wrapper").hide();
+                $("#username").addClass("piled-input-head");
+                $("#school-type-choosing").show();
+                $class.hide();
+                $school.hide();
+            }
+            changeButton();
+        });
+        $("#school-in").mousedown(function () {
+            if ($(this).val() == "none") {
+                $("#school-in-placeholder").remove();
+            }
+        }).mouseup(function () {
+            if ($("#user-type").val() == "student") {
+                $("#class-in").html("<option value=\"none\" id=\"class-in-placeholder\">班级</option>");
+                var school_info = [{name: "csrfmiddlewaretoken", value: "{{ csrf_token }}"}, {
+                    name: "value",
+                    value: $(this).val()
+                }];
+                $.post("/get-class-list/", school_info, function (data) {
+                    data.class_list.forEach(function (class_) {
+                        $("#class-in").append("<option value=\"" + class_.id + "\">" + class_.name + "</option>");
+                    });
+                });
+                $class.show();
+            } else {
+                $class.hide();
+            }
+            changeButton();
+        });
+        $("#class-in").mousedown(function () {
+            if ($(this).val() == "none") {
+                $("#class-in-placeholder").remove();
+            }
+        }).mouseup(function () {
+            changeButton();
+        });
+    });
+</script>
+</body>
+</html>

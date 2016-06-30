@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    {% load staticfiles %}
+    <script src="{% static "js/jQuery.js" %}"></script>
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/login-stylesheet.css" %}">
+</head>
+<body>
+<div class="container">
+    <h2>登录</h2>
+    <form id="sign-in-form" method="post" action="{% url "do-sign-in" %}">{% csrf_token %}
+        <div class="form-group">
+            <label class="sr-only" for="username">username</label>
+            <input class="form-control" id="username" name="username" type="text" placeholder="username"
+                   aria-required="true"
+                   required>
+        </div>
+        <div class="form-group">
+            <label class="sr-only" for="password">password</label>
+            <input class="form-control" name="password" id="password" type="password" placeholder="password"
+                   aria-required="true" required>
+        </div>
+        <button class="btn btn-primary" id="submit-button" type="submit">登录</button>
+    </form>
+</div>
+</body>
+</html>
