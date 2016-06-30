@@ -34,6 +34,10 @@
             您的密码不正确
         </div>
         <button class="btn btn-primary" id="submit-button" type="submit">登录</button>
+        <div class="sign-up">
+            <button class="btn btn-primary" action="{% url "sign-up" %}">注册</button>
+        </div>
+
     </form>
 </div>
 <script src="{% static "js/validator.js" %}"></script>
