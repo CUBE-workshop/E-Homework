@@ -22,7 +22,7 @@ def get_class_list(request):
 
 def validate_username(request):
     the_username = request.POST['username']
-    return JsonResponse({'is_legal_user_name': not User.objects.filter(username=the_username).exists()})
+    return JsonResponse({'is_valid': not User.objects.filter(username=the_username).exists()})
 
 
 def validate_password(request):
@@ -34,14 +34,14 @@ def validate_password(request):
 
 
 def validate_user(request):
-    return JsonResponse({'is_validate_user': User.objects.filter(username=request.POST['username']).exists()})
+    return JsonResponse({'is_valid': User.objects.filter(username=request.POST['username']).exists()})
 
 
 def validate_password_for_user(request):
     username = request.POST['username']
     password = request.POST['password']
     return JsonResponse(
-        {'is_validate_password_for_user': not (authenticate(username=username, password=password) is None)})
+        {'is_valid': not (authenticate(username=username, password=password) is None)})
 
 
 def sign_in(request):

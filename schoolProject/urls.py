@@ -26,10 +26,10 @@ urlpatterns_auth = [
     url(r'^logout/', do_logout),
     url(r'get-school-list/', get_school_list),
     url(r'get-class-list/', get_class_list),
-    url(r'validate-username/', validate_username),
-    url(r'validate-password/', validate_password),
-    url(r'validate-user/', validate_user),
-    url(r'validate-password-for-user/', validate_password_for_user)
+    url(r'validate-username/', validate_username, name='validate-username'),
+    url(r'validate-password/', validate_password, name='validate-password'),
+    url(r'validate-user/', validate_user, name='validate-user'),
+    url(r'validate-password-for-user/', validate_password_for_user, name='validate-password-for-user')
 ]
 urlpatterns = urlpatterns_auth + [
     url(r'^admin/', admin.site.urls),

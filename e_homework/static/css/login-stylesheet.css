@@ -32,7 +32,16 @@
     border-top-right-radius: 3px;
 }
 
-#sign-in-form .form-group:last-of-type input {
+#sign-in-form .form-group:nth-of-type(2) input {
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
+}
+
+#sign-in-form .alert {
+    margin-top: 1ex;
+}
+
+#sign-in-form .glyphicon.form-control-feedback {
+    margin-top: 5px;
+    font-size: larger;
 }

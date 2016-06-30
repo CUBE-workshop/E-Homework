@@ -23,8 +23,73 @@
             <input class="form-control" name="password" id="password" type="password" placeholder="password"
                    aria-required="true" required>
         </div>
+        <div id="username-error" class="alert alert-danger" role="alert" hidden>
+            <span class="glyphicon glyphicon-exclamation-sign"></span>
+            <span class="sr-only">Error:</span>
+            您的用户名不正确
+        </div>
+        <div id="password-error" class="alert alert-danger" role="alert" hidden>
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            您的密码不正确
+        </div>
         <button class="btn btn-primary" id="submit-button" type="submit">登录</button>
     </form>
 </div>
+<script src="{% static "js/validator.js" %}"></script>
+<script>
+    $(function () {
+        $("#submit-button").attr("disabled", "disabled");
+        $.ajaxSetup({
+            async: false
+        });
+    });
+    const $success_icon = $("<span>", {"class": "glyphicon form-control-feedback glyphicon-ok"});
+    const $error_icon = $("<span>", {"class": "glyphicon form-control-feedback glyphicon-remove"});
+    var validators = new ValidatorGroup([
+        new Validator("{{ csrf_token }}", $("#username"), function (success) {
+            $("#username").parent().removeClass("has-success").removeClass("has-error").removeClass("has-feedback");
+            $("#username").parent().children(".glyphicon").remove();
+            if (success) {
+                $("#username-error").hide();
+                $("#username").parent().addClass("has-success").addClass("has-feedback");
+                $("#username").after($success_icon.clone());
+            } else {
+                $("#username-error").show();
+                $("#username").parent().addClass("has-error").addClass("has-feedback");
+                $("#username").after($error_icon.clone());
+            }
+        }, "{% url "validate-user" %}", null, null),
+        new Validator("{{ csrf_token }}", $("#password"), function (success) {
+            $("#password").parent().removeClass("has-success").removeClass("has-error").removeClass("has-feedback");
+            $("#password").parent().children(".glyphicon").remove();
+            if (success) {
+                $("#password-error").hide();
+                $("#password").parent().addClass("has-success").addClass("has-feedback");
+                $("#password").after($success_icon.clone());
+            } else {
+                $("#password-error").show();
+                $("#password").parent().addClass("has-error").addClass("has-feedback");
+                $("#password").after($error_icon.clone());
+            }
+        }, "{% url "validate-password-for-user" %}", [$("#username")], null)
+    ]);
+    $("#username").keyup(function () {
+        validators.validate(0);
+        if (validators.isAllValid()) {
+            $("#submit-button").removeAttr("disabled");
+        } else {
+            $("#submit-button").attr("disabled", "disabled");
+        }
+    });
+    $("#password").keyup(function () {
+        validators.validate(1);
+        if (validators.isAllValid()) {
+            $("#submit-button").removeAttr("disabled");
+        } else {
+            $("#submit-button").attr("disabled", "disabled");
+        }
+    });
+</script>
 </body>
 </html>
