@@ -1,6 +1,11 @@
 /**
  * Created by longfangsong on 16/6/30.
  */
+$(function () {
+    $.ajaxSetup({
+        async: false
+    });
+});
 function Validator(csrf_token, object_to_validate, validated_called_func, url_to_send_value_to, other_object_to_send_with, user_validate_func) {
     this.object_wrapped = object_to_validate;
     this.url_to_send = url_to_send_value_to;
@@ -8,6 +13,10 @@ function Validator(csrf_token, object_to_validate, validated_called_func, url_to
     this.func = user_validate_func;
     this.validated = validated_called_func;
     this.validate = function () {
+        if (this.object_wrapped.val() == "") {
+            this.validated(false);
+            return false;
+        }
         var to_post = [
             {name: "csrfmiddlewaretoken", value: csrf_token},
             {name: this.object_wrapped.attr("name"), value: this.object_wrapped.val()}
@@ -24,10 +33,12 @@ function Validator(csrf_token, object_to_validate, validated_called_func, url_to
             }
             return false;
         }
-        var is_success = false;
-        $.post(this.url_to_send, to_post, function (ret) {
-            is_success = ret.is_valid;
-        });
+        var is_success = true;
+        if (this.url_to_send != null) {
+            $.post(this.url_to_send, to_post, function (ret) {
+                is_success = ret.is_valid;
+            });
+        }
         if (this.validated != null) {
             this.validated(is_success);
         }

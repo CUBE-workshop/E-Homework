@@ -6,44 +6,43 @@
     {% load staticfiles %}
     <script src="{% static "js/jQuery.js" %}"></script>
     <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
-    <link rel="stylesheet" href="{% static "css/login-stylesheet.css" %}">
+    <link rel="stylesheet" href="{% static "css/auth.css" %}">
+    <link rel="stylesheet" href="{% static "css/sign-in.css" %}">
+    {#    <link rel="stylesheet" href="../e_homework/static/css/auth.css">#}
 </head>
 <body>
 <div class="container">
     <h2>登录</h2>
-    <form id="sign-in-form" method="post" action="{% url "do-sign-in" %}">{% csrf_token %}
+    <form id="sign-in-or-up-form" method="post" action="{% url "do-sign-in" %}">{% csrf_token %}
         <div class="form-group">
             <label class="sr-only" for="username">username</label>
-            <input class="form-control" id="username" name="username" type="text" placeholder="username"
+            <input class="form-control" id="username" name="username" type="text" placeholder="用户名"
                    aria-required="true"
                    required>
         </div>
         <div class="form-group">
             <label class="sr-only" for="password">password</label>
-            <input class="form-control" name="password" id="password" type="password" placeholder="password"
+            <input class="form-control" name="password" id="password" type="password" placeholder="密码"
                    aria-required="true" required>
         </div>
-        <div id="username-error" class="alert alert-danger" role="alert" hidden>
+        <div class="alert alert-danger" id="username-error" role="alert" hidden>
             <span class="glyphicon glyphicon-exclamation-sign"></span>
             <span class="sr-only">Error:</span>
             您的用户名不正确
         </div>
-        <div id="password-error" class="alert alert-danger" role="alert" hidden>
+        <div class="alert alert-danger" id="password-error" role="alert" hidden>
             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
             <span class="sr-only">Error:</span>
             您的密码不正确
         </div>
         <button class="btn btn-primary" id="submit-button" type="submit">登录</button>
     </form>
-    <button class="btn" href="{% url "sign-up" %}" id="link-to-sign-up">去注册</button>
+    <a class="btn" href="{% url "sign-up" %}" id="link-to-sign-up">去注册</a>
 </div>
 <script src="{% static "js/validator.js" %}"></script>
 <script>
     $(function () {
         $("#submit-button").attr("disabled", "disabled");
-        $.ajaxSetup({
-            async: false
-        });
     });
     const $success_icon = $("<span>", {"class": "glyphicon form-control-feedback glyphicon-ok"});
     const $error_icon = $("<span>", {"class": "glyphicon form-control-feedback glyphicon-remove"});

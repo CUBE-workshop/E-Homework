@@ -29,8 +29,10 @@ def validate_password(request):
     try:
         try_validate_password(request.POST['password'])
     except ValidationError:
-        return JsonResponse({'is_legal_password': False})
-    return JsonResponse({'is_legal_password': True})
+        return JsonResponse({'is_valid': False})
+    except ValueError:
+        return JsonResponse({'is_valid': False})
+    return JsonResponse({'is_valid': True})
 
 
 def validate_user(request):
@@ -45,11 +47,11 @@ def validate_password_for_user(request):
 
 
 def sign_in(request):
-    return render(request, "sign_in.html")
+    return render(request, "sign-in.html")
 
 
 def sign_up(request):
-    return render(request, "sign_up.html")
+    return render(request, "sign-up.html")
 
 
 def do_sign_up(request):

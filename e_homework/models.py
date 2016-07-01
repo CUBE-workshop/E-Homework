@@ -21,7 +21,7 @@ def number_to_chinese(number):
 
 class School(models.Model):
     SCHOOL_TYPE_CHOICES = (
-        ('', '小学'),
+        ('小', '小学'),
         ('初', '初中'),
         ('高', '高中')
     )

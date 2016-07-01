@@ -1,0 +1,2487 @@
+[
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": {
+      "app_label": "admin",
+      "model": "logentry"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": {
+      "app_label": "auth",
+      "model": "permission"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": {
+      "app_label": "auth",
+      "model": "group"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 4,
+    "fields": {
+      "app_label": "auth",
+      "model": "user"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": {
+      "app_label": "contenttypes",
+      "model": "contenttype"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": {
+      "app_label": "sessions",
+      "model": "session"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": {
+      "app_label": "e_homework",
+      "model": "school"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": {
+      "app_label": "e_homework",
+      "model": "class"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 9,
+    "fields": {
+      "app_label": "e_homework",
+      "model": "teacher"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 10,
+    "fields": {
+      "app_label": "e_homework",
+      "model": "student"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 11,
+    "fields": {
+      "app_label": "e_homework",
+      "model": "vote"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 12,
+    "fields": {
+      "app_label": "e_homework",
+      "model": "question"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 13,
+    "fields": {
+      "app_label": "e_homework",
+      "model": "votepiece"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "1v46x87xdwmksk0jmmhdbpn0afa75ou4",
+    "fields": {
+      "session_data": "Mzc2MTMyOGQ3MWZhYzc3YzJiYmNiZTg3NWY5YTIzMzBmZTY4ODcyYjp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiZjNhODc0Y2NkM2MxNzA3NDlmNzFmYjIzYmM1NDViMjdhODZhMTFmMiIsIl9hdXRoX3VzZXJfaWQiOiIxNyJ9",
+      "expire_date": "2016-07-11T10:44:45Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "3l928yau7cz7ng8bjhskof9mnm8eexld",
+    "fields": {
+      "session_data": "Zjg4OThkZjc3ODljZTIzZWI0NTUwZTkwMTEzZDk1MDYwODdjNTI5Mjp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiMGY1YTk1MzBhNGZiZTFkMTU1MDc0Y2U0ZmEyZWYyMTllNjVhYjFlMyIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=",
+      "expire_date": "2016-07-11T10:31:17Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "3ov2u4clcdiraw3vh1d6ncz604niok5d",
+    "fields": {
+      "session_data": "MTY0YWJjNGQzN2RmODVkOTUwN2JhYThkYmI2ODAyN2Y0NjY2NDQxZjp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiMGZhOGRmMTE5ZmY0NzJhODQwYTIxNzM2MzQwMDczZjIxMThlMGZkMCIsIl9hdXRoX3VzZXJfaWQiOiIxOCJ9",
+      "expire_date": "2016-07-12T02:50:17Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "6q9b0322dyie8ft4adku1y5yotot32u1",
+    "fields": {
+      "session_data": "YzAzMDNkNGVjMmI4ZWQ5N2YzNDY5NzU0ODJmMTZhMjJkNDdmMmQ1MDp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiYmE5MGMwZWYyNTQzZjlkYTg2ZDVhZmI3NGJiNjJiNzFmNjE1MmE2NCIsIl9hdXRoX3VzZXJfaWQiOiIxNSJ9",
+      "expire_date": "2016-07-11T10:28:34Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "7hl7sfi7pi2u3zjw2gfx44fip2em3fx7",
+    "fields": {
+      "session_data": "MzBhNGM2MjBhNzMyMDIyYTc1OTk0OGYxZjhmZWNjMzIwNzVlY2VjYjp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiZTNkOGFkMDAyNGQyMjI4Yjg3MGVkMGI1YThjZGM0ZTVmNjU5NjJjMyIsIl9hdXRoX3VzZXJfaWQiOiIxNCJ9",
+      "expire_date": "2016-07-11T10:23:38Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "c09yniyyl3b98t3gkrubfbpuoicwnza0",
+    "fields": {
+      "session_data": "ODM2MGY1ODU0MDdjZDIyZTQwMGEyZDE3MDJjYmZkNmU0ZjI1MjYzYjp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiNDc2YjRkM2FlMTRmZTJkZDU1YzcxYjIyYWEwY2RmMmExNTM3NDc1MyIsIl9hdXRoX3VzZXJfaWQiOiI0In0=",
+      "expire_date": "2016-07-11T09:57:10Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "e53jeeqp0b8gaj2893hjt9mhe9ahiw98",
+    "fields": {
+      "session_data": "ODkyZjRiYzhkYTJmMDQyZTZkMzdiOGUxN2FhN2NlYzcxMTNlMTM4Yzp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiMzZiOWExYzAxMWMwYmY2MWEyNmY2MGI4Y2Q5NDI2YWYxNGExMTljZiIsIl9hdXRoX3VzZXJfaWQiOiIxNiJ9",
+      "expire_date": "2016-07-11T10:28:46Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "fe6087tlgblpl50oug05wjv1hos13gst",
+    "fields": {
+      "session_data": "NGIwNzlhZjE3YjU2Y2U1NjYwNjMwNmYwODU1YjY3NTRlN2M3N2Y4Zjp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiMmUxYTdkY2EzN2M3OWFjZmM3YWU5MzI5NWI4NjUyZTA1NTc3OTE1MCIsIl9hdXRoX3VzZXJfaWQiOiIxMyJ9",
+      "expire_date": "2016-07-13T09:10:36Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "fy3zsj5yybc3zfduzevxsgfcn9rwiyox",
+    "fields": {
+      "session_data": "NGViYzVmMDdmYjllZDdhNTJlNDUxZTMxNzg5ZDdjNTNjYTliOGVkNTp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiNzQ3MzFhMGVlMjNkZTg2NmFiYzY4ZGZiY2VjMTA3MGU4M2MxOTcwNSIsIl9hdXRoX3VzZXJfaWQiOiIzIn0=",
+      "expire_date": "2016-07-11T09:25:22Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "itw15pkgjnztprvvc6ps9w01hhguu0rt",
+    "fields": {
+      "session_data": "NTA1MDJiNWRkMTZjY2FlODMzY2NjODJmYTEwN2Y3YzcxOWE2OTI3Zjp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiMjk1MTg3ZDdmMTk5NmZmNmQwNjQ0ZDBmMzdmNDc0YWYwNTA0ODFkNyIsIl9hdXRoX3VzZXJfaWQiOiI5In0=",
+      "expire_date": "2016-07-11T09:55:53Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "j7k7b3v8m2rwaj5noi71v3cis5d7qvg5",
+    "fields": {
+      "session_data": "NzM0OWNmMDQ1MTc5Y2RhZmVmOTgxNTRlMjU4OTkyMTQ2OWViYTgwNTp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiN2YzNmZlN2Y2ZDUxZWQwMTE4MjkxNWNiNTBmMzRiMWMwYmIyYjk1ZSIsIl9hdXRoX3VzZXJfaWQiOiI1In0=",
+      "expire_date": "2016-07-11T09:58:31Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "jmkyx1rkgtdy61c287n9v0fme2wvm65x",
+    "fields": {
+      "session_data": "NGIwNzlhZjE3YjU2Y2U1NjYwNjMwNmYwODU1YjY3NTRlN2M3N2Y4Zjp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiMmUxYTdkY2EzN2M3OWFjZmM3YWU5MzI5NWI4NjUyZTA1NTc3OTE1MCIsIl9hdXRoX3VzZXJfaWQiOiIxMyJ9",
+      "expire_date": "2016-07-11T10:19:42Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "m6f8vulh9kd1bpv0z5mbauh134h658hz",
+    "fields": {
+      "session_data": "Zjg4OThkZjc3ODljZTIzZWI0NTUwZTkwMTEzZDk1MDYwODdjNTI5Mjp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiMGY1YTk1MzBhNGZiZTFkMTU1MDc0Y2U0ZmEyZWYyMTllNjVhYjFlMyIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=",
+      "expire_date": "2016-07-14T07:26:32Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "n6u0y2y4vvm2g3g9iii2t9t4az5ahyu8",
+    "fields": {
+      "session_data": "OWQ2ZjI4ZTcyZGU4Y2U3OTRhYTliMzBlZjE2NWZmMGI1MjNmOWY2MDp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiZjY2MWEyY2RjMjZkYWJmZDAxNDAyYWE3ZjAzYjdmZTYwMGNkOTdhZCIsIl9hdXRoX3VzZXJfaWQiOiIyMSJ9",
+      "expire_date": "2016-07-12T14:17:42Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "pinl7nv7679er1lrjdrauqaysqrqhgnz",
+    "fields": {
+      "session_data": "NjExYTUzYWE0MDU2YTZlMjJmNjUyNWVhYTQ1ZGZjZDk3OWY2YzMxMDp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiNTYzYWE5ZDFmMTc2NDZhMTQ3NzcyMTE3MGJiM2UxZWVlYzUwMDNhYyIsIl9hdXRoX3VzZXJfaWQiOiIxOSJ9",
+      "expire_date": "2016-07-11T11:14:39Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "wab6dcnwbwnl97amgmzoebczx0k68nt7",
+    "fields": {
+      "session_data": "YjM0Nzc1OWE2ZTBhNTlkODg1ODZkZDY1Njc4ZjBjZDJiYjQwZWE4ZDp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiNTM4NTIzOWM0MjQ1ODBlNWEzYzk0NTI5ZDc5MTEyNmQ2NjhjYTMzOSIsIl9hdXRoX3VzZXJfaWQiOiIxMSJ9",
+      "expire_date": "2016-07-11T10:11:03Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "xjxzd8kcslvh94u7r9x9lcxjybl8ge4x",
+    "fields": {
+      "session_data": "ODdhYzU2NjVkYmJkNTBhZTVlZTQwZDczOWNiZGFmMzIyMTYyZGEyMjp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiNjg5ODBhNTZmYjNmYWQ1NmIwMWFkMmVmMjYzMjU1MjM1NmFiNWNmZiIsIl9hdXRoX3VzZXJfaWQiOiIxMCJ9",
+      "expire_date": "2016-07-11T10:00:34Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "xltfxyhlfmk3gknygl3pssf7wbbalx79",
+    "fields": {
+      "session_data": "YjdkYjU5Y2ZiZjQ5NjU4N2UwYjk3N2I0ODg0NzJjNmEwZDM4Zjg2Mzp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiMTU5Y2EwOTIwNjUwZjBjOGJkYTM5YjU1ZTQwNDM1OTJiYTg5NTc2ZCIsIl9hdXRoX3VzZXJfaWQiOiI4In0=",
+      "expire_date": "2016-07-11T09:55:50Z"
+    }
+  },
+  {
+    "model": "e_homework.class",
+    "pk": 1,
+    "fields": {
+      "grade_number": 2,
+      "class_number": 1,
+      "school_belong_to": 1
+    }
+  },
+  {
+    "model": "e_homework.vote",
+    "pk": 1,
+    "fields": {
+      "name": "\u957f\u5b81\u533a",
+      "raised_by": 1,
+      "start_time": "2016-06-27",
+      "end_time": "2016-07-08",
+      "students_invited": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ]
+    }
+  },
+  {
+    "model": "e_homework.vote",
+    "pk": 2,
+    "fields": {
+      "name": "\u666e\u9640\u533a",
+      "raised_by": 1,
+      "start_time": "2016-06-27",
+      "end_time": "2016-07-08",
+      "students_invited": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ]
+    }
+  },
+  {
+    "model": "e_homework.vote",
+    "pk": 3,
+    "fields": {
+      "name": "\u5d07\u660e",
+      "raised_by": 1,
+      "start_time": "2016-06-27",
+      "end_time": "2016-07-08",
+      "students_invited": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ]
+    }
+  },
+  {
+    "model": "e_homework.vote",
+    "pk": 4,
+    "fields": {
+      "name": "\u95f8\u5317",
+      "raised_by": 1,
+      "start_time": "2016-06-27",
+      "end_time": "2016-07-20",
+      "students_invited": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ]
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 1,
+    "fields": {
+      "number": 1,
+      "belong_to_vote": 1
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 2,
+    "fields": {
+      "number": 2,
+      "belong_to_vote": 1
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 3,
+    "fields": {
+      "number": 3,
+      "belong_to_vote": 1
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 4,
+    "fields": {
+      "number": 4,
+      "belong_to_vote": 1
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 5,
+    "fields": {
+      "number": 5,
+      "belong_to_vote": 1
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 6,
+    "fields": {
+      "number": 6,
+      "belong_to_vote": 1
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 7,
+    "fields": {
+      "number": 7,
+      "belong_to_vote": 1
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 8,
+    "fields": {
+      "number": 8,
+      "belong_to_vote": 1
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 9,
+    "fields": {
+      "number": 9,
+      "belong_to_vote": 1
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 10,
+    "fields": {
+      "number": 10,
+      "belong_to_vote": 1
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 11,
+    "fields": {
+      "number": 11,
+      "belong_to_vote": 1
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 12,
+    "fields": {
+      "number": 12,
+      "belong_to_vote": 1
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 13,
+    "fields": {
+      "number": 13,
+      "belong_to_vote": 1
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 14,
+    "fields": {
+      "number": 14,
+      "belong_to_vote": 1
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 15,
+    "fields": {
+      "number": 15,
+      "belong_to_vote": 1
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 16,
+    "fields": {
+      "number": 16,
+      "belong_to_vote": 1
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 17,
+    "fields": {
+      "number": 17,
+      "belong_to_vote": 1
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 18,
+    "fields": {
+      "number": 18,
+      "belong_to_vote": 1
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 19,
+    "fields": {
+      "number": 19,
+      "belong_to_vote": 1
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 20,
+    "fields": {
+      "number": 20,
+      "belong_to_vote": 1
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 21,
+    "fields": {
+      "number": 21,
+      "belong_to_vote": 1
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 22,
+    "fields": {
+      "number": 22,
+      "belong_to_vote": 1
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 23,
+    "fields": {
+      "number": 23,
+      "belong_to_vote": 1
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 24,
+    "fields": {
+      "number": 1,
+      "belong_to_vote": 2
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 25,
+    "fields": {
+      "number": 2,
+      "belong_to_vote": 2
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 26,
+    "fields": {
+      "number": 3,
+      "belong_to_vote": 2
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 27,
+    "fields": {
+      "number": 4,
+      "belong_to_vote": 2
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 28,
+    "fields": {
+      "number": 5,
+      "belong_to_vote": 2
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 29,
+    "fields": {
+      "number": 6,
+      "belong_to_vote": 2
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 30,
+    "fields": {
+      "number": 7,
+      "belong_to_vote": 2
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 31,
+    "fields": {
+      "number": 8,
+      "belong_to_vote": 2
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 32,
+    "fields": {
+      "number": 9,
+      "belong_to_vote": 2
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 33,
+    "fields": {
+      "number": 10,
+      "belong_to_vote": 2
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 34,
+    "fields": {
+      "number": 11,
+      "belong_to_vote": 2
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 35,
+    "fields": {
+      "number": 12,
+      "belong_to_vote": 2
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 36,
+    "fields": {
+      "number": 13,
+      "belong_to_vote": 2
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 37,
+    "fields": {
+      "number": 14,
+      "belong_to_vote": 2
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 38,
+    "fields": {
+      "number": 15,
+      "belong_to_vote": 2
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 39,
+    "fields": {
+      "number": 16,
+      "belong_to_vote": 2
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 40,
+    "fields": {
+      "number": 17,
+      "belong_to_vote": 2
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 41,
+    "fields": {
+      "number": 18,
+      "belong_to_vote": 2
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 42,
+    "fields": {
+      "number": 19,
+      "belong_to_vote": 2
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 43,
+    "fields": {
+      "number": 20,
+      "belong_to_vote": 2
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 44,
+    "fields": {
+      "number": 21,
+      "belong_to_vote": 2
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 45,
+    "fields": {
+      "number": 22,
+      "belong_to_vote": 2
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 46,
+    "fields": {
+      "number": 23,
+      "belong_to_vote": 2
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 47,
+    "fields": {
+      "number": 1,
+      "belong_to_vote": 3
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 48,
+    "fields": {
+      "number": 2,
+      "belong_to_vote": 3
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 49,
+    "fields": {
+      "number": 3,
+      "belong_to_vote": 3
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 50,
+    "fields": {
+      "number": 4,
+      "belong_to_vote": 3
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 51,
+    "fields": {
+      "number": 5,
+      "belong_to_vote": 3
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 52,
+    "fields": {
+      "number": 6,
+      "belong_to_vote": 3
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 53,
+    "fields": {
+      "number": 7,
+      "belong_to_vote": 3
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 54,
+    "fields": {
+      "number": 8,
+      "belong_to_vote": 3
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 55,
+    "fields": {
+      "number": 9,
+      "belong_to_vote": 3
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 56,
+    "fields": {
+      "number": 10,
+      "belong_to_vote": 3
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 57,
+    "fields": {
+      "number": 11,
+      "belong_to_vote": 3
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 58,
+    "fields": {
+      "number": 12,
+      "belong_to_vote": 3
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 59,
+    "fields": {
+      "number": 13,
+      "belong_to_vote": 3
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 60,
+    "fields": {
+      "number": 14,
+      "belong_to_vote": 3
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 61,
+    "fields": {
+      "number": 15,
+      "belong_to_vote": 3
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 62,
+    "fields": {
+      "number": 16,
+      "belong_to_vote": 3
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 63,
+    "fields": {
+      "number": 17,
+      "belong_to_vote": 3
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 64,
+    "fields": {
+      "number": 18,
+      "belong_to_vote": 3
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 65,
+    "fields": {
+      "number": 19,
+      "belong_to_vote": 3
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 66,
+    "fields": {
+      "number": 20,
+      "belong_to_vote": 3
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 67,
+    "fields": {
+      "number": 21,
+      "belong_to_vote": 3
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 68,
+    "fields": {
+      "number": 22,
+      "belong_to_vote": 3
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 69,
+    "fields": {
+      "number": 23,
+      "belong_to_vote": 3
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 70,
+    "fields": {
+      "number": 1,
+      "belong_to_vote": 4
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 71,
+    "fields": {
+      "number": 2,
+      "belong_to_vote": 4
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 72,
+    "fields": {
+      "number": 3,
+      "belong_to_vote": 4
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 73,
+    "fields": {
+      "number": 4,
+      "belong_to_vote": 4
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 74,
+    "fields": {
+      "number": 5,
+      "belong_to_vote": 4
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 75,
+    "fields": {
+      "number": 6,
+      "belong_to_vote": 4
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 76,
+    "fields": {
+      "number": 7,
+      "belong_to_vote": 4
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 77,
+    "fields": {
+      "number": 8,
+      "belong_to_vote": 4
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 78,
+    "fields": {
+      "number": 9,
+      "belong_to_vote": 4
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 79,
+    "fields": {
+      "number": 10,
+      "belong_to_vote": 4
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 80,
+    "fields": {
+      "number": 11,
+      "belong_to_vote": 4
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 81,
+    "fields": {
+      "number": 12,
+      "belong_to_vote": 4
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 82,
+    "fields": {
+      "number": 13,
+      "belong_to_vote": 4
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 83,
+    "fields": {
+      "number": 14,
+      "belong_to_vote": 4
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 84,
+    "fields": {
+      "number": 15,
+      "belong_to_vote": 4
+    }
+  },
+  {
+    "model": "e_homework.question",
+    "pk": 85,
+    "fields": {
+      "number": 16,
+      "belong_to_vote": 4
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+      "name": "Can add log entry",
+      "content_type": 1,
+      "codename": "add_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+      "name": "Can change log entry",
+      "content_type": 1,
+      "codename": "change_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+      "name": "Can delete log entry",
+      "content_type": 1,
+      "codename": "delete_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+      "name": "Can add permission",
+      "content_type": 2,
+      "codename": "add_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+      "name": "Can change permission",
+      "content_type": 2,
+      "codename": "change_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+      "name": "Can delete permission",
+      "content_type": 2,
+      "codename": "delete_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+      "name": "Can add group",
+      "content_type": 3,
+      "codename": "add_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+      "name": "Can change group",
+      "content_type": 3,
+      "codename": "change_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+      "name": "Can delete group",
+      "content_type": 3,
+      "codename": "delete_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+      "name": "Can add user",
+      "content_type": 4,
+      "codename": "add_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+      "name": "Can change user",
+      "content_type": 4,
+      "codename": "change_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+      "name": "Can delete user",
+      "content_type": 4,
+      "codename": "delete_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+      "name": "Can add content type",
+      "content_type": 5,
+      "codename": "add_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+      "name": "Can change content type",
+      "content_type": 5,
+      "codename": "change_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+      "name": "Can delete content type",
+      "content_type": 5,
+      "codename": "delete_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+      "name": "Can add session",
+      "content_type": 6,
+      "codename": "add_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+      "name": "Can change session",
+      "content_type": 6,
+      "codename": "change_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+      "name": "Can delete session",
+      "content_type": 6,
+      "codename": "delete_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+      "name": "Can add school",
+      "content_type": 7,
+      "codename": "add_school"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+      "name": "Can change school",
+      "content_type": 7,
+      "codename": "change_school"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+      "name": "Can delete school",
+      "content_type": 7,
+      "codename": "delete_school"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+      "name": "Can add class",
+      "content_type": 8,
+      "codename": "add_class"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+      "name": "Can change class",
+      "content_type": 8,
+      "codename": "change_class"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+      "name": "Can delete class",
+      "content_type": 8,
+      "codename": "delete_class"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+      "name": "Can add teacher",
+      "content_type": 9,
+      "codename": "add_teacher"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+      "name": "Can change teacher",
+      "content_type": 9,
+      "codename": "change_teacher"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+      "name": "Can delete teacher",
+      "content_type": 9,
+      "codename": "delete_teacher"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+      "name": "teachers_permission",
+      "content_type": 9,
+      "codename": "teachers_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+      "name": "Can add student",
+      "content_type": 10,
+      "codename": "add_student"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+      "name": "Can change student",
+      "content_type": 10,
+      "codename": "change_student"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+      "name": "Can delete student",
+      "content_type": 10,
+      "codename": "delete_student"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+      "name": "students_permission",
+      "content_type": 10,
+      "codename": "students_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 33,
+    "fields": {
+      "name": "Can add vote",
+      "content_type": 11,
+      "codename": "add_vote"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 34,
+    "fields": {
+      "name": "Can change vote",
+      "content_type": 11,
+      "codename": "change_vote"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 35,
+    "fields": {
+      "name": "Can delete vote",
+      "content_type": 11,
+      "codename": "delete_vote"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 36,
+    "fields": {
+      "name": "Can add question",
+      "content_type": 12,
+      "codename": "add_question"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 37,
+    "fields": {
+      "name": "Can change question",
+      "content_type": 12,
+      "codename": "change_question"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 38,
+    "fields": {
+      "name": "Can delete question",
+      "content_type": 12,
+      "codename": "delete_question"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 39,
+    "fields": {
+      "name": "Can add vote piece",
+      "content_type": 13,
+      "codename": "add_votepiece"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 40,
+    "fields": {
+      "name": "Can change vote piece",
+      "content_type": 13,
+      "codename": "change_votepiece"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 41,
+    "fields": {
+      "name": "Can delete vote piece",
+      "content_type": 13,
+      "codename": "delete_votepiece"
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 1,
+    "fields": {
+      "name": "students_user_group",
+      "permissions": [
+        32
+      ]
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 2,
+    "fields": {
+      "name": "teachers_user_group",
+      "permissions": [
+        28
+      ]
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$24000$6Dg1AbZV7JqJ$Gltw0GGE1j0EBUjvul4lnyqGVAL21rjhmtTJ/qyCrsg=",
+      "last_login": "2016-06-30T07:26:32Z",
+      "is_superuser": true,
+      "username": "longfangsong",
+      "first_name": "",
+      "last_name": "",
+      "email": "longfangsong@icloud.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2016-06-27T09:17:22Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$24000$iG41E1mSLjTF$UHViju+Cu9zrnrpcEviqgnAD/a6L8wslJePBjYJJ6cw=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "\u884c\u77e5\u4e2d\u5b66",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2016-06-27T09:17:37Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$24000$K2zF6akkZhGP$hk12BaYVgD0EdqXQ44c2qz98XN6ZnjkkR7o57jJr0vo=",
+      "last_login": "2016-06-27T10:30:34Z",
+      "is_superuser": false,
+      "username": "\u9f99\u65b9\u6dde",
+      "first_name": "\u65b9\u6dde",
+      "last_name": "\u9f99",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2016-06-27T09:20:02Z",
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$24000$Ls8I074Moqd1$JyTeHPsh1TPkXG3srDQB+xPJhiUuvWwEZdGJg0F405U=",
+      "last_login": "2016-06-27T09:57:10Z",
+      "is_superuser": false,
+      "username": "Sunsky",
+      "first_name": "\u660a",
+      "last_name": "\u5434",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2016-06-27T09:53:13Z",
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$24000$4I6Q4RkSx3jH$3Nfbmi9PVw+VIhDqBJjUc/100+hfhYhaOnQwZOLir+4=",
+      "last_login": "2016-06-27T09:58:31Z",
+      "is_superuser": false,
+      "username": "\u8d75\u589e\u745e",
+      "first_name": "\u589e\u745e",
+      "last_name": "\u8d75",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2016-06-27T09:53:46Z",
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 7,
+    "fields": {
+      "password": "pbkdf2_sha256$24000$ObJH1dQXGCBN$jE0U/lHIGdNutnIzsIJz2+g7qBOTU36n8GpoO08mBsw=",
+      "last_login": "2016-06-27T09:57:42Z",
+      "is_superuser": false,
+      "username": "\u4fde\u6d77\u6d9b",
+      "first_name": "\u6d77\u6d9b",
+      "last_name": "\u4fde",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2016-06-27T09:55:28Z",
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 8,
+    "fields": {
+      "password": "pbkdf2_sha256$24000$LvPRaWqq4TmJ$GYktmZQwzRhJJ0ejl0wNdRls4lP0tOmdoasbRjOQdOM=",
+      "last_login": "2016-06-27T09:55:50Z",
+      "is_superuser": false,
+      "username": "\u66f9\u857e",
+      "first_name": "\u857e",
+      "last_name": "\u66f9",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2016-06-27T09:55:40Z",
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 9,
+    "fields": {
+      "password": "pbkdf2_sha256$24000$x5WxZCRwiGUy$pfBz/Nm0rePBdIWXtOGrNisf5LvEWx52ntrCSyeBjvQ=",
+      "last_login": "2016-06-27T09:55:53Z",
+      "is_superuser": false,
+      "username": "kirito",
+      "first_name": "\u5fd7\u5f18",
+      "last_name": "\u9646",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2016-06-27T09:55:43Z",
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 10,
+    "fields": {
+      "password": "pbkdf2_sha256$24000$CRNnMo9aPHYp$Ht7SQi7rWrkBFX5bakbX9XA+fCp6Ft2ibsNX6rn8WWU=",
+      "last_login": "2016-06-27T10:00:34Z",
+      "is_superuser": false,
+      "username": "\u987e\u5218\u6770",
+      "first_name": "\u5218\u6770",
+      "last_name": "\u987e",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2016-06-27T10:00:16Z",
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 11,
+    "fields": {
+      "password": "pbkdf2_sha256$24000$EJkAEaQm8KdF$rjMK76fLQH3XEl6PXN5OXS5CJP3pRPxDX/2VZvweZlQ=",
+      "last_login": "2016-06-27T10:11:03Z",
+      "is_superuser": false,
+      "username": "\u4f55\u6b23\u6021",
+      "first_name": "\u6b23\u6021",
+      "last_name": "\u4f55",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2016-06-27T10:10:52Z",
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 12,
+    "fields": {
+      "password": "pbkdf2_sha256$24000$klUQpANj7SAO$45mzuqgZknU+/7bYCVDGAktKQYvKgQoX8Kqotre55P8=",
+      "last_login": "2016-06-27T10:11:39Z",
+      "is_superuser": false,
+      "username": "Agulzxd",
+      "first_name": "\u65b0\u680b",
+      "last_name": "\u5468",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2016-06-27T10:11:28Z",
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 13,
+    "fields": {
+      "password": "pbkdf2_sha256$24000$VF8pu3Kn5kzI$K0bGROYwYT/77lVqEeitY2CbpyVMz4t5n1cnlQsg+IA=",
+      "last_login": "2016-06-29T09:10:36Z",
+      "is_superuser": false,
+      "username": "ggyy0905",
+      "first_name": "\u502c\u9716",
+      "last_name": "\u5f20",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2016-06-27T10:15:18Z",
+      "groups": [
+        2
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 14,
+    "fields": {
+      "password": "pbkdf2_sha256$24000$OaqGdziW6Xrz$nW7s9LBd0CUaVhi91J2YnFf0rW/rBrXmh8NFBFoncv0=",
+      "last_login": "2016-06-27T10:23:38Z",
+      "is_superuser": false,
+      "username": "lulu",
+      "first_name": "\u7490\u7490",
+      "last_name": "\u9a6c",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2016-06-27T10:23:25Z",
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 15,
+    "fields": {
+      "password": "pbkdf2_sha256$24000$mRKmDh1QALIR$CQ3joAMnWhv0MS1Lhm105EGqAYKvN34V61eZRHHpx1w=",
+      "last_login": "2016-06-27T10:28:34Z",
+      "is_superuser": false,
+      "username": "\u8881\u8bd7\u6021",
+      "first_name": "\u8bd7\u6021",
+      "last_name": "\u8881",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2016-06-27T10:28:18Z",
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 16,
+    "fields": {
+      "password": "pbkdf2_sha256$24000$NoUeXZBPUvXs$6GAvn+Kp0f/8EICXV/6ZyFQ0FiZekH7nVHOnmSsoExI=",
+      "last_login": "2016-06-27T10:28:46Z",
+      "is_superuser": false,
+      "username": "chenyuhe",
+      "first_name": "\u96e8\u8377",
+      "last_name": "\u9648",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2016-06-27T10:28:29Z",
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 17,
+    "fields": {
+      "password": "pbkdf2_sha256$24000$Ta6AEHJwuejV$fF2gXGmLHI+rP89o8DMfdSHY80e2Nv5iBnfPY8HeKFE=",
+      "last_login": "2016-06-27T10:44:45Z",
+      "is_superuser": false,
+      "username": "\u5468\u6069\u5b87",
+      "first_name": "\u6069\u5b87",
+      "last_name": "\u5468",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2016-06-27T10:44:33Z",
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 18,
+    "fields": {
+      "password": "pbkdf2_sha256$24000$tRMO20cua7kP$hoGMVcjVIHQlGiOADW61uOPiFa1oyT8pA7d3SqzOxfI=",
+      "last_login": "2016-06-28T02:50:17Z",
+      "is_superuser": false,
+      "username": "\u6e38\u9ece\u8005",
+      "first_name": "\u9ad8\u6021",
+      "last_name": "\u66f9",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2016-06-27T11:02:06Z",
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 19,
+    "fields": {
+      "password": "pbkdf2_sha256$24000$rEEGEsfQWtM5$lb8KAh4o6SWebKi5L3VW8HlZlWqKJahP46OcNkcPLPA=",
+      "last_login": "2016-06-27T11:14:39Z",
+      "is_superuser": false,
+      "username": "Joker",
+      "first_name": "\u67d8",
+      "last_name": "\u738b",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2016-06-27T11:14:28Z",
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 20,
+    "fields": {
+      "password": "pbkdf2_sha256$24000$G7KxAjZSkWzz$Czde0ap60sbeomSzSqh15HvjPhzOyfmPjK2/TzlfTFU=",
+      "last_login": "2016-06-27T14:17:56Z",
+      "is_superuser": false,
+      "username": "\u7267\u9a6c\u4eba",
+      "first_name": "\u660a\u54f2",
+      "last_name": "\u5218",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2016-06-27T14:17:42Z",
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 21,
+    "fields": {
+      "password": "pbkdf2_sha256$24000$GBVj9T4B9J5c$K3mHuvZRtIdkPwbnGasDqfastWknrInSANpCrBCwFpE=",
+      "last_login": "2016-06-28T14:17:42Z",
+      "is_superuser": false,
+      "username": "\u94ba",
+      "first_name": "\u8bd7\u60a6",
+      "last_name": "\u66f9",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2016-06-28T14:17:24Z",
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "e_homework.school",
+    "pk": 1,
+    "fields": {
+      "type": "\u9ad8",
+      "user": 2
+    }
+  },
+  {
+    "model": "e_homework.teacher",
+    "pk": 1,
+    "fields": {
+      "school_belong_to": 1,
+      "user": 13,
+      "classes_teaching": []
+    }
+  },
+  {
+    "model": "e_homework.student",
+    "pk": 1,
+    "fields": {
+      "user": 3,
+      "class_belong_to": 1
+    }
+  },
+  {
+    "model": "e_homework.student",
+    "pk": 2,
+    "fields": {
+      "user": 4,
+      "class_belong_to": 1
+    }
+  },
+  {
+    "model": "e_homework.student",
+    "pk": 3,
+    "fields": {
+      "user": 5,
+      "class_belong_to": 1
+    }
+  },
+  {
+    "model": "e_homework.student",
+    "pk": 5,
+    "fields": {
+      "user": 7,
+      "class_belong_to": 1
+    }
+  },
+  {
+    "model": "e_homework.student",
+    "pk": 6,
+    "fields": {
+      "user": 8,
+      "class_belong_to": 1
+    }
+  },
+  {
+    "model": "e_homework.student",
+    "pk": 7,
+    "fields": {
+      "user": 9,
+      "class_belong_to": 1
+    }
+  },
+  {
+    "model": "e_homework.student",
+    "pk": 8,
+    "fields": {
+      "user": 10,
+      "class_belong_to": 1
+    }
+  },
+  {
+    "model": "e_homework.student",
+    "pk": 9,
+    "fields": {
+      "user": 11,
+      "class_belong_to": 1
+    }
+  },
+  {
+    "model": "e_homework.student",
+    "pk": 10,
+    "fields": {
+      "user": 12,
+      "class_belong_to": 1
+    }
+  },
+  {
+    "model": "e_homework.student",
+    "pk": 11,
+    "fields": {
+      "user": 14,
+      "class_belong_to": 1
+    }
+  },
+  {
+    "model": "e_homework.student",
+    "pk": 12,
+    "fields": {
+      "user": 15,
+      "class_belong_to": 1
+    }
+  },
+  {
+    "model": "e_homework.student",
+    "pk": 13,
+    "fields": {
+      "user": 16,
+      "class_belong_to": 1
+    }
+  },
+  {
+    "model": "e_homework.student",
+    "pk": 14,
+    "fields": {
+      "user": 17,
+      "class_belong_to": 1
+    }
+  },
+  {
+    "model": "e_homework.student",
+    "pk": 15,
+    "fields": {
+      "user": 18,
+      "class_belong_to": 1
+    }
+  },
+  {
+    "model": "e_homework.student",
+    "pk": 16,
+    "fields": {
+      "user": 19,
+      "class_belong_to": 1
+    }
+  },
+  {
+    "model": "e_homework.student",
+    "pk": 17,
+    "fields": {
+      "user": 20,
+      "class_belong_to": 1
+    }
+  },
+  {
+    "model": "e_homework.student",
+    "pk": 18,
+    "fields": {
+      "user": 21,
+      "class_belong_to": 1
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+      "action_time": "2016-06-27T09:18:43Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "1",
+      "object_repr": "\u884c\u77e5\u4e2d\u5b66 \u9ad8\u4e8c(1)\u73ed",
+      "action_flag": 1,
+      "change_message": "Added."
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+      "action_time": "2016-06-27T09:56:52Z",
+      "user": 1,
+      "content_type": 4,
+      "object_id": "6",
+      "object_repr": "clllll",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+      "action_time": "2016-06-27T09:57:57Z",
+      "user": 1,
+      "content_type": 4,
+      "object_id": "8",
+      "object_repr": "\u66f9\u857e",
+      "action_flag": 2,
+      "change_message": "Changed first_name and last_name."
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+      "action_time": "2016-06-27T09:59:50Z",
+      "user": 1,
+      "content_type": 4,
+      "object_id": "4",
+      "object_repr": "Sunsky",
+      "action_flag": 2,
+      "change_message": "Changed first_name and last_name."
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+      "action_time": "2016-06-27T10:00:42Z",
+      "user": 1,
+      "content_type": 4,
+      "object_id": "7",
+      "object_repr": "\u4fde\u6d77\u6d9b",
+      "action_flag": 2,
+      "change_message": "Changed first_name and last_name."
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+      "action_time": "2016-06-27T10:01:04Z",
+      "user": 1,
+      "content_type": 4,
+      "object_id": "8",
+      "object_repr": "\u66f9\u857e",
+      "action_flag": 2,
+      "change_message": "Changed first_name and last_name."
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+      "action_time": "2016-06-27T10:22:53Z",
+      "user": 1,
+      "content_type": 4,
+      "object_id": "11",
+      "object_repr": "\u4f55\u6b23\u6021",
+      "action_flag": 2,
+      "change_message": "Changed first_name and last_name."
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+      "action_time": "2016-06-27T10:28:55Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "3",
+      "object_repr": "\u5d07\u660e",
+      "action_flag": 2,
+      "change_message": "Changed students_invited."
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+      "action_time": "2016-06-27T10:29:04Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "4",
+      "object_repr": "\u95f8\u5317",
+      "action_flag": 2,
+      "change_message": "Changed students_invited."
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+      "action_time": "2016-06-27T10:29:14Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "3",
+      "object_repr": "\u5d07\u660e",
+      "action_flag": 2,
+      "change_message": "No fields changed."
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+      "action_time": "2016-06-27T10:29:21Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "2",
+      "object_repr": "\u666e\u9640\u533a",
+      "action_flag": 2,
+      "change_message": "Changed students_invited."
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+      "action_time": "2016-06-27T10:29:31Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "\u957f\u5b81\u533a",
+      "action_flag": 2,
+      "change_message": "Changed students_invited."
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 13,
+    "fields": {
+      "action_time": "2016-06-27T10:46:58Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "2",
+      "object_repr": "\u666e\u9640\u533a",
+      "action_flag": 2,
+      "change_message": "Changed students_invited."
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 14,
+    "fields": {
+      "action_time": "2016-06-27T10:47:04Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "3",
+      "object_repr": "\u5d07\u660e",
+      "action_flag": 2,
+      "change_message": "Changed students_invited."
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 15,
+    "fields": {
+      "action_time": "2016-06-27T10:47:10Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "2",
+      "object_repr": "\u666e\u9640\u533a",
+      "action_flag": 2,
+      "change_message": "No fields changed."
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 16,
+    "fields": {
+      "action_time": "2016-06-27T10:47:15Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "\u957f\u5b81\u533a",
+      "action_flag": 2,
+      "change_message": "Changed students_invited."
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 17,
+    "fields": {
+      "action_time": "2016-06-27T10:54:25Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "4",
+      "object_repr": "\u95f8\u5317",
+      "action_flag": 2,
+      "change_message": "Changed students_invited."
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 18,
+    "fields": {
+      "action_time": "2016-06-27T11:02:26Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "3",
+      "object_repr": "\u5d07\u660e",
+      "action_flag": 2,
+      "change_message": "Changed students_invited."
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 19,
+    "fields": {
+      "action_time": "2016-06-27T11:02:32Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "3",
+      "object_repr": "\u5d07\u660e",
+      "action_flag": 2,
+      "change_message": "No fields changed."
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 20,
+    "fields": {
+      "action_time": "2016-06-27T11:02:39Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "2",
+      "object_repr": "\u666e\u9640\u533a",
+      "action_flag": 2,
+      "change_message": "Changed students_invited."
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 21,
+    "fields": {
+      "action_time": "2016-06-27T11:02:45Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "\u957f\u5b81\u533a",
+      "action_flag": 2,
+      "change_message": "Changed students_invited."
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 22,
+    "fields": {
+      "action_time": "2016-06-27T11:06:13Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "4",
+      "object_repr": "\u95f8\u5317",
+      "action_flag": 2,
+      "change_message": "Changed students_invited."
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 23,
+    "fields": {
+      "action_time": "2016-06-27T11:18:25Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "4",
+      "object_repr": "\u95f8\u5317",
+      "action_flag": 2,
+      "change_message": "Changed students_invited."
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 24,
+    "fields": {
+      "action_time": "2016-06-27T11:18:29Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "4",
+      "object_repr": "\u95f8\u5317",
+      "action_flag": 2,
+      "change_message": "No fields changed."
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 25,
+    "fields": {
+      "action_time": "2016-06-27T11:18:38Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "3",
+      "object_repr": "\u5d07\u660e",
+      "action_flag": 2,
+      "change_message": "Changed students_invited."
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 26,
+    "fields": {
+      "action_time": "2016-06-27T11:18:45Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "2",
+      "object_repr": "\u666e\u9640\u533a",
+      "action_flag": 2,
+      "change_message": "Changed students_invited."
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 27,
+    "fields": {
+      "action_time": "2016-06-27T11:18:51Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "\u957f\u5b81\u533a",
+      "action_flag": 2,
+      "change_message": "Changed students_invited."
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 28,
+    "fields": {
+      "action_time": "2016-06-27T11:24:52Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "2",
+      "object_repr": "\u666e\u9640\u533a",
+      "action_flag": 2,
+      "change_message": "No fields changed."
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 29,
+    "fields": {
+      "action_time": "2016-06-28T09:34:15Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "2",
+      "object_repr": "\u666e\u9640\u533a",
+      "action_flag": 2,
+      "change_message": "Changed students_invited."
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 30,
+    "fields": {
+      "action_time": "2016-06-28T09:34:21Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "3",
+      "object_repr": "\u5d07\u660e",
+      "action_flag": 2,
+      "change_message": "Changed students_invited."
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 31,
+    "fields": {
+      "action_time": "2016-06-28T09:34:27Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "2",
+      "object_repr": "\u666e\u9640\u533a",
+      "action_flag": 2,
+      "change_message": "No fields changed."
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 32,
+    "fields": {
+      "action_time": "2016-06-28T09:34:32Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "\u957f\u5b81\u533a",
+      "action_flag": 2,
+      "change_message": "Changed students_invited."
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 33,
+    "fields": {
+      "action_time": "2016-06-28T09:34:39Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "4",
+      "object_repr": "\u95f8\u5317",
+      "action_flag": 2,
+      "change_message": "Changed students_invited."
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 34,
+    "fields": {
+      "action_time": "2016-06-28T09:35:01Z",
+      "user": 1,
+      "content_type": 4,
+      "object_id": "18",
+      "object_repr": "\u6e38\u9ece\u8005",
+      "action_flag": 2,
+      "change_message": "Changed first_name and last_name."
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 35,
+    "fields": {
+      "action_time": "2016-06-29T23:58:14Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "4",
+      "object_repr": "\u95f8\u5317",
+      "action_flag": 2,
+      "change_message": "Changed students_invited."
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 36,
+    "fields": {
+      "action_time": "2016-06-29T23:58:26Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "3",
+      "object_repr": "\u5d07\u660e",
+      "action_flag": 2,
+      "change_message": "Changed students_invited."
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 37,
+    "fields": {
+      "action_time": "2016-06-29T23:58:37Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "2",
+      "object_repr": "\u666e\u9640\u533a",
+      "action_flag": 2,
+      "change_message": "Changed students_invited."
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 38,
+    "fields": {
+      "action_time": "2016-06-29T23:58:59Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "\u957f\u5b81\u533a",
+      "action_flag": 2,
+      "change_message": "Changed students_invited."
+    }
+  }
+]

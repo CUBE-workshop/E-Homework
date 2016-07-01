@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>e-homework 教师端</title>
+</head>
+<body>
+<nav>
+    <span class="glyphicon glyphicon-tasks"></span>
+    <ul>
+        <li>A</li>
+        <li>B</li>
+        <li>C</li>
+    </ul>
+</nav>
+<script>
+    $("nav").click(function () {
+        $(this).addClass("open");
+        return false;
+    });
+    $(":not(nav)").click(function () {
+        $("nav").removeClass("open");
+    })
+</script>
+</body>
+</html>

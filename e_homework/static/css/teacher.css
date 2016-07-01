@@ -1,0 +1,98 @@
+nav {
+    background: rgb(25, 24, 24);
+    bottom: 0;
+    color: rgb(119, 119, 119);
+    display: block;
+    height: 100%;
+    left: 0;
+    outline: rgb(119, 119, 119) none 0;
+    position: fixed;
+    top: 0;
+    width: 200px;
+    z-index: 1000;
+    padding: 0;
+    transition: all 0.8s;
+}
+
+nav span.glyphicon {
+    display: none;
+    transition: all 0.3s;
+}
+
+nav ul {
+    padding: 0;
+}
+
+nav ul li {
+    list-style: none;
+    height: 44px;
+    font-size: 20pt;
+    padding-top: 3px;
+    padding-left: 1em;
+    transition: width 1s, height 1s, background-color 0.4s, transform 1s;
+    border-bottom: solid 1px darkgray;
+}
+
+nav ul li:hover {
+    background: deepskyblue;
+    cursor: pointer;
+}
+
+@media (max-width: 48em) {
+    nav {
+        width: 80px;
+        height: 60px;
+    }
+
+    nav ul {
+        display: none;
+        padding: 0;
+    }
+
+    nav ul li {
+        padding: 0;
+    }
+
+    nav span.glyphicon {
+        display: block;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        line-height: 60px;
+        font-size: 23pt;
+    }
+
+    nav span.glyphicon:hover {
+        cursor: pointer;
+    }
+
+    nav.open {
+        width: 200px;
+        height: 270px;
+        border-bottom-right-radius: 4px;
+    }
+
+    nav.open span.glyphicon {
+        width: 0;
+        height: 0;
+        top: 0;
+        left: 0;
+        font-size: 0;
+    }
+
+    nav.open ul {
+        display: block;
+        height: 100%;
+    }
+
+    nav.open ul li {
+        display: block;
+        height: 33.333333%;
+        text-align: center;
+        line-height: 90px;
+    }
+
+    nav.open ul li:last-of-type {
+        border-bottom-right-radius: 4px;
+    }
+}

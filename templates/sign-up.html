@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>注册</title>
+    {% load staticfiles %}
+    <script src="{% static "js/jQuery.js" %}"></script>
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/auth.css" %}">
+    <link rel="stylesheet" href="{% static "css/sign-up.css" %}">
+    {#    <link rel="stylesheet" href="../e_homework/static/css/auth.css">#}
+</head>
+<body>
+<div class="container">
+    <form id="sign-in-or-up-form" method="post" action="{% url "do-sign-up" %}">{% csrf_token %}
+        <h2>注册</h2>
+        <div id="selects">
+            <div class="form-group">
+                <label class="sr-only" for="user-type">用户类型:</label>
+                <select class="form-control" id="user-type" name="user-type">
+                    <option value="none" id="user-type-placeholder" selected>用户类型</option>
+                    <option value="student">学生</option>
+                    <option value="teacher">教师</option>
+                    <option value="school">学校</option>
+                </select>
+            </div>
+            <div class="form-group" id="school-in-wrapper" hidden>
+                <label class="sr-only" for="school-in">所在学校:</label>
+                <select class="form-control" id="school-in" name="school-in">
+                    <option value="none" id="school-in-placeholder" selected>学校</option>
+                </select>
+            </div>
+            <div class="form-group" id="school-type-wrapper" hidden>
+                <label class="sr-only" for="school-type">学校类型:</label>
+                <select class="form-control" id="school-type" name="school-type">
+                    <option value="" selected="selected">小学</option>
+                    <option value="初">初中</option>
+                    <option value="高">高中</option>
+                </select>
+            </div>
+            <div class="form-group" id="class-in-wrapper" hidden>
+                <label class="sr-only" for="class-in">所在班级:</label>
+                <select class="form-control" id="class-in" name="class-in">
+                </select>
+            </div>
+        </div>
+        <div class="inputs">
+            <div class="form-group input-name">
+                <label for="last-name" class="sr-only">姓</label>
+                <input type="text" class="form-control first-input" name="last-name" id="last-name"
+                       placeholder="姓"
+                       required>
+            </div>
+            <div class="form-group input-name">
+                <label for="first-name" class="sr-only">名</label>
+                <input type="text" class="form-control" name="first-name" id="first-name"
+                       placeholder="名" required>
+            </div>
+            <div class="form-group">
+                <label for="username" class="sr-only">用户名</label>
+                <input type="text" class="form-control first-input" id="username" name="username"
+                       placeholder="用户名"
+                       aria-required="true" required>
+            </div>
+            <div class="form-group">
+                <label for="password" class="sr-only">密码</label>
+                <input type="password" class="form-control" name="password" id="password"
+                       placeholder="密码" required>
+            </div>
+            <div class="form-group">
+                <label for="password-confirm" class="sr-only">确认密码</label>
+                <input type="password" class="form-control" name="password-confirm"
+                       id="password-confirm"
+                       placeholder="确认密码" required>
+            </div>
+        </div>
+        <div class="alert alert-danger" id="username-error" role="alert" hidden>
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            你的用户名已经被注册
+        </div>
+        <div class="alert alert-danger" id="password-error" role="alert" hidden>
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            你的密码安全性不够
+        </div>
+        <div class="alert alert-danger" id="password-confirm-error" role="alert" hidden>
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            你的密码输入不一致
+        </div>
+        <button class="btn btn-primary" type="submit" disabled="disabled">注册</button>
+    </form>
+</div>
+<script src="{% static "js/validator.js" %}"></script>
+<script>
+    $(function () {
+        $(".input-name").hide();
+    });
+    const $success_icon = $("<span>", {"class": "glyphicon form-control-feedback glyphicon-ok"});
+    const $error_icon = $("<span>", {"class": "glyphicon form-control-feedback glyphicon-remove"});
+    function show_school_list() {
+        $("#school-in").html("<option value=\"none\" id=\"school-in-placeholder\" selected>学校</option>");
+        $.getJSON({% url "get-school-list" %}, null, function (ret) {
+            ret.school_list.forEach(function (school) {
+                $("#school-in").append("<option value=\"" + school.id + "\">" + school.name + "</option>");
+            });
+        });
+        $("#school-in-wrapper").show();
+    }
+    function destroy_school_list() {
+        $("#school-in").html("<option value=\"none\" id=\"school-in-placeholder\" selected>学校</option>");
+        $("#school-in").val("none");
+        $("#school-in-wrapper").hide();
+    }
+    function show_class_list(school_id) {
+        var school_info = [{name: "csrfmiddlewaretoken", value: "{{ csrf_token }}"}, {
+            name: "value",
+            value: school_id
+        }];
+        $.post({% url "get-class-list" %}, school_info, function (ret) {
+            ret.class_list.forEach(function (class_) {
+                $("#class-in").append("<option value=\"" + class_.id + "\">" + class_.name + "</option>");
+            });
+        });
+        $("#class-in-wrapper").show();
+    }
+    function destroy_class_list() {
+        $("#class-in").html("<option value=\"none\" id=\"class-in-placeholder\" selected>班级</option>");
+        $("#class-in").val("none");
+        $("#class-in-wrapper").hide();
+    }
+    $("#user-type").mousedown(function () {
+        $("#user-type-placeholder").remove();
+        $(this).change();
+    }).change(function () {
+        destroy_class_list();
+        if ($(this).val() == "school") {
+            $(".input-name").hide();
+            $("#username").addClass("first-input");
+            $("#school-type-wrapper").show();
+            destroy_school_list();
+        } else {
+            $(".input-name").show();
+            $("#username").removeClass("first-input");
+            $("#school-type-wrapper").hide();
+            show_school_list();
+        }
+    });
+    $("#school-in").mousedown(function () {
+        $("#school-in-placeholder").remove();
+        $(this).change();
+    }).change(function () {
+        if ($("#user-type").val() == "student") {
+            show_class_list($(this).val());
+        }
+    });
+    $("#class-in").mousedown(function () {
+        $("#class-in-placeholder").remove();
+    });
+    var validations = new ValidatorGroup([
+        new Validator("{{ csrf_token }}", $("#user-type"), null, null, null, function () {
+            return $("#user-type").val() != "none";
+        }),
+        new Validator("{{ csrf_token }}", $("#user-type"), null, null, null, function () {
+            return $("#user-type").val() != "none";
+        }),
+        new Validator("{{ csrf_token }}", $("#user-type"), null, null, null, function () {
+            return $("#user-type").val() != "none";
+        }),
+        new Validator("{{ csrf_token }}", $("#username"), function (success) {
+            $("#username").parent().removeClass("has-success").removeClass("has-error").removeClass("has-feedback");
+            $("#username").parent().children(".glyphicon").remove();
+            if (success) {
+                $("#username-error").hide();
+                $("#username").parent().addClass("has-success").addClass("has-feedback");
+                $("#username").after($success_icon.clone());
+            } else {
+                $("#username-error").show();
+                $("#username").parent().addClass("has-error").addClass("has-feedback");
+                $("#username").after($error_icon.clone());
+            }
+        }, {% url "validate-username" %}, null, null),
+        new Validator("{{ csrf_token }}", $("#password"), function (success) {
+            $("#password").parent().removeClass("has-success").removeClass("has-error").removeClass("has-feedback");
+            $("#password").parent().children(".glyphicon").remove();
+            if (success) {
+                $("#password-error").hide();
+                $("#password").parent().addClass("has-success").addClass("has-feedback");
+                $("#password").after($success_icon.clone());
+            } else {
+                $("#password-error").show();
+                $("#password").parent().addClass("has-error").addClass("has-feedback");
+                $("#password").after($error_icon.clone());
+            }
+        }, {% url "validate-password" %}, null, null),
+        new Validator("{{ csrf_token }}", $("#password-confirm"), function (success) {
+            $("#password-confirm").parent().removeClass("has-success").removeClass("has-error").removeClass("has-feedback");
+            $("#password-confirm").parent().children(".glyphicon").remove();
+            if (success) {
+                $("#password-confirm-error").hide();
+                $("#password-confirm").parent().addClass("has-success").addClass("has-feedback");
+                $("#password-confirm").after($success_icon.clone());
+            } else {
+                $("#password-confirm-error").show();
+                $("#password-confirm").parent().addClass("has-error").addClass("has-feedback");
+                $("#password-confirm").after($error_icon.clone());
+            }
+        }, {% url "validate-password" %}, null, function () {
+            return $("#password-confirm").val() == $("#password").val();
+        })
+    ]);
+    $("#password").keydown(function () {
+        $("#password-confirm").parent().removeClass("has-success").removeClass("has-error").removeClass("has-feedback");
+        $("#password-confirm").parent().children(".glyphicon").remove();
+        $("#password-confirm-error").hide();
+        $("#password-confirm").val("");
+    });
+    function changeSubmitButtonState() {
+        if (validations.isAllValid()) {
+            $("form button").removeAttr("disabled");
+        } else {
+            $("form button").attr("disabled", "disabled");
+        }
+    }
+    $("select").mouseup(function () {
+        validations.validate(0);
+        validations.validate(1);
+        validations.validate(2);
+        changeSubmitButtonState();
+    });
+    $("input").keyup(function () {
+        validations.validate($(this).parent().index() + 1);
+        changeSubmitButtonState();
+    });
+</script>
+</body>
+</html>
