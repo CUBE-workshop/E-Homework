@@ -1,17 +1,31 @@
 nav {
-    background: rgb(25, 24, 24);
+    background: rgba(102, 204, 255, 1);
     bottom: 0;
-    color: rgb(119, 119, 119);
+    color: white;
     display: block;
     height: 100%;
     left: 0;
-    outline: rgb(119, 119, 119) none 0;
+    outline: #4e9ec4 none 0;
     position: fixed;
     top: 0;
     width: 200px;
     z-index: 1000;
     padding: 0;
     transition: all 0.8s;
+}
+
+nav h2 {
+    padding-left: 1em;
+}
+
+nav a {
+    color: white;
+}
+
+nav a:hover {
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
 }
 
 nav span.glyphicon {
@@ -21,21 +35,27 @@ nav span.glyphicon {
 
 nav ul {
     padding: 0;
+    border-top: solid 3px #4ea7cd;
 }
 
 nav ul li {
     list-style: none;
     height: 44px;
-    font-size: 20pt;
+    font-size: 19.5pt;
     padding-top: 3px;
     padding-left: 1em;
     transition: width 1s, height 1s, background-color 0.4s, transform 1s;
-    border-bottom: solid 1px darkgray;
+    border-bottom: solid 3px #4ea7cd;
 }
 
 nav ul li:hover {
-    background: deepskyblue;
+    background: #00ace5;
     cursor: pointer;
+}
+
+.content {
+    margin-left: 200px;
+    padding: 0 1em 1em;
 }
 
 @media (max-width: 48em) {
@@ -44,13 +64,22 @@ nav ul li:hover {
         height: 60px;
     }
 
+    nav h2 {
+        display: none;
+    }
+
     nav ul {
         display: none;
         padding: 0;
+        border-top: none;
     }
 
     nav ul li {
         padding: 0;
+    }
+
+    nav ul li:last-of-type {
+        border-bottom: none;
     }
 
     nav span.glyphicon {
@@ -70,6 +99,7 @@ nav ul li:hover {
         width: 200px;
         height: 270px;
         border-bottom-right-radius: 4px;
+        background: rgba(102, 204, 255, 0.85);
     }
 
     nav.open span.glyphicon {
@@ -94,5 +124,10 @@ nav ul li:hover {
 
     nav.open ul li:last-of-type {
         border-bottom-right-radius: 4px;
+    }
+
+    .content {
+        margin-left: 80px;
+        padding-top: 0;
     }
 }
