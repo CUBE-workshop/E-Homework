@@ -12,6 +12,7 @@ nav {
     z-index: 1000;
     border-right: #4e9ec4 solid 1px;
     padding: 0;
+    -webkit-transition: all 0.8s;
     transition: all 0.8s;
 }
 
@@ -34,6 +35,7 @@ nav a:hover {
 
 nav span.glyphicon {
     display: none;
+    -webkit-transition: all 0.3s;
     transition: all 0.3s;
 }
 
@@ -49,6 +51,7 @@ nav ul li {
     padding-top: 3px;
     padding-left: 1em;
     border-bottom: solid 2px #4ea7cd;
+    -webkit-transition: all 0.8s;
     transition: all 0.8s;
 }
 
@@ -63,7 +66,7 @@ nav ul li:hover {
     padding: 1em;
 }
 
-@media (max-width: 48em) {
+@media screen and (max-width: 768px) {
     nav {
         width: 80px;
         height: 60px;
