@@ -10,12 +10,16 @@ nav {
     top: 0;
     width: 200px;
     z-index: 1000;
+    border-right: #4e9ec4 solid 1px;
     padding: 0;
     transition: all 0.8s;
 }
 
 nav h2 {
-    padding-left: 1em;
+    font-size: 19pt;
+    padding: 1em;
+    margin: 0;
+    background: #00CCCC;
 }
 
 nav a {
@@ -35,17 +39,17 @@ nav span.glyphicon {
 
 nav ul {
     padding: 0;
-    border-top: solid 3px #4ea7cd;
+    border-top: solid 2px #4ea7cd;
 }
 
 nav ul li {
     list-style: none;
     height: 44px;
-    font-size: 19.5pt;
+    font-size: 17.5pt;
     padding-top: 3px;
     padding-left: 1em;
-    transition: width 1s, height 1s, background-color 0.4s, transform 1s;
-    border-bottom: solid 3px #4ea7cd;
+    border-bottom: solid 2px #4ea7cd;
+    transition: all 0.8s;
 }
 
 nav ul li:hover {
@@ -54,14 +58,16 @@ nav ul li:hover {
 }
 
 .content {
-    margin-left: 200px;
-    padding: 0 1em 1em;
+    color: rgb(119, 119, 119);
+    margin-left: 250px;
+    padding: 1em;
 }
 
 @media (max-width: 48em) {
     nav {
         width: 80px;
         height: 60px;
+        border-right: none;
     }
 
     nav h2 {
@@ -72,6 +78,8 @@ nav ul li:hover {
         display: none;
         padding: 0;
         border-top: none;
+        width: 80px;
+        height: 60px;
     }
 
     nav ul li {
@@ -113,6 +121,7 @@ nav ul li:hover {
     nav.open ul {
         display: block;
         height: 100%;
+        width: 100%;
     }
 
     nav.open ul li {
@@ -126,8 +135,13 @@ nav ul li:hover {
         border-bottom-right-radius: 4px;
     }
 
+    nav.open ul li a {
+        width: 100%;
+    }
+
     .content {
-        margin-left: 80px;
+        margin-left: 1em;
+        margin-top: 70px;
         padding-top: 0;
     }
 }
