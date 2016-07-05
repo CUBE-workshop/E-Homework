@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}e-homework 学生端{% endblock %}
+{% block morestaticfiles %}
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static "css/student.css" %}">
+{% endblock %}
+{% block main %}
+    <nav>
+        <span class="glyphicon glyphicon-tasks"></span>
+        <h2><a>学生端</a></h2>
+        <ul>
+            <li class="normal-nav-item">
+                <a id="homework-question-open">作业问题&nbsp;&nbsp;<span
+                        class="homework-question-problem-open-signal glyphicon glyphicon-triangle-bottom"></span>
+                    <span class="homework-question-problem-open-signal glyphicon glyphicon-triangle-right"></span>
+                </a>
+            </li>
+            <li id="homework-question" class="expandable-nav-item">
+                <ul>
+                    <li class="viewed"><a>A区</a></li>
+                    <li><a>B区</a></li>
+                    <li><a>C区</a></li>
+                    <li class="viewed"><a>D区</a></li>
+                    <li class="viewed"><a>E区</a></li>
+                    <li><a>F区</a></li>
+                    <li><a>G区</a></li>
+                    <li><a>H区</a></li>
+                    <li><a>I区</a></li>
+                    <li><a>J区</a></li>
+                    <li><a>K区</a></li>
+                    <li><a>L区</a></li>
+                    <li><a>M区</a></li>
+                    <li><a>A区</a></li>
+                    <li><a>B区</a></li>
+                    <li><a>C区</a></li>
+                    <li><a>D区</a></li>
+                    <li><a>E区</a></li>
+                    <li><a>F区</a></li>
+                    <li><a>G区</a></li>
+                    <li><a>H区</a></li>
+                    <li><a>I区</a></li>
+                    <li><a>J区</a></li>
+                    <li><a>K区</a></li>
+                    <li><a>L区</a></li>
+                    <li><a>M区</a></li>
+                </ul>
+            </li>
+            <li class="normal-nav-item">
+                <a id="homework-question-open">其他功能</a>
+        </ul>
+    </nav>
+    <div class="content">
+        {% block content %}
+            <h2>欢迎访问e&#8209;homework学生端</h2>
+            <a class="btn btn-danger">退出</a>
+        {% endblock %}
+    </div>
+    <script>
+        $("nav").click(function () {
+            $(this).addClass("open");
+        });
+        $(".content").click(function () {
+            $("nav").removeClass("open");
+        });
+        $("#homework-question-open").click(function () {
+            var $homework_question = $("#homework-question");
+            if ($homework_question.hasClass("open")) {
+                $homework_question.removeClass("open");
+                $(".homework-question-problem-open-signal").css({"transform": "rotate(0turn)"});
+            } else {
+                $homework_question.addClass("open");
+                $(".homework-question-problem-open-signal").css({"transform": "rotate(0.5turn)"});
+            }
+        });
+    </script>
+{% endblock %}
