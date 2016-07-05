@@ -1,3 +1,4 @@
-*.js linguist-language=Python
-*.css linguist-language=Python
-*.html linguist-language=Python
+localization/*.js linguist-language=None
+bootstrap.min.js linguist-language=None
+jQuery.min.js linguist-language=None
+bootstrap.min.css linguist-language=None
