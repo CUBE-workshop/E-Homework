@@ -17,6 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 from e_homework.views.login_views import *
+from e_homework.views.student_views import *
 from e_homework.views.teacher_views import *
 
 urlpatterns_auth = [
@@ -35,8 +36,12 @@ urlpatterns_auth = [
 urlpatterns_teacher = [
     url(r'^$', teacher)
 ]
+urlpatterns_student = [
+    url(r'^$', student)
+]
 urlpatterns = urlpatterns_auth + [
     url(r'^admin/', admin.site.urls),
     url(r'^teacher/', include(urlpatterns_teacher)),
+    url(r'^student/', include(urlpatterns_student)),
     url(r'^$', lambda _: redirect("/sign-in/"), name='sign-in')
 ]
