@@ -1,31 +1,31 @@
 {% extends "base.html" %}
 {% block title %}e-homework 教师端{% endblock %}
 {% block morestaticfiles %}
-    {% load staticfiles %}
-    <link rel="stylesheet" href="{% static "css/teacher.css" %}">
+  {% load staticfiles %}
+  <link rel="stylesheet" href="{% static "css/teacher.css" %}">
 {% endblock %}
 {% block main %}
-    <nav>
-        <span class="glyphicon glyphicon-tasks"></span>
-        <h2><a>教师端</a></h2>
-        <ul>
-            <li><a>调查列表</a></li>
-            <li><a>新建调查</a></li>
-            <li><a>学生提问</a></li>
-        </ul>
-    </nav>
-    <div class="content">
-        {% block content %}
-            <h2>欢迎访问e&#8209;homework教师端</h2>
-            <a class="btn btn-danger">退出</a>
-        {% endblock %}
-    </div>
-    <script>
-        $("nav").click(function () {
-            $(this).addClass("open");
-        });
-        $(".content").click(function () {
-            $("nav").removeClass("open");
-        });
-    </script>
+  <nav>
+    <span class="glyphicon glyphicon-tasks"></span>
+    <h2><a>教师端</a></h2>
+    <ul>
+      <li><a>调查列表</a></li>
+      <li><a>新建调查</a></li>
+      <li><a>学生提问</a></li>
+    </ul>
+  </nav>
+  <div class="content">
+    {% block content %}
+      <h2>欢迎访问e&#8209;homework教师端</h2>
+      <a class="btn btn-danger">退出</a>
+    {% endblock %}
+  </div>
+  <script>
+    $("nav").click(function () {
+      $(this).addClass("open");
+    });
+    $(".content").click(function () {
+      $("nav").removeClass("open");
+    });
+  </script>
 {% endblock %}

@@ -78,7 +78,7 @@ class Student(models.Model):
 class Vote(models.Model):
     name = models.CharField(max_length=100)
     raised_by = models.ForeignKey(Teacher)
-    students_invited = models.ManyToManyField(Student)
+    class_invited = models.ManyToManyField(Class)
     start_time = models.DateField()
     end_time = models.DateField()
     save_name = models.BooleanField()
@@ -88,7 +88,7 @@ class Vote(models.Model):
 
     @property
     def is_out_of_date(self):
-        return models.DateField(now().date()) > self.end_time
+        return now().date() > self.end_time
 
     def is_student_voted(self, student):
         return self.votepiece_set.filter(voted_by=student).exists()

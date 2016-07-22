@@ -1,157 +1,157 @@
 nav {
-    background: rgba(102, 204, 255, 1);
-    bottom: 0;
-    color: white;
-    display: block;
-    height: 100%;
-    left: 0;
-    outline: #4e9ec4 none 0;
-    position: fixed;
-    top: 0;
-    width: 200px;
-    z-index: 1000;
-    border-right: #4e9ec4 solid 1px;
-    padding: 0;
-    -webkit-transition: all 0.7s;
-    transition: all 0.7s;
+  background: rgba(102, 204, 255, 1);
+  bottom: 0;
+  color: white;
+  display: block;
+  height: 100%;
+  left: 0;
+  outline: #4e9ec4 none 0;
+  position: fixed;
+  top: 0;
+  width: 200px;
+  z-index: 1000;
+  border-right: #4e9ec4 solid 1px;
+  padding: 0;
+  -webkit-transition: all 0.7s;
+  transition: all 0.7s;
 }
 
 nav h2 {
-    font-size: 19pt;
-    padding: 1em;
-    margin: 0;
-    background: #00CCCC;
+  font-size: 19pt;
+  padding: 1em;
+  margin: 0;
+  background: #00CCCC;
 }
 
 nav a {
-    color: white;
-    display: block;
-    margin: 0;
+  color: white;
+  display: block;
+  margin: 0;
 }
 
 nav a:hover {
-    color: white;
-    cursor: pointer;
-    text-decoration: none;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 nav span.glyphicon {
-    display: none;
-    -webkit-transition: all 0.3s;
-    transition: all 0.3s;
+  display: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 nav ul {
-    padding: 0;
-    border-top: solid 2px #4ea7cd;
+  padding: 0;
+  border-top: solid 2px #4ea7cd;
 }
 
 nav ul li {
-    list-style: none;
-    height: 44px;
-    font-size: 17.5pt;
-    padding-top: 5px;
-    padding-left: 1em;
-    border-bottom: solid 2px #4ea7cd;
-    -webkit-transition: all 0.7s;
-    transition: all 0.7s;
+  list-style: none;
+  height: 44px;
+  font-size: 17.5pt;
+  padding-top: 5px;
+  padding-left: 1em;
+  border-bottom: solid 2px #4ea7cd;
+  -webkit-transition: all 0.7s;
+  transition: all 0.7s;
 }
 
 nav ul li:hover {
-    background: #00ace5;
-    cursor: pointer;
+  background: #00ace5;
+  cursor: pointer;
 }
 
 .content {
-    color: rgb(119, 119, 119);
-    margin-left: 250px;
-    padding: 1em;
+  color: rgb(119, 119, 119);
+  margin-left: 250px;
+  padding: 1em;
 }
 
 @media screen and (max-width: 768px) {
-    nav {
-        width: 80px;
-        height: 60px;
-        border-right: none;
-    }
+  nav {
+    width: 80px;
+    height: 60px;
+    border-right: none;
+  }
 
-    nav h2 {
-        display: none;
-    }
+  nav h2 {
+    display: none;
+  }
 
-    nav ul {
-        display: none;
-        padding: 0;
-        border-top: none;
-        width: 80px;
-        height: 60px;
-    }
+  nav ul {
+    display: none;
+    padding: 0;
+    border-top: none;
+    width: 80px;
+    height: 60px;
+  }
 
-    nav ul li {
-        padding: 0;
-    }
+  nav ul li {
+    padding: 0;
+  }
 
-    nav ul li:last-of-type {
-        border-bottom: none;
-    }
+  nav ul li:last-of-type {
+    border-bottom: none;
+  }
 
-    nav span.glyphicon {
-        display: block;
-        width: 100%;
-        height: 100%;
-        text-align: center;
-        line-height: 60px;
-        font-size: 23pt;
-    }
+  nav span.glyphicon {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 60px;
+    font-size: 23pt;
+  }
 
-    nav span.glyphicon:hover {
-        cursor: pointer;
-    }
+  nav span.glyphicon:hover {
+    cursor: pointer;
+  }
 
-    nav.open {
-        width: 200px;
-        height: 270px;
-        border-bottom-right-radius: 4px;
-        background: rgba(101, 194, 245, 0.8);
-    }
+  nav.open {
+    width: 200px;
+    height: 270px;
+    border-bottom-right-radius: 4px;
+    background: rgba(101, 194, 245, 0.8);
+  }
 
-    nav.open span.glyphicon {
-        width: 0;
-        height: 0;
-        top: 0;
-        left: -10px;
-        font-size: 0;
-    }
+  nav.open span.glyphicon {
+    width: 0;
+    height: 0;
+    top: 0;
+    left: -10px;
+    font-size: 0;
+  }
 
-    nav.open ul {
-        display: block;
-        height: 100%;
-        width: 100%;
-    }
+  nav.open ul {
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
 
-    nav.open ul li {
-        display: block;
-        height: 33.333333%;
-        text-align: center;
-        line-height: 90px;
-    }
+  nav.open ul li {
+    display: block;
+    height: 33.333333%;
+    text-align: center;
+    line-height: 90px;
+  }
 
-    nav.open ul li:last-of-type {
-        border-bottom-right-radius: 4px;
-    }
+  nav.open ul li:last-of-type {
+    border-bottom-right-radius: 4px;
+  }
 
-    nav.open ul li a {
-        width: 100%;
-        font-size: 20pt;
-        font-weight: 500;
-    }
+  nav.open ul li a {
+    width: 100%;
+    font-size: 20pt;
+    font-weight: 500;
+  }
 
-    .content {
-        position: fixed;
-        margin: 0;
-        padding-left: 2em;
-        padding-top: 70px;
-        height: 100%;
-        width: 100%;
-    }
+  .content {
+    position: fixed;
+    margin: 0;
+    padding-left: 2em;
+    padding-top: 70px;
+    height: 100%;
+    width: 100%;
+  }
 }

@@ -34,7 +34,6 @@ fabric.properties
 .gitignore
 db.sqlite3
 e_homework/__pycache__/
-e_homework/migrations/
 e_homework/views/__pycache__/
 schoolProject/__pycache__/
 data.json

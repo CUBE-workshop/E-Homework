@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from e_homework.views.login_views import *
+from e_homework.views.auth_views import *
 from e_homework.views.student_views import *
 from e_homework.views.teacher_views import *
 

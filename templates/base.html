@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>{% block title %}{% endblock %}</title>
-    {% load staticfiles %}
-    <script src="{% static "js/jQuery.js" %}"></script>
-    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
-    {% block morestaticfiles %}{% endblock %}
+  <meta charset="UTF-8">
+  <title>{% block title %}{% endblock %}</title>
+  {% load staticfiles %}
+  <script src="{% static "js/jQuery.js" %}"></script>
+  <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+  {% block morestaticfiles %}{% endblock %}
 </head>
 <body>
 {% block main %}
