@@ -69,6 +69,11 @@
                  placeholder="确认密码" required>
         </div>
       </div>
+      <div class="alert alert-danger" id="name-error" role="alert" hidden>
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        姓名是必填项
+      </div>
       <div class="alert alert-danger" id="username-error" role="alert" hidden>
         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
         <span class="sr-only">Error:</span>
@@ -96,6 +101,8 @@
       const $school_in = $("#school-in");
       const $class_in = $("#class-in");
       const $user_type = $("#user-type");
+      const $first_name = $("#first-name");
+      const $last_name = $("#last-name");
       const $username = $("#username");
       const $password = $("#password");
       const $password_confirm = $("#password-confirm");
@@ -170,6 +177,32 @@
         new Validator("{{ csrf_token }}", $user_type, null, null, null, function () {
           return $user_type.val() != "none";
         }),
+        new Validator("{{ csrf_token }}", $last_name, function (success) {
+          $last_name.parent().removeClass("has-success").removeClass("has-error").removeClass("has-feedback");
+          $last_name.parent().children(".glyphicon").remove();
+          if (success) {
+            $("#name-error").hide();
+            $last_name.parent().addClass("has-success").addClass("has-feedback");
+            $last_name.after($success_icon.clone());
+          } else {
+            $("#name-error").show();
+            $last_name.parent().addClass("has-error").addClass("has-feedback");
+            $last_name.after($error_icon.clone());
+          }
+        }, null, null, null),
+        new Validator("{{ csrf_token }}", $first_name, function (success) {
+          $first_name.parent().removeClass("has-success").removeClass("has-error").removeClass("has-feedback");
+          $first_name.parent().children(".glyphicon").remove();
+          if (success) {
+            $("#name-error").hide();
+            $first_name.parent().addClass("has-success").addClass("has-feedback");
+            $first_name.after($success_icon.clone());
+          } else {
+            $("#name-error").show();
+            $first_name.parent().addClass("has-error").addClass("has-feedback");
+            $first_name.after($error_icon.clone());
+          }
+        }, null, null, null),
         new Validator("{{ csrf_token }}", $username, function (success) {
           $username.parent().removeClass("has-success").removeClass("has-error").removeClass("has-feedback");
           $username.parent().children(".glyphicon").remove();
@@ -208,7 +241,7 @@
             $password_confirm.parent().addClass("has-error").addClass("has-feedback");
             $password_confirm.after($error_icon.clone());
           }
-        }, {% url "validate-password" %}, null, function () {
+        }, null, null, function () {
           return $password_confirm.val() == $password.val();
         })
       ]);
@@ -232,7 +265,8 @@
         changeSubmitButtonState();
       });
       $("input").keyup(function () {
-        validations.validate($(this).parent().index() + 1);
+        console.log($(this).parent().index() + 3);
+        validations.validate($(this).parent().index() + 3);
         changeSubmitButtonState();
       });
     </script>
