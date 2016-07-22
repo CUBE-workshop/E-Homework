@@ -5,6 +5,7 @@ from django.contrib.auth.password_validation import validate_password as try_val
 from django.core.exceptions import ValidationError
 from django.http import JsonResponse, HttpResponseForbidden
 from django.shortcuts import render, redirect
+from django.utils.datastructures import MultiValueDictKeyError
 
 from e_homework.models import *
 
@@ -28,9 +29,7 @@ def validate_username(request):
 def validate_password(request):
     try:
         try_validate_password(request.POST['password'])
-    except ValidationError:
-        return JsonResponse({'is_valid': False})
-    except ValueError:
+    except (ValidationError, ValueError, MultiValueDictKeyError):
         return JsonResponse({'is_valid': False})
     return JsonResponse({'is_valid': True})
 

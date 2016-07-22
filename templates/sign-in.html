@@ -9,7 +9,7 @@
 {% block main %}
   <div class="container">
     <h2>登录</h2>
-    <form id="sign-in-or-up-form" method="post" action="{% url "do-sign-in" %}">{% csrf_token %}
+    <form id="auth-form" method="post" action="{% url "do-sign-in" %}">{% csrf_token %}
       <div class="form-group">
         <label class="sr-only" for="username">username</label>
         <input class="form-control" id="username" name="username" type="text" placeholder="用户名"
