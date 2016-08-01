@@ -1,68 +1,107 @@
-/**
- * Created by longfangsong on 16/6/30.
- */
-$(function () {
-    $.ajaxSetup({
-        async: false
-    });
-});
-function Validator(csrf_token, object_to_validate, validated_called_func, url_to_send_value_to, other_object_to_send_with, user_validate_func) {
-    this.object_wrapped = object_to_validate;
-    this.url_to_send = url_to_send_value_to;
-    this.data_objects = other_object_to_send_with;
-    this.func = user_validate_func;
-    this.validated = validated_called_func;
-    this.validate = function () {
-        if (this.object_wrapped.val() == "") {
-            this.validated(false);
-            return false;
-        }
-        var to_post = [
-            {name: "csrfmiddlewaretoken", value: csrf_token},
-            {name: this.object_wrapped.attr("name"), value: this.object_wrapped.val()}
-        ];
-        if (this.data_objects != null) {
-            for (var i = 0; i < this.data_objects.length; ++i) {
-                var data_obj = this.data_objects[i];
-                to_post[to_post.length] = {name: data_obj.attr("name"), value: data_obj.val()};
-            }
-        }
-        if (this.func != null && !this.func()) {
-            if (this.validated != null) {
-                this.validated(false);
-            }
-            return false;
-        }
-        var is_success = true;
-        if (this.url_to_send != null) {
-            $.post(this.url_to_send, to_post, function (ret) {
-                is_success = ret.is_valid;
-            });
-        }
-        if (this.validated != null) {
-            this.validated(is_success);
-        }
-        return is_success;
-    }
+function ValidatorGroup(validators, redisplay_function) {
+    validators.forEach($.proxy(function (validator, index) {
+        this.validators.push(validator);
+        //noinspection JSPotentiallyInvalidUsageOfThis
+        this.is_validated.push(false);
+        validator.observer = this;
+        validator.index = index;
+    }), this);
+    this.real_redisplay_func = redisplay_function;
+    this.redisplay = function () {
+        this.real_redisplay_func(this.is_all_validated());
+    };
 }
-function ValidatorGroup(all_validators) {
-    this.validators = all_validators;
-    this.is_valid_last_time = [];
-    for (var i = 0; i < this.validators.length; ++i) {
-        this.is_valid_last_time[i] = false;
+ValidatorGroup.prototype = {
+    validators: [],
+    is_validated: [],
+    is_all_validated: function () {
+        var ret = true;
+        this.is_validated.forEach(function (is_this_validate) {
+            ret = ret && is_this_validate;
+        });
+        return ret;
+    },
+    validate: function (index) {
+        this.validators[index].validate();
     }
-    this.validate = function (which_to_validate) {
-        if (which_to_validate == null) {
-            for (var i = 0; i < this.validators.length; ++i) {
-                this.is_valid_last_time[i] = this.validators[i].validate();
+};
+function Validator(csrf_token, the_obj, after_validate_fun, url_to_send_value_to, send_when_validate, custom_validate_func) {
+    this.csrf_token = csrf_token;
+    this.the_object = the_obj;
+    this.after_validate = after_validate_fun;
+    this.url_to_send_value_to = url_to_send_value_to;
+    this.send_when_validate = send_when_validate;
+    this.custom_validate_func = custom_validate_func;
+    this.ajax_id = 0;
+}
+Validator.prototype = {
+    observer: null,
+    index: -1,
+    validate: function () {
+        /*控件为空，认为验证失败*/
+        if (this.the_object.val() == "") {
+            if (this.after_validate != null) {
+                this.after_validate(false);
+            }
+            this.observer.is_validated[this.index] = false;
+            this.observer.redisplay();
+            return;
+        }
+        if (!(this.custom_validate_func != null && !this.custom_validate_func())) {
+            if (this.custom_validate_func != null && this.custom_validate_func() && this.url_to_send_value_to == null) {
+                /*用户提供的验证函数成功*/
+                if (this.after_validate != null) {
+                    this.after_validate(true);
+                }
+                this.observer.is_validated[this.index] = true;
+                this.observer.redisplay();
+                return;
             }
         } else {
-            this.is_valid_last_time[which_to_validate] = this.validators[which_to_validate].validate();
+            /*用户提供的验证函数失败*/
+            if (this.after_validate != null) {
+                this.after_validate(false);
+            }
+            this.observer.is_validated[this.index] = false;
+            this.observer.redisplay();
+            return;
         }
-    };
-    this.isAllValid = function () {
-        return this.is_valid_last_time.every(function (ele) {
-            return ele;
-        });
+        /*序列化控件*/
+        var to_post = [
+            {name: "csrfmiddlewaretoken", value: this.csrf_token},
+            {name: this.the_object.attr("name"), value: this.the_object.val()},
+            {name: "ajax_id", value: ++this.ajax_id}
+        ];
+        /*序列化附加控件*/
+        if (this.send_when_validate != null) {
+            var i;
+            for (i = 0; i < this.send_when_validate.length; ++i) {
+                to_post[to_post.length] = {
+                    name: this.send_when_validate[i].attr("name"),
+                    value: this.send_when_validate[i].val()
+                };
+            }
+        }
+        function ajax_validate(ret) {
+            //noinspection JSPotentiallyInvalidUsageOfThis
+            if (ret.ajax_id != this.ajax_id) {
+                return;
+            }
+            //noinspection JSUnresolvedVariable
+            var is_success = ret.is_valid;
+            //noinspection JSPotentiallyInvalidUsageOfThis
+            if (this.after_validate != null) {
+                //noinspection JSPotentiallyInvalidUsageOfThis
+                this.after_validate(is_success);
+            }
+            //noinspection JSPotentiallyInvalidUsageOfThis
+            this.observer.is_validated[this.index] = is_success;
+            //noinspection JSPotentiallyInvalidUsageOfThis
+            this.observer.redisplay();
+        }
+
+        if (this.url_to_send_value_to != null) {
+            $.post(this.url_to_send_value_to, to_post, $.proxy(ajax_validate, this));
+        }
     }
-}
+};

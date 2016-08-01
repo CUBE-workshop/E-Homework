@@ -189,7 +189,9 @@
             $last_name.parent().addClass("has-error").addClass("has-feedback");
             $last_name.after($error_icon.clone());
           }
-        }, null, null, null),
+        }, null, null, function () {
+          return $last_name.val() != "";
+        }),
         new Validator("{{ csrf_token }}", $first_name, function (success) {
           $first_name.parent().removeClass("has-success").removeClass("has-error").removeClass("has-feedback");
           $first_name.parent().children(".glyphicon").remove();
@@ -202,7 +204,9 @@
             $first_name.parent().addClass("has-error").addClass("has-feedback");
             $first_name.after($error_icon.clone());
           }
-        }, null, null, null),
+        }, null, null, function () {
+          return $first_name.val() != "";
+        }),
         new Validator("{{ csrf_token }}", $username, function (success) {
           $username.parent().removeClass("has-success").removeClass("has-error").removeClass("has-feedback");
           $username.parent().children(".glyphicon").remove();
@@ -244,30 +248,26 @@
         }, null, null, function () {
           return $password_confirm.val() == $password.val();
         })
-      ]);
+      ], function (all_valid) {
+        if (all_valid) {
+          $("form button").removeAttr("disabled");
+        } else {
+          $("form button").attr("disabled", "disabled");
+        }
+      });
       $password.keydown(function () {
         $password_confirm.parent().removeClass("has-success").removeClass("has-error").removeClass("has-feedback");
         $password_confirm.parent().children(".glyphicon").remove();
         $("#password-confirm-error").hide();
         $password_confirm.val("");
       });
-      function changeSubmitButtonState() {
-        if (validations.isAllValid()) {
-          $("form button").removeAttr("disabled");
-        } else {
-          $("form button").attr("disabled", "disabled");
-        }
-      }
       $("select").mouseup(function () {
         validations.validate(0);
         validations.validate(1);
         validations.validate(2);
-        changeSubmitButtonState();
       });
       $("input").keyup(function () {
-        console.log($(this).parent().index() + 3);
         validations.validate($(this).parent().index() + 3);
-        changeSubmitButtonState();
       });
     </script>
   </div>

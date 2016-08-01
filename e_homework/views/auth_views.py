@@ -23,26 +23,29 @@ def get_class_list(request):
 
 def validate_username(request):
     the_username = request.POST['username']
-    return JsonResponse({'is_valid': not User.objects.filter(username=the_username).exists()})
+    return JsonResponse(
+        {'is_valid': not User.objects.filter(username=the_username).exists(), 'ajax_id': request.POST['ajax_id']})
 
 
 def validate_password(request):
     try:
         try_validate_password(request.POST['password'])
     except (ValidationError, ValueError, MultiValueDictKeyError):
-        return JsonResponse({'is_valid': False})
-    return JsonResponse({'is_valid': True})
+        return JsonResponse({'is_valid': False, 'ajax_id': request.POST['ajax_id']})
+    return JsonResponse({'is_valid': True, 'ajax_id': request.POST['ajax_id']})
 
 
 def validate_user(request):
-    return JsonResponse({'is_valid': User.objects.filter(username=request.POST['username']).exists()})
+    return JsonResponse({'is_valid': User.objects.filter(username=request.POST['username']).exists(),
+                         'ajax_id': request.POST['ajax_id']})
 
 
 def validate_password_for_user(request):
     username = request.POST['username']
     password = request.POST['password']
     return JsonResponse(
-        {'is_valid': not (authenticate(username=username, password=password) is None)})
+        {'is_valid': not (authenticate(username=username, password=password) is None),
+         'ajax_id': request.POST['ajax_id']})
 
 
 def sign_in(request):

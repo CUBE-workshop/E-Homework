@@ -4,7 +4,6 @@
   {% load staticfiles %}
   <link rel="stylesheet" href="{% static "css/auth.css" %}">
   <link rel="stylesheet" href="{% static "css/sign-in.css" %}">
-  {#    <link rel="stylesheet" href="../e_homework/static/css/auth.css">#}
 {% endblock %}
 {% block main %}
   <div class="container">
@@ -70,22 +69,18 @@
             $password.after($error_icon.clone());
           }
         }, "{% url "validate-password-for-user" %}", [$username], null)
-      ]);
-      $username.keyup(function () {
-        validators.validate(0);
-        if (validators.isAllValid()) {
+      ], function (all_valid) {
+        if (all_valid) {
           $("#submit-button").removeAttr("disabled");
         } else {
           $("#submit-button").attr("disabled", "disabled");
         }
       });
+      $username.keyup(function () {
+        validators.validate(0);
+      });
       $password.keyup(function () {
         validators.validate(1);
-        if (validators.isAllValid()) {
-          $("#submit-button").removeAttr("disabled");
-        } else {
-          $("#submit-button").attr("disabled", "disabled");
-        }
       });
     </script>
   </div>
