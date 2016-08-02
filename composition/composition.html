@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>作业问题反馈系统－开发杂谈</title>
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <link rel="stylesheet" href="composition.css">
+</head>
+<body>
+<div class="container">
+  <h1 class="text-center">
+    <del>如何成为一个疯掉的全栈工程师<br/></del>
+    作业问题反馈系统－开发杂谈
+    <small><br/>CUBE Workshop</small>
+  </h1>
+  <nav class="catalogue">
+    <h2 class="text-center">目录</h2>
+    <ol>
+      <li><a>
+        <del>发生在某个老师身上的惨剧</del>
+        &nbsp;需求的产生和分析</a></li>
+      <li><a>
+        <del>抓壮丁</del>
+        &nbsp;团队的组织</a></li>
+      <li><a>
+        <del>脑补</del>
+        &nbsp;整体设计</a></li>
+      <li><a>
+        <del>推卸责任</del>
+        &nbsp;素材的分解和职责的分配</a></li>
+      <li><a>
+        <del>Python大法好</del>
+        &nbsp;开发语言的选择</a></li>
+      <li><a>&nbsp;开发框架的选择</a></li>
+      <li><a>
+        <del>疯狂盗版软件(有钱了保证还上)</del>
+        &nbsp;开发工具的选择</a></li>
+      <li><a>
+        <del>混乱的</del>
+        &nbsp;初次迭代</a></li>
+      <li><a>
+        <del>又TM改需求!</del>
+        &nbsp;初次交付</a></li>
+      <li><a>
+        <del>实际上因为初次进度太快所以没人干活的</del>
+        &nbsp;二次迭代</a></li>
+      <li><a>
+        <del>并不存在的</del>
+        &nbsp;二次交付</a></li>
+      <li><a>
+        <del>赶工期（deadline的威胁）!</del>
+        &nbsp;第三次迭代</a></li>
+      <li><a>
+        <del>终于（好心人捐个服务器呗）</del>
+        &nbsp;最终产品的发布</a></li>
+      <li><a>
+        <del>根本不会有人干的</del>
+        &nbsp;后期维护</a></li>
+      <li><a href="#spe-01">
+        <del>死亡卡顿的故事</del>
+        &nbsp;特别篇01-自制表单验证器始末</a></li>
+      <li><a>
+        <del>一团乱麻的HTML，我再也不想看到了！</del>
+        &nbsp;特别篇02-重构</a>
+      </li>
+      <li><a>
+        <del>现在我有两个问题了</del>
+        &nbsp;特别篇03-正则表达式</a>
+      </li>
+      <li><a>
+        <del>我或许是个还算可以的程序员，但我一定是个糟糕的管理者!</del>
+        &nbsp;感想</a></li>
+      <li>
+        <del>
+          <a>关于这次开发，一些你不知道的秘密</a>
+        </del>
+      </li>
+    </ol>
+  </nav>
+  <div id="spe-01">
+    <h2>特别篇01-自制表单验证器始末</h2>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;在开发很多web app时，在包括登录和注册页面等的一系列页面中都能见到form表单的运用，
+      同时，对表单有效性的检查也成为了一个让人
+      <del>抓狂</del>
+      不能不仔细考虑的问题。
+    </p>
+    <p>
+      &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;实际上最容易实现的方式就是前端完全不考虑表单的有效性，只是将整个表单序列化之后将其全部
+      <del>甩锅</del>
+      发送给后端，并让后端负责有效性检查，再通过重定向到错误提示页面来实现。
+    </p>
+    <p>
+      &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;但是我并不认为这是个好的方法，原因有以下几点：
+    </p>
+    <ol>
+      <li>用户体验差（填错一个数据就需要重填整个表单）</li>
+      <li>难以（虽然并非不可能）向用户反馈到底是哪几个数据填写出现了问题</li>
+      <li>使用错误提示页面显得很不优雅，而且需要额外设计错误提示页面</li>
+      <li>难以
+        <del>装逼</del>
+        体现出我们的技术水平
+      </li>
+    </ol>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 所以我们决定使用Ajax的方式验证表单，具体来说就是每次表单中的某个数据更改，就将数据发送到
+      后端来进行验证</p>
+  </div>
+</div>
+</body>
+</html>

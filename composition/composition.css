@@ -1,0 +1,37 @@
+del {
+  /*display: none;*/
+  /*!important;*/
+  font-size: 10pt;
+}
+
+.catalogue > ol > li:last-of-type {
+  /*display: none;*/
+  /*!important;*/
+}
+
+h1 {
+  font-family: Didot, serif;
+  font-weight: bold;
+  color: #2274b6;
+  border-top: 1px solid #2274b6;
+  border-bottom: 2px solid #2274b6;
+}
+
+.catalogue {
+  font-size: 20pt;
+  margin-top: 2em;
+}
+
+.catalogue a {
+  font-size: 20pt;
+  cursor: pointer;
+  color: #428eb6;
+}
+
+.catalogue a:hover {
+  text-decoration: none;
+}
+
+.catalogue a del:hover {
+  text-decoration: underline;
+}
