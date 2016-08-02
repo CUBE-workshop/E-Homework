@@ -7,17 +7,19 @@
 {% block main %}
   <nav>
     <span class="glyphicon glyphicon-tasks"></span>
-    <h2><a>教师端</a></h2>
+    <h2><a href="{% url "teacher" %}">教师端</a></h2>
     <ul>
-      <li><a>调查列表</a></li>
+      <li><a href="{% url "teacher-vote-list" %}">调查列表</a></li>
       <li><a>新建调查</a></li>
       <li><a>学生提问</a></li>
     </ul>
   </nav>
   <div class="content">
     {% block content %}
-      <h2>欢迎访问e&#8209;homework教师端</h2>
-      <a class="btn btn-danger">退出</a>
+      <div id="index-content">
+        <h2>欢迎访问e&#8209;homework教师端</h2>
+        <a class="btn btn-danger">退出</a>
+      </div>
     {% endblock %}
   </div>
   <script>

@@ -1,6 +1,11 @@
+from multiprocessing.dummy import Pool
+
 from django.contrib.auth.models import Group, User, Permission
 from django.db import models
 from django.utils.timezone import now
+
+pool = Pool(4)
+map = pool.map
 
 
 def number_to_chinese(number):
@@ -95,6 +100,9 @@ class Vote(models.Model):
 
     def voted_student_count(self):
         return self.votepiece_set.all().count()
+
+    def invited_student_count(self):
+        return sum(map(lambda class_: class_.student_set.count(), self.class_invited.all()))
 
 
 class Question(models.Model):

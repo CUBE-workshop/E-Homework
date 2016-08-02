@@ -88,6 +88,7 @@ def do_sign_in(request):
     user = authenticate(username=username, password=password)
     if user:
         login(request, user)
+        # print(Teacher.objects.all())
         if Teacher.objects.filter(user=user).exists():
             return redirect('/teacher/')
         elif Student.objects.filter(user=user).exists():

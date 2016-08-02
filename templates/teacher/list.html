@@ -1,0 +1,75 @@
+{% extends "teacher/teacher.html" %}
+{% block content %}
+  <div class="container-fluid">
+    <div id="votes">
+      {% for vote in votes %}
+        <a href="votes/{{ vote.id }}" class="vote-item">
+          <span class="glyphicon glyphicon-ok checked-icon"></span>
+          <div class="row">
+            <h2 class="col-xs-12">{{ vote.name }}</h2>
+            <div class="col-xs-12 col-md-6">
+              <span class="signature">开始</span>
+              <span class="number-in">{{ vote.start_time }}</span>
+            </div>
+            <div class="col-xs-12 col-md-6">
+              <span class="signature">截止</span>
+              <span class="number-in">{{ vote.start_time }}</span>
+            </div>
+            <div class="col-xs-12 col-md-6">
+              {% if vote.invited_student_count != vote.voted_student_count %}
+                应有<span class="signature number-in">{{ vote.invited_student_count }}</span>人提问
+              {% else %}
+                所有人都已经完成提问!
+              {% endif %}
+            </div>
+            <div class="col-xs-12 col-md-6">
+              {% if vote.voted_student_count == 0 %}
+                暂时没有人提问
+              {% elif vote.invited_student_count != vote.voted_student_count %}
+                已有
+                <div class="signature number-in">{{ vote.voted_student_count }}</div>人提问
+              {% endif %}
+            </div>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+    <div id="controls">
+      <button class="btn btn-primary center-block" id="choose">
+        选择项目
+      </button>
+      <button class="btn btn-danger center-block" id="delete" hidden>
+        删除
+      </button>
+      <span id="delete-tip" class="center-block text-center">请勾选要删除的作业</span>
+    </div>
+  </div>
+  <script>
+    $(function () {
+      $("#delete").hide();
+      $("#delete-tip").hide();
+      $(".checked").hide();
+    });
+    $("#choose").click(function () {
+      $(this).hide();
+      $("#delete").show();
+      $("#delete-tip").show();
+      $("#votes").addClass("select-mode");
+    });
+    $("#delete").click(function () {
+      /*todo:在此新增向服务器发送数据的代码*/
+      $(this).hide();
+      $("#delete-tip").hide();
+      $("#choose").show();
+      $("#votes").removeClass("select-mode");
+    });
+    $("*").on("click", "#votes.select-mode .vote-item", function () {
+      if ($(this).is(".selected")) {
+        $(this).removeClass("selected");
+      } else {
+        $(this).addClass("selected");
+      }
+      return false;
+    })
+  </script>
+{% endblock %}
