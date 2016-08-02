@@ -64,8 +64,12 @@ nav ul li:hover {
 
 .content {
   color: rgb(119, 119, 119);
-  margin-left: 250px;
+  margin-left: 200px;
   padding: 1em;
+}
+
+#index-content {
+  margin-left: 50px;
 }
 
 @media screen and (max-width: 768px) {
@@ -153,5 +157,96 @@ nav ul li:hover {
     padding-top: 70px;
     height: 100%;
     width: 100%;
+  }
+}
+
+#votes {
+  margin-top: 2em;
+  margin-bottom: 11em;
+  padding-top: 2em;
+  padding-left: 1em;
+}
+
+.vote-item {
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 1.5em;
+  padding-bottom: 1ex;
+  padding-left: 1.5ch;
+  color: #000;
+}
+
+.vote-item h2 {
+  margin-top: 1ex;
+}
+
+.vote-item:hover {
+  color: #000;
+}
+
+.number-in {
+  letter-spacing: 1px;
+}
+
+.vote-item:nth-last-of-type(odd):hover {
+  background-color: #b2e5ff;
+}
+
+.vote-item:nth-last-of-type(even):hover {
+  background-color: #d6d6ff;
+}
+
+.vote-item .signature {
+  color: #d18231;
+  font-weight: bold;
+}
+
+.checked-icon {
+  display: none;
+}
+
+.select-mode .vote-item.selected .checked-icon {
+  position: relative;
+  display: inline-block;
+  left: -5ch;
+  top: -1em;
+  padding: 0.3em;
+  color: white;
+  background: #52B4D8;
+  border: solid 2px rgb(82, 159, 194);
+  border-radius: 50%;
+}
+
+.select-mode .vote-item.selected h2 {
+  margin-top: -0.7ex;
+}
+
+#controls {
+  height: 10em;
+  background: peachpuff;
+  position: fixed;
+  bottom: 0;
+  left: 200px;
+  width: calc(100% - 200px);
+  padding-top: 2em;
+}
+
+@media screen and (max-width: 768px) {
+  .vote-item:nth-last-of-type(odd) {
+    background-color: #b2e5ff;
+  }
+
+  .vote-item:nth-last-of-type(even) {
+    background-color: #d6d6ff;
+  }
+
+  #controls {
+    left: 0;
+    width: 100%;
+  }
+
+  #votes {
+    max-height: calc(100vh - 60px - 10em);
+    overflow-y: scroll;
   }
 }

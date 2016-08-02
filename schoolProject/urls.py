@@ -34,7 +34,9 @@ urlpatterns_auth = [
     url(r'validate-password-for-user/', validate_password_for_user, name='validate-password-for-user')
 ]
 urlpatterns_teacher = [
-    url(r'^$', teacher)
+    url(r'list/', vote_list, name='teacher-vote-list'),
+    url(r'vote/(\d+)', vote_info, name='teacher-vote-list'),
+    url(r'^$', teacher, name='teacher')
 ]
 urlpatterns_student = [
     url(r'^$', student)
