@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from django.shortcuts import render
 
 from ..models import *
@@ -13,3 +14,8 @@ def vote_list(request):
 
 def vote_info(request, vote_id):
     print(request, vote_id)
+
+
+def delete_vote(request):
+    map(lambda vote_id: Vote.objects.get(id=vote_id[6:]).delete(), request.POST['to-delete'].split(','))
+    return JsonResponse({})

@@ -189,11 +189,11 @@ nav ul li:hover {
 }
 
 .vote-item:nth-last-of-type(odd):hover {
-  background-color: #b2e5ff;
+  background-color: rgba(178, 229, 255, 0.5);
 }
 
 .vote-item:nth-last-of-type(even):hover {
-  background-color: #d6d6ff;
+  background-color: rgba(214, 214, 255, 0.5);
 }
 
 .vote-item .signature {
@@ -233,11 +233,11 @@ nav ul li:hover {
 
 @media screen and (max-width: 768px) {
   .vote-item:nth-last-of-type(odd) {
-    background-color: #b2e5ff;
+    background-color: rgba(178, 229, 255, 0.5);
   }
 
   .vote-item:nth-last-of-type(even) {
-    background-color: #d6d6ff;
+    background-color: rgba(214, 214, 255, 0.5);
   }
 
   #controls {
@@ -246,7 +246,8 @@ nav ul li:hover {
   }
 
   #votes {
-    max-height: calc(100vh - 60px - 10em);
-    overflow-y: scroll;
+    height: calc(100vh - 60px - 10em);
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 }

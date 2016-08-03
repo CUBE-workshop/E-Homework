@@ -38,28 +38,54 @@
       <button class="btn btn-primary center-block" id="choose">
         选择项目
       </button>
-      <button class="btn btn-danger center-block" id="delete" hidden>
-        删除
-      </button>
+      <div class="text-center" id="control-group">
+        <button class="btn btn-danger" id="delete" hidden>
+          删除
+        </button>
+        <button class="btn btn-primary" id="cancel" hidden>
+          取消
+        </button>
+      </div>
       <span id="delete-tip" class="center-block text-center">请勾选要删除的作业</span>
     </div>
   </div>
   <script>
     $(function () {
       $("#delete").hide();
+      $("#cancel").hide();
       $("#delete-tip").hide();
       $(".checked").hide();
     });
     $("#choose").click(function () {
       $(this).hide();
       $("#delete").show();
+      $("#cancel").show();
       $("#delete-tip").show();
       $("#votes").addClass("select-mode");
     });
+    $("#cancel").click(function () {
+      $(this).hide();
+      $("#delete").hide();
+      $("#delete-tip").hide();
+      $("#choose").show();
+      $("#votes").removeClass("select-mode");
+    });
     $("#delete").click(function () {
+      var all_selected = [];
+      var $selected = $(".selected");
+      for (var sel = 0; sel < $selected.length; ++sel) {
+        all_selected[all_selected.length] = $($selected[sel]).attr("href");
+      }
+      var to_post = [
+        {name: "csrfmiddlewaretoken", value: "{{ csrf_token }}"},
+        {name: "to-delete", value: all_selected}
+      ];
+      $.post("{% url "delete-vote" %}", to_post);
+      $selected.remove();
       $(this).hide();
       $("#delete-tip").hide();
       $("#choose").show();
+      $("#cancel").hide();
       $("#votes").removeClass("select-mode");
     });
     $("*").on("click", "#votes.select-mode .vote-item", function () {
