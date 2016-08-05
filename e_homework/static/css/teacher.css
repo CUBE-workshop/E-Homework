@@ -58,7 +58,7 @@ nav ul li {
 }
 
 nav ul li:hover {
-  background: #00ace5;
+  background: #00bde5;
   cursor: pointer;
 }
 
@@ -249,5 +249,38 @@ nav ul li:hover {
     height: calc(100vh - 60px - 10em);
     overflow-y: auto;
     overflow-x: hidden;
+  }
+}
+
+#new-vote-form {
+  margin-top: 3em;
+}
+
+#new-vote-form .form-group {
+  padding-left: 2em;
+}
+
+#new-vote-form .btn[type="submit"] {
+  clear: both;
+}
+
+#new-vote-form .checkbox {
+  margin-top: 3.5em;
+}
+
+#new-vote-form .checkbox #save-name {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  margin-top: -0.5em;
+  margin-left: 0.2ch;
+}
+
+#new-vote-form .checkbox label {
+  margin-left: -1em;
+}
+
+@media screen and (max-width: 768px) {
+  #new-vote-form .checkbox {
+    margin-top: 0;
   }
 }

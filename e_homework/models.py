@@ -1,11 +1,8 @@
-from multiprocessing.dummy import Pool
-
 from django.contrib.auth.models import Group, User, Permission
 from django.db import models
 from django.utils.timezone import now
 
-pool = Pool(4)
-map = pool.map
+from .mutiprocessing_map import map
 
 
 def number_to_chinese(number):
@@ -84,8 +81,8 @@ class Vote(models.Model):
     name = models.CharField(max_length=100)
     raised_by = models.ForeignKey(Teacher)
     class_invited = models.ManyToManyField(Class)
-    start_time = models.DateField()
-    end_time = models.DateField()
+    start_date = models.DateField()
+    end_date = models.DateField()
     save_name = models.BooleanField()
 
     def __str__(self):

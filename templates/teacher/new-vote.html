@@ -1,0 +1,60 @@
+{% extends "teacher/teacher.html" %}
+{% block morestaticfiles %}
+  {% load staticfiles %}
+  <link rel="stylesheet" href="{% static "css/teacher.css" %}">
+  <link rel="stylesheet" href="{% static "css/bootstrap-datetimepicker.min.css" %}">
+  <link rel="stylesheet" href="{% static "css/checkbox-flat/blue.css" %}">
+{% endblock %}
+{% block content %}
+  <div class="container-fluid">
+    <form class="form-horizontal" id="new-vote-form" method="post"
+          action="{% url "do-create-new-vote" %}">{% csrf_token %}
+      <div class="form-group col-xs-12 col-md-12">
+        <label for="name" class="sr-only">作业名字</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="作业名字">
+      </div>
+      <div class="form-group col-xs-12 col-md-6">
+        <label for="start-date" class="sr-only">开始日期</label>
+        <input type="date" class="form-control" id="start-date" name="start-date" placeholder="开始日期">
+      </div>
+      <div class="form-group col-xs-12 col-md-6">
+        <label for="end-date" class="sr-only">结束日期</label>
+        <input type="date" class="form-control" id="end-date" name="end-date" placeholder="结束日期">
+      </div>
+      <div class="form-group col-xs-12 col-md-6">
+        <label for="end-date">选择班级</label>
+        <select class="form-control" id="end-date" name="class-choosed" multiple="multiple">
+          {% for class in classes %}
+            <option value="{{ class.id }}">{{ class }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="col-xs-12 col-md-6 checkbox">
+        <input type="checkbox" class="form-control" id="save-name" name="save-name">
+        <label for="save-name">
+          记名
+        </label>
+      </div>
+      <button type="submit" class="btn btn-primary center-block">确认</button>
+    </form>
+  </div>
+  <script src="{% static "js/bootstrap.min.js" %}"></script>
+  <script src="{% static "js/date-picker/bootstrap-datetimepicker.min.js" %}"></script>
+  <script src="{% static "js/icheck.min.js" %}"></script>
+  <script>
+    $(function () {
+      var ua_str = navigator.userAgent;
+      /*在手机端或者桌面端Chrome浏览器中，存在默认的日期选择控件，在其他浏览器上需要由我们自己提供这一控件*/
+      if (!(ua_str.indexOf('iPhone') > -1 || ua_str.indexOf('Android') > -1 || ua_str.indexOf('Chrome') > -1)) {
+        $("input[type='date']").datetimepicker({
+          format: 'yyyy-mm-dd',
+          minView: 2,
+          maxView: 2
+        });
+      }
+      $("input[type='checkbox']").iCheck({
+        checkboxClass: 'icheckbox_flat-blue'
+      });
+    });
+  </script>
+{% endblock %}
