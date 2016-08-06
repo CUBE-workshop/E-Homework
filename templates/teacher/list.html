@@ -3,7 +3,7 @@
   <div class="container-fluid">
     <div id="votes">
       {% for vote in votes %}
-        <a href="votes/{{ vote.id }}" class="vote-item">
+        <a href="{% url "teacher-vote-list" vote.id %}" class="vote-item">
           <span class="glyphicon glyphicon-ok checked-icon"></span>
           <div class="row">
             <h2 class="col-xs-12">{{ vote.name }}</h2>
@@ -26,8 +26,7 @@
               {% if vote.voted_student_count == 0 %}
                 暂时没有人提问
               {% elif vote.invited_student_count != vote.voted_student_count %}
-                已有
-                <div class="signature number-in">{{ vote.voted_student_count }}</div>人提问
+                已有<span class="signature number-in">{{ vote.voted_student_count }}</span>人提问
               {% endif %}
             </div>
           </div>

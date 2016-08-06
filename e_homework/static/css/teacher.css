@@ -66,6 +66,7 @@ nav ul li:hover {
   color: rgb(119, 119, 119);
   margin-left: 200px;
   padding: 1em;
+  overflow: scroll;
 }
 
 #index-content {
@@ -283,4 +284,18 @@ nav ul li:hover {
   #new-vote-form .checkbox {
     margin-top: 0;
   }
+}
+
+#student-list-wrapper {
+  max-height: 200px;
+  overflow-y: scroll;
+}
+
+#student-list-wrapper > table > tbody > tr:hover {
+  cursor: pointer;
+  background: #cbfefe;
+}
+
+#student-list-wrapper > table > tbody > tr.selected {
+  background: #CCCCFF;
 }

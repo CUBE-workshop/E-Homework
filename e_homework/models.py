@@ -75,6 +75,7 @@ class Student(models.Model):
 
     class Meta:
         permissions = (("students_permission", "students_permission"),)
+        ordering = ['-class_belong_to']
 
 
 class Vote(models.Model):
@@ -94,6 +95,12 @@ class Vote(models.Model):
 
     def is_student_voted(self, student):
         return self.votepiece_set.filter(voted_by=student).exists()
+
+    def invited_students(self):
+        return sum(map(lambda the_class: list(the_class.student_set.all()), self.class_invited.all()), [])
+
+    def voted_students(self):
+        return sum(map(lambda vote_piece: [vote_piece.voted_by], VotePiece.objects.filter(belong_to_vote=self)), [])
 
     def voted_student_count(self):
         return self.votepiece_set.all().count()
