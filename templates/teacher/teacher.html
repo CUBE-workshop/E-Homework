@@ -7,17 +7,19 @@
 {% block main %}
   <nav>
     <span class="glyphicon glyphicon-tasks"></span>
-    <h2><a>教师端</a></h2>
+    <h2><a href="{% url "teacher" %}">教师端</a></h2>
     <ul>
-      <li><a>调查列表</a></li>
-      <li><a>新建调查</a></li>
+      <li><a href="{% url "teacher-vote-list" %}">调查列表</a></li>
+      <li><a href="{% url "new-vote" %}">新建调查</a></li>
       <li><a>学生提问</a></li>
     </ul>
   </nav>
   <div class="content">
     {% block content %}
-      <h2>欢迎访问e&#8209;homework教师端</h2>
-      <a class="btn btn-danger">退出</a>
+      <div id="index-content">
+        <h2>欢迎访问e&#8209;homework教师端</h2>
+        <a class="btn btn-danger">退出</a>
+      </div>
     {% endblock %}
   </div>
   <script>
@@ -27,5 +29,17 @@
     $(".content").click(function () {
       $("nav").removeClass("open");
     });
+    $(function () {
+              var $refs = $("nav>ul>li>a");
+              for (var i = 0; i < $refs.length; ++i) {
+                console.log(window.location.href);
+                var $the_ref = $($refs[i]);
+                console.log($the_ref);
+                if (window.location.href.indexOf($the_ref.attr("href")) > -1) {
+                  $($the_ref).parent().css("background", "#00ace5");
+                }
+              }
+            }
+    );
   </script>
 {% endblock %}

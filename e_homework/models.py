@@ -2,6 +2,8 @@ from django.contrib.auth.models import Group, User, Permission
 from django.db import models
 from django.utils.timezone import now
 
+from .mutiprocessing_map import map
+
 
 def number_to_chinese(number):
     """
@@ -73,14 +75,15 @@ class Student(models.Model):
 
     class Meta:
         permissions = (("students_permission", "students_permission"),)
+        ordering = ['-class_belong_to']
 
 
 class Vote(models.Model):
     name = models.CharField(max_length=100)
     raised_by = models.ForeignKey(Teacher)
     class_invited = models.ManyToManyField(Class)
-    start_time = models.DateField()
-    end_time = models.DateField()
+    start_date = models.DateField()
+    end_date = models.DateField()
     save_name = models.BooleanField()
 
     def __str__(self):
@@ -93,8 +96,17 @@ class Vote(models.Model):
     def is_student_voted(self, student):
         return self.votepiece_set.filter(voted_by=student).exists()
 
+    def invited_students(self):
+        return sum(map(lambda the_class: list(the_class.student_set.all()), self.class_invited.all()), [])
+
+    def voted_students(self):
+        return sum(map(lambda vote_piece: [vote_piece.voted_by], VotePiece.objects.filter(belong_to_vote=self)), [])
+
     def voted_student_count(self):
         return self.votepiece_set.all().count()
+
+    def invited_student_count(self):
+        return sum(map(lambda class_: class_.student_set.count(), self.class_invited.all()))
 
 
 class Question(models.Model):

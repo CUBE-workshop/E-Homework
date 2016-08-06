@@ -58,14 +58,19 @@ nav ul li {
 }
 
 nav ul li:hover {
-  background: #00ace5;
+  background: #00bde5;
   cursor: pointer;
 }
 
 .content {
   color: rgb(119, 119, 119);
-  margin-left: 250px;
+  margin-left: 200px;
   padding: 1em;
+  overflow: scroll;
+}
+
+#index-content {
+  margin-left: 50px;
 }
 
 @media screen and (max-width: 768px) {
@@ -154,4 +159,143 @@ nav ul li:hover {
     height: 100%;
     width: 100%;
   }
+}
+
+#votes {
+  margin-top: 2em;
+  margin-bottom: 11em;
+  padding-top: 2em;
+  padding-left: 1em;
+}
+
+.vote-item {
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 1.5em;
+  padding-bottom: 1ex;
+  padding-left: 1.5ch;
+  color: #000;
+}
+
+.vote-item h2 {
+  margin-top: 1ex;
+}
+
+.vote-item:hover {
+  color: #000;
+}
+
+.number-in {
+  letter-spacing: 1px;
+}
+
+.vote-item:nth-last-of-type(odd):hover {
+  background-color: rgba(178, 229, 255, 0.5);
+}
+
+.vote-item:nth-last-of-type(even):hover {
+  background-color: rgba(214, 214, 255, 0.5);
+}
+
+.vote-item .signature {
+  color: #d18231;
+  font-weight: bold;
+}
+
+.checked-icon {
+  display: none;
+}
+
+.select-mode .vote-item.selected .checked-icon {
+  position: relative;
+  display: inline-block;
+  left: -5ch;
+  top: -1em;
+  padding: 0.3em;
+  color: white;
+  background: #52B4D8;
+  border: solid 2px rgb(82, 159, 194);
+  border-radius: 50%;
+}
+
+.select-mode .vote-item.selected h2 {
+  margin-top: -0.7ex;
+}
+
+#controls {
+  height: 10em;
+  background: peachpuff;
+  position: fixed;
+  bottom: 0;
+  left: 200px;
+  width: calc(100% - 200px);
+  padding-top: 2em;
+}
+
+@media screen and (max-width: 768px) {
+  .vote-item:nth-last-of-type(odd) {
+    background-color: rgba(178, 229, 255, 0.5);
+  }
+
+  .vote-item:nth-last-of-type(even) {
+    background-color: rgba(214, 214, 255, 0.5);
+  }
+
+  #controls {
+    left: 0;
+    width: 100%;
+  }
+
+  #votes {
+    height: calc(100vh - 60px - 10em);
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
+
+#new-vote-form {
+  margin-top: 3em;
+}
+
+#new-vote-form .form-group {
+  padding-left: 2em;
+}
+
+#new-vote-form .btn[type="submit"] {
+  clear: both;
+}
+
+#new-vote-form .checkbox {
+  margin-top: 3.5em;
+}
+
+#new-vote-form .checkbox #save-name {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  margin-top: -0.5em;
+  margin-left: 0.2ch;
+}
+
+#new-vote-form .checkbox label {
+  margin-left: -1em;
+}
+
+@media screen and (max-width: 768px) {
+  #new-vote-form .checkbox {
+    margin-top: 0;
+  }
+}
+
+#student-list-wrapper {
+  max-height: 200px;
+  overflow-y: scroll;
+}
+
+#student-list-wrapper > table > tbody > tr:hover {
+  cursor: pointer;
+  background: #cbfefe;
+}
+
+#student-list-wrapper > table > tbody > tr.selected {
+  background: #CCCCFF;
 }
