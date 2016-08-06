@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh-CN" xmlns="http://www.w3.org/1999/html">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>作业问题反馈系统－开发杂谈</title>
   <link rel="stylesheet" href="bootstrap.min.css">
   <link rel="stylesheet" href="composition.css">
+  <link rel="stylesheet" href="google-code-prettify/prettify.css">
 </head>
 <body>
 <div class="container">
@@ -128,8 +129,99 @@
       <li>在验证发现这一域无效时，（在自定义位置）显示错误消息，反正显示正确消息</li>
       <li>在任何一个域无效或为空时，禁用提交按钮</li>
     </ol>
-
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;一开始，我们试图在原有的JS代码中添加表单验证逻辑，但是这让代码中多出了大量的重复代码，我们很快意识到单独做一个表单验证库是有必要的。</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;在对原有代码进行了一些重构后，我们成功地剥离了表单验证逻辑，并且得到了下面的代码</p>
+    <pre class="prettyprint">
+      <code>
+/**
+ * 单个field验证器
+ * @param csrf_token 发送给服务器的csrf token
+ * @param object_to_validate 要验证的对象（jQuery对象）
+ * @param validated_called_func 验证完成后调用的函数
+ * @param url_to_send_value_to ajax验证地址
+ * @param other_object_to_send_with 要一同发送的其他对象
+ * @param user_validate_func 用户自定义验证函数（优先级高于ajax验证）
+ */
+function Validator(csrf_token, object_to_validate, validated_called_func, url_to_send_value_to, other_object_to_send_with, user_validate_func) {
+    this.object_wrapped = object_to_validate;
+    this.url_to_send = url_to_send_value_to;
+    this.data_objects = other_object_to_send_with;
+    this.func = user_validate_func;
+    this.validated = validated_called_func;
+    this.validate = function () {
+        var to_post = [
+            {name: "csrfmiddlewaretoken", value: csrf_token},
+            {name: this.object_wrapped.attr("name"), value: this.object_wrapped.val()}
+        ];
+        if (this.data_objects != null) {
+            for (var i = 0; i < this.data_objects.length; ++i) {
+                var data_obj = this.data_objects[i];
+                to_post[to_post.length] = {name: data_obj.attr("name"), value: data_obj.val()};
+            }
+        }
+        if (this.func != null && !this.func()) {
+            if (this.validated != null) {
+                this.validated(false);
+            }
+            return false;
+        }
+        var is_success = false;
+        $.post(this.url_to_send, to_post, function (ret) {
+            is_success = ret.is_valid;
+        });
+        if (this.validated != null) {
+            this.validated(is_success);
+        }
+        return is_success;
+    }
+}
+/**
+ * field组验证器
+ * @param all_validators 包含的子field验证器
+ * @note 在外部调用validate来验证子field
+ * @note 在外部调用isAllValid来检验是否整个组都通过了验证，可以用来判断是否允许表单提交
+ */
+function ValidatorGroup(all_validators) {
+    this.validators = all_validators;
+    this.is_valid_last_time = [];
+    for (var i = 0; i < this.validators.length; ++i) {
+        this.is_valid_last_time[i] = false;
+    }
+    this.validate = function (which_to_validate) {
+        if (which_to_validate == null) {
+            for (var i = 0; i < this.validators.length; ++i) {
+                this.is_valid_last_time[i] = this.validators[i].validate();
+            }
+        } else {
+            this.is_valid_last_time[which_to_validate] = this.validators[which_to_validate].validate();
+        }
+    };
+    this.isAllValid = function () {
+        return this.is_valid_last_time.every(function (ele) {
+            return ele;
+        });
+    }
+}</code>
+    </pre>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;开始我们发现这段代码并不正常工作——没有一个验证能通过，因为ajax默认是异步的（正如其名所示【第一个a代表async，异步】），在服务器能够返回数据之前，validate函数已经返回false了。
+      当然有一个quick and dirty的解决方案：强制使用同步ajax，实现这点十分简单，在ajaxSetup中将async的值设置为false即可。
+    </p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;然而我们的直觉告诉我们这可能并不是个好主意
+      <del>我刚写的时候就TM料到了，可我TM就是懒得改。</del>
+      。果然，在很慢的网速下测试的时候，这样做的缺陷暴露无遗：每敲击一下按键就需要等待很久，等浏览器获取到服务器的验证结果后才能继续操作。
+    </p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;这样的产品显然不可能令人满意！虽然现在网速普遍可以在可接受的时间内完成这种数据交换，但是仍存在一些区域
+      <del>例如我家、和宝图</del>
+      网络条件不佳。我们相信一个异步的表单验证器是有必要的。
+    </p>
   </div>
 </div>
+<script src="google-code-prettify/prettify.js"></script>
+<script src="jQuery.js"></script>
+<script>
+  $(function () {
+    PR.prettyPrint();
+  });
+</script>
 </body>
 </html>
