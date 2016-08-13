@@ -1,4 +1,4 @@
-from django.contrib.auth.models import Group, User, Permission
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils.timezone import now
 
@@ -22,6 +22,9 @@ def number_to_chinese(number):
 
 
 class School(models.Model):
+    """
+    保存学校的类型和对应的用户
+    """
     SCHOOL_TYPE_CHOICES = (
         ('小', '小学'),
         ('初', '初中'),
@@ -35,11 +38,17 @@ class School(models.Model):
 
 
 class Class(models.Model):
+    """
+    保存某个班级是几年级、几班、属于哪个学校
+    """
     grade_number = models.PositiveSmallIntegerField()
     class_number = models.PositiveIntegerField()
     school_belong_to = models.ForeignKey(School)
 
     def str_without_school_name(self):
+        """
+        :return: 不包含学校名称的班级名称，eg.高一(2)班
+        """
         if self.grade_number == 0:
             assert self.school_belong_to.type == '初'
             return '预初' + '(' + str(self.class_number) + ')班'
@@ -51,6 +60,9 @@ class Class(models.Model):
 
 
 class Teacher(models.Model):
+    """
+    保存教师的身份信息
+    """
     school_belong_to = models.ForeignKey(School)
     classes_teaching = models.ManyToManyField(Class)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -63,6 +75,9 @@ class Teacher(models.Model):
 
 
 class Student(models.Model):
+    """
+    保存学生的身份信息
+    """
     user = models.OneToOneField(User)
     class_belong_to = models.ForeignKey(Class)
 
@@ -79,6 +94,9 @@ class Student(models.Model):
 
 
 class Vote(models.Model):
+    """
+    保存某次问卷的信息
+    """
     name = models.CharField(max_length=100)
     raised_by = models.ForeignKey(Teacher)
     class_invited = models.ManyToManyField(Class)
@@ -91,25 +109,49 @@ class Vote(models.Model):
 
     @property
     def is_out_of_date(self):
+        """
+        :return: 此Vote是否已经过期
+        """
         return now().date() > self.end_time
 
     def is_student_voted(self, student):
+        """
+        :param student: 要检验的学生对象
+        :return: 这个student是已经投票
+        """
         return self.votepiece_set.filter(voted_by=student).exists()
 
     def invited_students(self):
-        return sum(map(lambda the_class: list(the_class.student_set.all()), self.class_invited.all()), [])
+        """
+        :return: 被邀请的学生列表
+        """
+        return sum(map(lambda the_class: list(the_class.student_set.all()),
+                       self.class_invited.all()), [])
 
     def voted_students(self):
-        return sum(map(lambda vote_piece: [vote_piece.voted_by], VotePiece.objects.filter(belong_to_vote=self)), [])
+        """
+        :return: 已经投票的学生列表
+        """
+        return sum(map(lambda vote_piece: [vote_piece.voted_by],
+                       VotePiece.objects.filter(belong_to_vote=self)), [])
 
     def voted_student_count(self):
+        """
+        :return: 已投票的学生数量
+        """
         return self.votepiece_set.all().count()
 
     def invited_student_count(self):
+        """
+        :return: 被邀请的学生数量
+        """
         return sum(map(lambda class_: class_.student_set.count(), self.class_invited.all()))
 
 
 class Question(models.Model):
+    """
+    保存一个问题的信息
+    """
     number = models.SmallIntegerField()
     belong_to_vote = models.ForeignKey(Vote)
 
@@ -121,6 +163,9 @@ class Question(models.Model):
 
 
 class VotePiece(models.Model):
+    """
+    保存一次Vote的信息
+    """
     voted_by = models.ForeignKey(Student)
     voted_questions = models.ManyToManyField(Question)
     belong_to_vote = models.ForeignKey(Vote)
