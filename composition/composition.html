@@ -18,29 +18,26 @@
   <nav class="catalogue">
     <h2 class="text-center">目录</h2>
     <ol>
-      <li><a>
+      <li><a href="#part-1">
         <del>发生在某个老师身上的惨剧</del>
         &nbsp;需求的产生和分析</a></li>
-      <li><a>
+      <li><a href="#part-2">
         <del>抓壮丁</del>
         &nbsp;团队的组织</a></li>
-      <li><a>
-        <del>脑补</del>
-        &nbsp;整体设计</a></li>
-      <li><a>
+      <li><a href="#part-3">
         <del>推卸责任</del>
         &nbsp;素材的分解和职责的分配</a></li>
-      <li><a>
+      <li><a href="#part-4">
         <del>Python大法好</del>
         &nbsp;开发语言的选择</a></li>
-      <li><a>&nbsp;开发框架的选择</a></li>
-      <li><a>
+      <li><a href="#part-5">开发框架的选择</a></li>
+      <li><a href="#part-6">
         <del>疯狂盗版软件(有钱了保证还上)</del>
         &nbsp;开发工具的选择</a></li>
-      <li><a>
+      <li><a href="#part-7">
         <del>混乱的</del>
         &nbsp;初次迭代</a></li>
-      <li><a>
+      <li><a href="#part-8">
         <del>又TM改需求!</del>
         &nbsp;初次交付</a></li>
       <li><a>
@@ -58,17 +55,22 @@
       <li><a>
         <del>根本不会有人干的</del>
         &nbsp;后期维护</a></li>
-      <li><a href="#spe-01">
-        <del>死亡卡顿的故事</del>
-        &nbsp;特别篇01-自制表单验证器始末</a></li>
       <li><a>
-        <del>一团乱麻的HTML，我再也不想看到了！</del>
-        &nbsp;特别篇02-重构</a>
+        <del>其实我并不需要它（自己做一个或许更好）</del>
+        特别篇01-Bootstrap框架简要介绍</a>
+      </li>
+      <li>
+        <a>
+          <del>一团乱麻的HTML，我再也不想看到了！</del>
+          &nbsp;特别篇02-重构</a>
       </li>
       <li><a>
         <del>现在我有两个问题了</del>
-        &nbsp;特别篇03-正则表达式</a>
+        特别篇03-正则表达式</a>
       </li>
+      <li><a href="#spe-04">
+        <del>死亡卡顿的故事</del>
+        &nbsp;特别篇04-自制表单验证器始末</a></li>
       <li><a>
         <del>我或许是个还算可以的程序员，但我一定是个糟糕的管理者!</del>
         &nbsp;感想</a></li>
@@ -79,8 +81,254 @@
       </li>
     </ol>
   </nav>
-  <div id="spe-01">
-    <h2 class="text-center">特别篇01-自制表单验证器始末</h2>
+  <div class="page" id="part-1">
+    <h2 class="text-center">
+      <del>发生在某个老师身上的惨剧<br></del>
+      需求的产生和分析
+    </h2>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;故事要从2016年4月9日说起，那天，我们
+      <del>最最伟大</del>
+      的数学老师在网上发布了一张问卷，用这个来收集学生在作业中的问题。然而，由于这类问卷所有的输入框都是纯文本的，部分
+      <del>逗逼</del>
+      学生利用这个机会捉弄老师。
+      <del>现在的学生都那么的大胆么……还是我太怂了orz（不过完全改不掉的说……）</del>
+    </p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;在这种情况下，我想到：
+      <del>这是装逼的好机会</del>
+      我们何不自己开发一个专门为了反馈作业问题而设计的软件呢？
+      <del>当时我刚刚学会搭建web app不久，所以
+        <blockquote class="del">当你手里有🔨的时候，看什么都是钉子。</blockquote>
+      </del>
+    </p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;老师肯定了我的想法，于是这件事被我提上了日程。</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;经过思考，我确定了需求大致如下：开发一个易于使用的问题反馈系统，允许教师发起调查、学生选择要问的题目、教师得到学生的反馈数据。</p>
+  </div>
+  <div class="page" id="part-2">
+    <h2 class="text-center">
+      <del>抓壮丁<br/></del>
+      &nbsp;团队的组织
+    </h2>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;由于最近学习了敏捷软件开发和XP（极限编程）的相关知识，我决定实践一下敏捷软件开发。</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;然而，个人认为敏捷软件开发的团队组织模式有很大的限制，这一组织模式假设所有人都有相似的水平，然而，我们的团队中各个成员水平差距太大，且在自己不了解的领域几乎一无所知，所以我们当然不可照搬书本上的团队组织形式。</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;我们决定仍然进行分工（分为UI设计、前端开发和后端开发），而非像敏捷软件开发让每个人都参与每个模块的工作。同时，我们让我们
+      <del>最最伟大</del>
+      的数学老师以客户的角色加入团队。
+    </p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;另外，由于学校要求10天返一次校
+      <del>mlgb，什么智障规定</del>
+      ，为了方便工作，我们将2周交付一次改为10天交付一次。
+    </p>
+  </div>
+  <div class="page" id="part-3">
+    <h2 class="text-center">
+      <del>推卸责任<br/></del>
+      素材的分解和职责的分配
+    </h2>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;我们对素材进行了分解，由于团队并不是标准的敏捷团队，我们在素材分解时将每个素材的UI、前端和后端独立分解了出来，并分别进行了估算。</p>
+    <table class="table table-striped">
+      <tr>
+        <th>素材</th>
+        <th>UI设计时间（单位：点）</th>
+        <th>前端开发时间（单位：点）</th>
+        <th>后端开发时间（单位：点）</th>
+      </tr>
+      <tr>
+        <td>教师主页</td>
+        <td>2</td>
+        <td>2</td>
+        <td>忽略不计</td>
+      </tr>
+      <tr>
+        <td>新建调查</td>
+        <td>2</td>
+        <td>1</td>
+        <td>1
+          <del>忽略不计</del>
+        </td>
+      </tr>
+      <tr>
+        <td>调查列表</td>
+        <td>2</td>
+        <td>2</td>
+        <td>1
+          <del>忽略不计</del>
+        </td>
+      </tr>
+      <tr>
+        <td>显示数据报表</td>
+        <td>2</td>
+        <td>2</td>
+        <td>1
+          <del>忽略不计</del>
+        </td>
+      </tr>
+      <tr>
+        <td>显示调查的详细信息</td>
+        <td>2</td>
+        <td>2</td>
+        <td>1
+          <del>忽略不计</del>
+        </td>
+      </tr>
+      <tr>
+        <td>学生主页</td>
+        <td>2</td>
+        <td>2</td>
+        <td>忽略不计</td>
+      </tr>
+      <tr>
+        <td>学生提问</td>
+        <td>2</td>
+        <td>2</td>
+        <td>1
+          <del>忽略不计</del>
+        </td>
+      </tr>
+      <tr>
+        <td>注册页面</td>
+        <td>2</td>
+        <td>3</td>
+        <td>1
+          <del>忽略不计</del>
+        </td>
+      </tr>
+      <tr>
+        <td>登录页面</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1
+          <del>忽略不计</del>
+        </td>
+      </tr>
+      <tr>
+        <td>总计</td>
+        <td>17</td>
+        <td>17</td>
+        <td>7
+          <del>1</del>
+        </td>
+      </tr>
+    </table>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;共计41个点（如果前后端能完全同步工作，那么实际占到的时间只有34个点）。</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;由于我们都是新手，所以我们决定一开始每天完成一个点，等后期熟悉了任务后再将速度加快。</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;另外，我们使用Git（GitHub）来进行版本控制和合作开发。</p>
+  </div>
+  <div class="page" id="part-4">
+    <h2 class="text-center">
+      <del>Python大法好<br/></del>
+      开发语言的选择
+    </h2>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;既然要开发软件，一门顺手的编程语言是必须的。</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;前端比较不幸（从另一个角度来说也是比较幸运），只有HTML+CSS+Javascript这一组选项。</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;后端的选择就多了，目前常用的服务器端语言有Java、Ruby、Python等等，在考察了各个语言的优缺点后，我们选定了Python作为后端开发语言。</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;我们作出这一选择的理由有：</p>
+    <ul>
+      <li>Python是一门高开发效率的语言（根据《代码大全》，一句Python大致等效于6句C）。</li>
+      <li>Python语法优美，用Python难以写出可读性差的代码。</li>
+      <li>有丰富的学习资料。</li>
+      <li>由于是解释型语言，所以跨平台性好。</li>
+      <li>多范式，无论是面向过程还是面向对象，抑或是函数式编程，都能用Python表达出来。</li>
+      <li>有丰富的库，从我们做的Web开发到数据分析，再到最近很火的机器学习，在Python的世界里都能发现合适的库（实际上，内置的标准库已经十分强大，以至于许多工作都无需依赖第三方库来完成了）。</li>
+      <li>安装第三方库方便，在几乎所有情况下，使用pip包管理器就能搞定第三方库的安装了。</li>
+      <li>易于与低级语言（主要指C/C++）衔接。</li>
+    </ul>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;但是Python也有一些缺点：</p>
+    <ul>
+      <li>运行速度慢。</li>
+      <li>由于全局解释器锁（GIL）的存在，所谓的“多线程“并不能用多个CPU进行加速。</li>
+    </ul>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;但我们认为这些缺点不足为虑，运行速度在现在的硬件设备上已经不再重要（如果真的要求更高的速度，我们可以对代码进行分析，找出其中拖慢速度的部分，用C/C++重写，也可以使用Pypy之类的包含JIT的解释器来加速），况且我们的客户规模暂时不大，无需处理非常大量的请求。</p>
+  </div>
+  <div class="page" id="part-5">
+    <h2 class="text-center">
+      开发框架的选择
+    </h2>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;框架可以大大节约我们的开发时间，同时也能使我们编写代码更加方便。</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;然而在现在这个时代，无论是前端还是后端，都有大量各有侧重的框架可供选择。</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;对于前端，比较成熟的框架有：</p>
+    <ol>
+      <li>Bootstrap</li>
+      <li>Pure</li>
+    </ol>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;我的上一个项目中使用的是Pure，我认为这确实是个非常好的框架，但是作为缩小文件体积的代价，它的功能不够丰富，而且已经约2年不更新了，最重要的是很大一部分实用的JS库是基于Bootstrap的，再加上我也想学习一下新的框架，我们最终选用了Bootstrap。</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;可选的后端框架有：</p>
+    <ol>
+      <li>Django</li>
+      <li>Pyramid</li>
+      <li>Flask</li>
+      <li>Web2Py</li>
+    </ol>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;由于Django框架功能全面、文档资料丰富，且源码可读性好，易于学习、每个项目都自带管理员页面，我们最终选择了使用它。</p>
+  </div>
+  <div class="page" id="part-6">
+    <h2 class="text-center">
+      <del>疯狂盗版软件(有钱了保证还上)<br></del>
+      开发工具的选择
+    </h2>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;对于代码的编写，我们使用JetBrains&trade;公司开发的Pycharm<sup>&REG;</sup>专业版,这款IDE功能齐全（从refactor功能到可视化DEBUG工具，再到代码版本控制工具一应俱全，甚至还有自动生成UML图的功能）。
+    </p>
+    <img class="center-block" src="pycharm-logo.svg" height="128px" width="128px">
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;对于UI设计，我们使用Sketch<sup>&REG;</sup>。</p>
+    <img class="center-block" src="sketch-logo.svg" height="128px" width="128px">
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;以上两个软件都是收费的，因此我们必须在试用期结束前完成工作。</p>
+    <p>
+      <del>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+        别逗了，我们当然会使用破解版。
+      </del>
+    </p>
+  </div>
+  <div class="page" id="part-7">
+    <h2 class="text-center">
+      <del>混乱的<br></del>
+      初次迭代
+    </h2>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;我们决定在第一次迭代中完成这些素材：</p>
+    <table class="table table-striped">
+      <tr>
+        <td>注册页面</td>
+        <td>2</td>
+        <td>3</td>
+        <td>1
+          <del>忽略不计</del>
+        </td>
+      </tr>
+      <tr>
+        <td>登录页面</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1
+          <del>忽略不计</del>
+        </td>
+      </tr>
+    </table>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;然而在迭代中点的会议上，我们发现我们的速度比预想的要快，我们一天可以完成2个点的工作，于是我们决定增补两个素材：</p>
+    <table class="table table-striped">
+      <tr>
+        <td>教师主页</td>
+        <td>2</td>
+        <td>2</td>
+        <td>忽略不计</td>
+      </tr>
+      <tr>
+        <td>学生主页</td>
+        <td>2</td>
+        <td>2</td>
+        <td>忽略不计</td>
+      </tr>
+    </table>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;这样一来我们在第一次迭代中可以完成17个点共计4个素材的工作。</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;在此次迭代中，我们遇到的难点有：</p>
+    <ul>
+      <li>熟悉Bootstrap框架的使用，请见<a href="#spe-01">特别篇01-Bootstrap框架简要介绍</a></li>
+      <li>表单验证器，请见<a href="#spe-01">特别篇04-自制表单验证器始末</a></li>
+    </ul>
+  </div>
+  <div class="page" id="part-8">
+
+  </div>
+  <div class="page" id="spe-04">
+    <h2 class="text-center">特别篇04-自制表单验证器始末</h2>
     <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;在开发很多web app时，在包括登录和注册页面等的一系列页面中都能见到form表单的运用，
       同时，对表单有效性的检查也成为了一个让人
       <del>抓狂</del>
@@ -126,14 +374,12 @@
     <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;首先我们明确了需求：我们需要一段程序，它可以：</p>
     <ol>
       <li>在用户输入时动态地进行验证用户正在修改的域</li>
-      <li>在验证发现这一域无效时，（在自定义位置）显示错误消息，反正显示正确消息</li>
+      <li>在验证发现这一域无效时，（在自定义位置）显示错误消息，反之显示正确消息</li>
       <li>在任何一个域无效或为空时，禁用提交按钮</li>
     </ol>
     <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;一开始，我们试图在原有的JS代码中添加表单验证逻辑，但是这让代码中多出了大量的重复代码，我们很快意识到单独做一个表单验证库是有必要的。</p>
     <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;在对原有代码进行了一些重构后，我们成功地剥离了表单验证逻辑，并且得到了下面的代码</p>
-    <pre class="prettyprint">
-      <code>
-/**
+    <pre class="prettyprint"><code>/**
  * 单个field验证器
  * @param csrf_token 发送给服务器的csrf token
  * @param object_to_validate 要验证的对象（jQuery对象）
@@ -201,19 +447,163 @@ function ValidatorGroup(all_validators) {
             return ele;
         });
     }
-}</code>
-    </pre>
-    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;开始我们发现这段代码并不正常工作——没有一个验证能通过，因为ajax默认是异步的（正如其名所示【第一个a代表async，异步】），在服务器能够返回数据之前，validate函数已经返回false了。
+}</code></pre>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;开始我们发现这段代码并不正常工作——没有一个验证能通过。很快我们发现这是因为ajax默认是异步的（正如其名所示【第一个a代表async，异步】），在服务器能够返回数据之前，validate函数已经返回false了。
       当然有一个quick and dirty的解决方案：强制使用同步ajax，实现这点十分简单，在ajaxSetup中将async的值设置为false即可。
     </p>
     <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;然而我们的直觉告诉我们这可能并不是个好主意
-      <del>我刚写的时候就TM料到了，可我TM就是懒得改。</del>
-      。果然，在很慢的网速下测试的时候，这样做的缺陷暴露无遗：每敲击一下按键就需要等待很久，等浏览器获取到服务器的验证结果后才能继续操作。
+      <del>我刚写的时候就TM料到了，可我TM就是懒得改</del>
+      。果然，在很慢的网速下测试的时候，这样做的缺陷暴露无遗：数据交换阻塞了主线程，导致每敲击一下按键就需要等待很久，等浏览器获取到服务器的验证结果后才能继续操作。
     </p>
     <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;这样的产品显然不可能令人满意！虽然现在网速普遍可以在可接受的时间内完成这种数据交换，但是仍存在一些区域
-      <del>例如我家、和宝图</del>
+      <del>例如我家和宝图、以及（我猜的）信号屏蔽器下的学校</del>
       网络条件不佳。我们相信一个异步的表单验证器是有必要的。
     </p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;但是编写异步表单验证器并不容易，我们至少面对着这些困难：</p>
+    <ol>
+      <li>浏览器收到的数据不一定是最新的（可能更新的数据正在传输中），这导致在输入了正确的信息后，因为服务器返回“正确“先于返回“错误“导致“正确“被覆盖</li>
+      <li>在每一个field的验证数据到达时，都有必要检验整个表单是否可以被提交</li>
+    </ol>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;面对第一个困难，我们采用了这样的方法：对于每个field的验证器，都保存一个自增的token，在ajax发送请求时与数据一同发送给服务器，服务器处理验证请求时，对这个token不加处理地返回，在服务器收到回复的时候，检验服务器返回的token和内部保存的token是否相符，若不相符，则这一回复不是针对最新的请求的，那么我们就可以直接丢弃这一返回数据。</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;第二个困难的解决则没有那么显而易见，现有的代码这样工作：</p>
+    <ol>
+      <li>DOM对象通知field组验证器自己被更新了（传入被更新的field在field组内的index）</li>
+      <li>field组验证器调用相应的field验证器</li>
+      <li>field验证器向服务器询问field是否合法，等待获取结果，将结果返回给field组验证器</li>
+      <li>field组验证器更新自己的状态</li>
+      <li>根据field组验证器的状态更新DOM</li>
+    </ol>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;明显这些步骤必须是严格按顺序执行的，如果其中的ajax验证是异步的话，下面的步骤都无法获得应有的效果。幸运的是，我学习过设计模式，这一组威力强大的工具中刚好有一个适合用在这种情况之下（当然，我们需要对其进行少量的修改）。</p>
+    <blockquote>不要调用我，我会调用你
+      <footer>Head First设计模式</footer>
+    </blockquote>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;我想，你已经从这句话中认识到我们要采用何种模式了：没错，正是观察者模式，但是和正规的观察这模式略有区别：正规的观察者模式有多个观察者和一个主题对象，在我们这里，显然，应该有多个主题对象——field验证器，和一个观察者——field组验证器。</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;所以我们把工作流程改成了这样：</p>
+    <ol>
+      <li>DOM对象通知field组验证器自己被更新了（传入被更新的field在field组内的index）</li>
+      <li>field组验证器调用相应的field验证器</li>
+      <li>field验证器向服务器询问field是否合法，询问后不等待结果立即返回（filed组验证器不做处理）</li>
+      <li>field验证器获取到数据后，通知field组验证器数据已经更新</li>
+      <li>field组验证器调用函数修改DOM</li>
+    </ol>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;这样阻塞主线程的问题不复存在，我们得到了如下的代码：</p>
+    <pre class="prettyprint"><code>/**
+ * field组验证器
+ * @param validators 包含的子field验证器
+ * @param redisplay_function 在数据更新后用来更新DOM的函数
+ * @note 在外部调用validate来验证子field
+ * @note 在外部调用isAllValid来检验是否整个组都通过了验证，可以用来判断是否允许表单提交
+ */
+function ValidatorGroup(validators, redisplay_function) {
+    validators.forEach($.proxy(function (validator, index) {
+        this.validators.push(validator);
+        this.is_validated.push(false);
+        validator.observer = this;
+        validator.index = index;
+    }), this);
+    this.real_redisplay_func = redisplay_function;
+    this.redisplay = function () {
+        this.real_redisplay_func(this.is_all_validated());
+    };
+}
+ValidatorGroup.prototype = {
+    validators: [],
+    is_validated: [],
+    is_all_validated: function () {
+        var ret = true;
+        this.is_validated.forEach(function (is_this_validate) {
+            ret = ret && is_this_validate;
+        });
+        return ret;
+    },
+    validate: function (index) {
+        this.validators[index].validate();
+    }
+};
+/**
+ * 单个field验证器
+ * @param csrf_token 发送给服务器的csrf token
+ * @param the_obj 要验证的对象（jQuery对象）
+ * @param after_validate_fun 验证完成后调用的函数
+ * @param url_to_send_value_to ajax验证地址
+ * @param send_when_validate 要一同发送的其他对象
+ * @param custom_validate_func 用户自定义验证函数（优先级高于ajax验证）
+ */
+function Validator(csrf_token, the_obj, after_validate_fun, url_to_send_value_to, send_when_validate, custom_validate_func) {
+    this.csrf_token = csrf_token;
+    this.the_object = the_obj;
+    this.after_validate = after_validate_fun;
+    this.url_to_send_value_to = url_to_send_value_to;
+    this.send_when_validate = send_when_validate;
+    this.custom_validate_func = custom_validate_func;
+    this.ajax_id = 0;
+}
+Validator.prototype = {
+    observer: null,
+    index: -1,
+    validate: function () {
+        /*控件为空，认为验证失败*/
+        if (this.the_object.val() == "") {
+            if (this.after_validate != null) {
+                this.after_validate(false);
+            }
+            this.observer.is_validated[this.index] = false;
+            this.observer.redisplay();
+            return;
+        }
+        if (!(this.custom_validate_func != null && !this.custom_validate_func())) {
+            if (this.custom_validate_func != null && this.custom_validate_func() && this.url_to_send_value_to == null) {
+                /*用户提供的验证函数成功*/
+                if (this.after_validate != null) {
+                    this.after_validate(true);
+                }
+                this.observer.is_validated[this.index] = true;
+                this.observer.redisplay();
+                return;
+            }
+        } else {
+            /*用户提供的验证函数失败*/
+            if (this.after_validate != null) {
+                this.after_validate(false);
+            }
+            this.observer.is_validated[this.index] = false;
+            this.observer.redisplay();
+            return;
+        }
+        /*序列化控件*/
+        var to_post = [
+            {name: "csrfmiddlewaretoken", value: this.csrf_token},
+            {name: this.the_object.attr("name"), value: this.the_object.val()},
+            {name: "ajax_id", value: ++this.ajax_id}
+        ];
+        /*序列化附加控件*/
+        if (this.send_when_validate != null) {
+            var i;
+            for (i = 0; i < this.send_when_validate.length; ++i) {
+                to_post[to_post.length] = {
+                    name: this.send_when_validate[i].attr("name"),
+                    value: this.send_when_validate[i].val()
+                };
+            }
+        }
+        function ajax_validate(ret) {
+            if (ret.ajax_id != this.ajax_id) {
+                return;
+            }
+            var is_success = ret.is_valid;
+            if (this.after_validate != null) {
+                this.after_validate(is_success);
+            }
+            this.observer.is_validated[this.index] = is_success;
+            this.observer.redisplay();
+        }
+
+        if (this.url_to_send_value_to != null) {
+            $.post(this.url_to_send_value_to, to_post, $.proxy(ajax_validate, this));
+        }
+    }
+};</code></pre>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;经测试，这个验证器工作正常。虽然代码写的并不尽善尽美（参数列表太长，我应该用一个JS对象来初始化的），但至少能用。我相信未来如果有必要，我将重构它，但现在——就让它这样好了。</p>
   </div>
 </div>
 <script src="google-code-prettify/prettify.js"></script>

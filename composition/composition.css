@@ -1,13 +1,13 @@
 del {
-  /*display: none;*/
-  /*!important;*/
   font-size: 10pt;
 }
 
-.catalogue > ol > li:last-of-type {
-  /*display: none;*/
-  /*!important;*/
-}
+/*.catalogue > ol > li:last-of-type,*/
+/*.del,*/
+/*del {*/
+/*display: none;*/
+/*!important;*/
+/*}*/
 
 h1 {
   font-family: Didot, serif;
@@ -34,4 +34,24 @@ h1 {
 
 .catalogue a del:hover {
   text-decoration: underline;
+}
+
+@media print {
+  del {
+    display: none;
+  !important;
+  }
+
+  .catalogue > ol > li:last-of-type,
+  .del {
+    display: none;
+  !important;
+  }
+
+  /*h1 {*/
+  /*color: #2274b6;!important;*/
+  /*}*/
+  /*.catalogue a {*/
+  /*color: #428eb6;!important;*/
+  /*}*/
 }

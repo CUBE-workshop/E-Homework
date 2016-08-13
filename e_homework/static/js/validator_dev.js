@@ -1,3 +1,10 @@
+/**
+ * field组验证器
+ * @param validators 包含的子field验证器
+ * @param redisplay_function 在数据更新后用来更新DOM的函数
+ * @note 在外部调用validate来验证子field
+ * @note 在外部调用isAllValid来检验是否整个组都通过了验证，可以用来判断是否允许表单提交
+ */
 function ValidatorGroup(validators, redisplay_function) {
     validators.forEach($.proxy(function (validator, index) {
         this.validators.push(validator);
@@ -25,6 +32,15 @@ ValidatorGroup.prototype = {
         this.validators[index].validate();
     }
 };
+/**
+ * 单个field验证器
+ * @param csrf_token 发送给服务器的csrf token
+ * @param the_obj 要验证的对象（jQuery对象）
+ * @param after_validate_fun 验证完成后调用的函数
+ * @param url_to_send_value_to ajax验证地址
+ * @param send_when_validate 要一同发送的其他对象
+ * @param custom_validate_func 用户自定义验证函数（优先级高于ajax验证）
+ */
 function Validator(csrf_token, the_obj, after_validate_fun, url_to_send_value_to, send_when_validate, custom_validate_func) {
     this.csrf_token = csrf_token;
     this.the_object = the_obj;
