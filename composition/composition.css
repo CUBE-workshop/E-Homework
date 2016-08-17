@@ -47,11 +47,26 @@ h1 {
     display: none;
   !important;
   }
+}
 
-  /*h1 {*/
-  /*color: #2274b6;!important;*/
-  /*}*/
-  /*.catalogue a {*/
-  /*color: #428eb6;!important;*/
-  /*}*/
+#demo-1 + label::before {
+  content: '\a0'; /*外框*/
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  background: #c7e9ff;
+  border-radius: 5px;
+}
+
+#demo-1 {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+}
+
+#demo-1:checked + label::before {
+  content: '\2713'; /*勾号*/
+  padding-top: 1px;
+  background: #9bbdd2;
+  color: white;
+  text-align: center;
 }

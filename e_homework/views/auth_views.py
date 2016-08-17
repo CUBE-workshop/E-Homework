@@ -1,6 +1,7 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from django.contrib.auth.hashers import make_password
+from django.contrib.auth.models import Permission, Group
 from django.contrib.auth.password_validation import validate_password as try_validate_password
 from django.core.exceptions import ValidationError
 from django.http import JsonResponse, HttpResponseForbidden
@@ -59,22 +60,19 @@ def sign_up(request):
 def do_sign_up(request):
     username = request.POST['username']
     password = make_password(request.POST['password'])
+    user = User.objects.create(username=username, password=password)
     if request.POST['user-type'] == 'school':
         School.objects.create(type=request.POST['school-type'],
-                              user=User.objects.create(username=username, password=password))
+                              user=user)
     elif request.POST['user-type'] == 'teacher':
         the_teacher = Teacher.objects.create(school_belong_to=School.objects.get(id=request.POST['school-in']),
-                                             user=User.objects.create(username=username, password=password,
-                                                                      first_name=request.POST['first-name'],
-                                                                      last_name=request.POST['last-name']))
+                                             user=user)
         teachers_user_group, _ = Group.objects.get_or_create(name='teachers_user_group')
         teachers_user_group.permissions.add(Permission.objects.get(name='teachers_permission'))
         the_teacher.user.groups.add(teachers_user_group)
     else:
         the_student = Student.objects.create(class_belong_to=Class.objects.get(id=request.POST['class-in']),
-                                             user=User.objects.create(username=username, password=password,
-                                                                      first_name=request.POST['first-name'],
-                                                                      last_name=request.POST['last-name']))
+                                             user=user)
         students_user_group, _ = Group.objects.get_or_create(name='students_user_group')
         students_user_group.permissions.add(Permission.objects.get(name='students_permission'))
         the_student.user.groups.add(students_user_group)

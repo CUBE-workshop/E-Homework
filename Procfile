@@ -1,0 +1,1 @@
+web: gunicorn schoolProject.wsgi --log-file - --access-logfile - --error-logfile -
