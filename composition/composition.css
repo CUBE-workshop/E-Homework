@@ -37,16 +37,15 @@ h1 {
 }
 
 @media print {
-  del {
-    display: none;
-  !important;
-  }
-
-  .catalogue > ol > li:last-of-type,
-  .del {
-    display: none;
-  !important;
-  }
+  /*del {*/
+  /*display: none;*/
+  /*!important;*/
+  /*}*/
+  /*.catalogue > ol > li:last-of-type,*/
+  /*.del {*/
+  /*display: none;*/
+  /*!important;*/
+  /*}*/
 }
 
 #demo-1 + label::before {
@@ -69,4 +68,9 @@ h1 {
   background: #9bbdd2;
   color: white;
   text-align: center;
+}
+
+#designs img {
+  border: 1px solid;
+  margin: 1em;
 }
