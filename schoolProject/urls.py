@@ -44,7 +44,9 @@ urlpatterns_teacher = [
     url(r'^$', teacher, name='teacher')
 ]
 urlpatterns_student = [
-    url(r'^$', student)
+    url(r'^vote/(\d+)/', vote, name='vote'),
+    url(r'^do-vote/(\d+)/', do_vote, name='do-vote'),
+    url(r'^$', student, name='student')
 ]
 urlpatterns = urlpatterns_auth + [
     url(r'^admin/', admin.site.urls),

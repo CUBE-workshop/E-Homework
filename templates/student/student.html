@@ -12,39 +12,17 @@
       {#          todo:Maybe I can refactor it!#}
       <li class="normal-nav-item">
         <a id="homework-question-open">作业问题&nbsp;&nbsp;
-          <span class="badge">42</span>
+          <span class="badge">{{ unvote_count }}</span>
           <span class="open-selection-bar open-selection-bar-desktop caret"></span>
           <span class="open-selection-bar open-selection-bar-mobile caret"></span>
         </a>
       </li>
       <li id="homework-question" class="expandable-nav-item">
         <ul>
-          <li class="viewed"><a>A区</a></li>
-          <li><a>B区</a></li>
-          <li><a>C区</a></li>
-          <li class="viewed"><a>D区</a></li>
-          <li class="viewed"><a>E区</a></li>
-          <li><a>F区</a></li>
-          <li><a>G区</a></li>
-          <li><a>H区</a></li>
-          <li><a>I区</a></li>
-          <li><a>J区</a></li>
-          <li><a>K区</a></li>
-          <li><a>L区</a></li>
-          <li><a>M区</a></li>
-          <li><a>A区</a></li>
-          <li><a>B区</a></li>
-          <li><a>C区</a></li>
-          <li><a>D区</a></li>
-          <li><a>E区</a></li>
-          <li><a>F区</a></li>
-          <li><a>G区</a></li>
-          <li><a>H区</a></li>
-          <li><a>I区</a></li>
-          <li><a>J区</a></li>
-          <li><a>K区</a></li>
-          <li><a>L区</a></li>
-          <li><a>M区</a></li>
+          {% for vote in votes %}
+            <li {% if student in vote.voted_students %}class="viewed"{% endif %}><a
+                    href="{% url "vote" vote.id %}">{{ vote.name }}</a></li>
+          {% endfor %}
         </ul>
       </li>
       <li class="normal-nav-item">

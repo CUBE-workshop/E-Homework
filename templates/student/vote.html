@@ -1,0 +1,28 @@
+{% extends "student/student.html" %}
+{% block morestaticfiles %}
+  {% load staticfiles %}
+  <link rel="stylesheet" href="{% static "css/student.css" %}">
+  <link rel="stylesheet" href="{% static "css/checkbox-flat/blue.css" %}">
+{% endblock %}
+{% block content %}
+  <h2>{{ vote.name }}</h2>
+  <form method="post" action="{% url "do-vote" vote.id %}">{% csrf_token %}
+    {% for question in vote.question_set.all %}
+      <div class="form-group checkbox">
+        <input type="checkbox" class="form-control" id="{{ question.id }}" name="{{ question.id }}">
+        <label for="{{ question.id }}">
+          {{ question.number }}
+        </label>
+      </div>
+    {% endfor %}
+    <button class="btn btn-primary center-block" type="submit">确认</button>
+  </form>
+  <script src="{% static "js/icheck.min.js" %}"></script>
+  <script>
+    $(function () {
+      $("input[type='checkbox']").iCheck({
+        checkboxClass: 'icheckbox_flat-blue'
+      });
+    })
+  </script>
+{% endblock %}
