@@ -18,8 +18,8 @@ h1 {
 }
 
 .catalogue {
-  font-size: 20pt;
-  margin-top: 2em;
+  font-size: 19pt;
+  margin-top: 1em;
 }
 
 .catalogue a {
@@ -37,16 +37,16 @@ h1 {
 }
 
 @media print {
-  del {
-    display: none;
-  !important;
-  }
+  /*del {*/
+    /*display: none;*/
+  /*!important;*/
+  /*}*/
 
-  .catalogue > ol > li:last-of-type,
-  .del {
-    display: none;
-  !important;
-  }
+  /*.catalogue > ol > li:last-of-type,*/
+  /*.del {*/
+    /*display: none;*/
+  /*!important;*/
+  /*}*/
 }
 
 #demo-1 + label::before {
