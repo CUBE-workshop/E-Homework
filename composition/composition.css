@@ -2,12 +2,11 @@ del {
   font-size: 10pt;
 }
 
-/*.catalogue > ol > li:last-of-type,*/
-/*.del,*/
-/*del {*/
-/*display: none;*/
-/*!important;*/
-/*}*/
+.catalogue > ol > li:last-of-type,
+.del,
+del {
+  display: none;  !important;
+}
 
 h1 {
   font-family: Didot, serif;
@@ -37,16 +36,16 @@ h1 {
 }
 
 @media print {
-  /*del {*/
-    /*display: none;*/
-  /*!important;*/
-  /*}*/
+  del {
+    display: none;
+  /important;
+  }
 
-  /*.catalogue > ol > li:last-of-type,*/
-  /*.del {*/
-    /*display: none;*/
-  /*!important;*/
-  /*}*/
+  .catalogue > ol > li:last-of-type,
+  .del {
+    display: none;
+  /important;
+  }
 }
 
 #demo-1 + label::before {
