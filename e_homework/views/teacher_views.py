@@ -32,7 +32,11 @@ def vote_info(request, vote_id):
     the_vote = Vote.objects.get(id=vote_id)
     if the_vote.raised_by != Teacher.objects.get(user=request.user):
         return redirect('/teacher/list/')
-    return render(request, "teacher/vote-detail.html", {"vote": the_vote})
+    voted_question_count = map(lambda question: question.voted_student_count(),
+                               the_vote.question_set.order_by("number"))
+    return render(request, "teacher/vote-detail.html", {"vote": the_vote,
+                                                        "questions": list(range(1, the_vote.question_set.count() + 1)),
+                                                        "count": voted_question_count})
 
 
 @login_required
@@ -53,7 +57,7 @@ def do_create_new_vote(request):
                                    save_name='save-name' in request.POST)
     map(lambda class_id: the_vote.class_invited.add(Class.objects.get(id=class_id)), request.POST['class-choosed'])
     map(lambda question_number: Question.objects.create(number=question_number, belong_to_vote=the_vote),
-        (number for number in range(1, int(request.POST['question-count']))))
+        (number for number in range(1, int(request.POST['question-count']) + 1)))
     return redirect('/teacher/list')
 
 

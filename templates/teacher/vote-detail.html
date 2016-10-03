@@ -47,6 +47,7 @@
           </div>
         </div>
       </div>
+      <canvas id="question-bar-chart" height="370" width="500"></canvas>
       <button type="submit" class="btn btn-primary center-block">确认</button>
     </form>
   </div>
@@ -54,6 +55,7 @@
   <script src="{% static "js/bootstrap.min.js" %}"></script>
   <script src="{% static "js/date-picker/bootstrap-datetimepicker.min.js" %}"></script>
   <script src="{% static "js/icheck.min.js" %}"></script>
+  <script src="{% static "js/Chart.bundle.min.js" %}"></script>
   <script>
     $(function () {
       var ua_str = navigator.userAgent;
@@ -91,6 +93,44 @@
           {% endif %}
         }
       });
+    });
+    function draw_bar_chart(name, labels_in, data_in) {
+      var ctx = $("#question-bar-chart").get(0).getContext("2d");
+      var config = {
+        type: "bar",
+        data: {
+          labels: labels_in,
+          datasets: [
+            {
+              label: "提问人数",
+              backgroundColor: "rgb(59,180,175)",
+              borderWidth: 1,
+              borderColor: "rgb(148,159,176)",
+              data: data_in
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          title: {
+            display: true,
+            text: name
+          },
+          scales: {
+            yAxes: [{
+              ticks: {
+                stepSize: 1,
+                suggestedMax: 5,
+                suggestedMin: 0
+              }
+            }]
+          }
+        }
+      };
+      window.question_bar_chart = new Chart(ctx, config);
+    }
+    $(function () {
+      draw_bar_chart("{{ vote.name }}-提问情况", {{ questions }}, {{ count }});
     });
   </script>
 {% endblock %}
