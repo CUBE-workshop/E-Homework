@@ -17,6 +17,7 @@ def get_school_list(_):
 
 
 def get_class_list(request):
+    print(School.objects.get(id=request.POST['school-id']).class_set.all())
     class_list = list(map(lambda class_: {'id': class_.id, 'name': class_.str_without_school_name()},
                           School.objects.get(id=request.POST['school-id']).class_set.all()))
     return JsonResponse({'class_list': class_list})
@@ -62,7 +63,7 @@ def do_sign_up(request):
     password = make_password(request.POST['password'])
     user = User.objects.create(username=username, password=password)
     if request.POST['user-type'] == 'school':
-        School.objects.create(type=request.POST['school-type'],
+        School.objects.create(type=request.POST['school-type'] if request.POST['school-type'] else '小',
                               user=user)
     elif request.POST['user-type'] == 'teacher':
         the_teacher = Teacher.objects.create(school_belong_to=School.objects.get(id=request.POST['school-in']),

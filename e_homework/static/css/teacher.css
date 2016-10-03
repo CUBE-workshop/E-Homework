@@ -265,10 +265,6 @@ nav ul li:hover {
   clear: both;
 }
 
-#new-vote-form .checkbox {
-  margin-top: 3.5em;
-}
-
 #new-vote-form .checkbox #save-name {
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -280,10 +276,8 @@ nav ul li:hover {
   margin-left: -1em;
 }
 
-@media screen and (max-width: 768px) {
-  #new-vote-form .checkbox {
-    margin-top: 0;
-  }
+#new-vote-form .btn {
+  margin-top: 3.5em;
 }
 
 #student-list-wrapper {

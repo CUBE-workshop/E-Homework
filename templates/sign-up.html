@@ -106,68 +106,8 @@
       const $username = $("#username");
       const $password = $("#password");
       const $password_confirm = $("#password-confirm");
-      function show_school_list() {
-        $school_in.html("<option value=\"none\" id=\"school-in-placeholder\" selected>学校</option>");
-        $.getJSON({% url "get-school-list" %}, null, function (ret) {
-          //noinspection JSUnresolvedVariable
-          ret.school_list.forEach(function (school) {
-            $school_in.append("<option value=\"" + school.id + "\">" + school.name + "</option>");
-          });
-        });
-        $("#school-in-wrapper").show();
-      }
-      function destroy_school_list() {
-        $school_in.html("<option value=\"none\" id=\"school-in-placeholder\" selected>学校</option>");
-        $school_in.val("none");
-        $("#school-in-wrapper").hide();
-      }
-      function show_class_list(school_id) {
-        var school_info = [{name: "csrfmiddlewaretoken", value: "{{ csrf_token }}"}, {
-          name: "school-id",
-          value: school_id
-        }];
-        $.post({% url "get-class-list" %}, school_info, function (ret) {
-          //noinspection JSUnresolvedVariable
-          ret.class_list.forEach(function (class_) {
-            $class_in.append("<option value=\"" + class_.id + "\">" + class_.name + "</option>");
-          });
-        });
-        $("#class-in-wrapper").show();
-      }
-      function destroy_class_list() {
-        $class_in.html("<option value=\"none\" id=\"class-in-placeholder\" selected>班级</option>");
-        $class_in.val("none");
-        $("#class-in-wrapper").hide();
-      }
-      $user_type.mousedown(function () {
-        $("#user-type-placeholder").remove();
-        $(this).change();
-      }).change(function () {
-        destroy_class_list();
-        if ($(this).val() == "school") {
-          $(".input-name").hide();
-          $username.addClass("first-input");
-          $("#school-type-wrapper").show();
-          destroy_school_list();
-        } else {
-          $(".input-name").show();
-          $username.removeClass("first-input");
-          $("#school-type-wrapper").hide();
-          show_school_list();
-        }
-      });
-      $school_in.mousedown(function () {
-        $("#school-in-placeholder").remove();
-        $(this).change();
-      }).change(function () {
-        if ($user_type.val() == "student") {
-          show_class_list($(this).val());
-        }
-      });
-      $class_in.mousedown(function () {
-        $("#class-in-placeholder").remove();
-      });
       var validations = new ValidatorGroup([
+        //此处有重复，很可能是一个Bug，但考虑到暂未发现实质上问题，暂不修改
         new Validator("{{ csrf_token }}", $user_type, null, null, null, function () {
           return $user_type.val() != "none";
         }),
@@ -255,6 +195,72 @@
           $("form button").attr("disabled", "disabled");
         }
       });
+      function show_school_list() {
+        $school_in.html("<option value=\"none\" id=\"school-in-placeholder\" selected>学校</option>");
+        $.getJSON({% url "get-school-list" %}, null, function (ret) {
+          //noinspection JSUnresolvedVariable
+          ret.school_list.forEach(function (school) {
+            $school_in.append("<option value=\"" + school.id + "\">" + school.name + "</option>");
+          });
+        });
+        $("#school-in-wrapper").show();
+      }
+      function destroy_school_list() {
+        $school_in.html("<option value=\"none\" id=\"school-in-placeholder\" selected>学校</option>");
+        $school_in.val("none");
+        $("#school-in-wrapper").hide();
+      }
+      function show_class_list(school_id) {
+        var school_info = [{name: "csrfmiddlewaretoken", value: "{{ csrf_token }}"}, {
+          name: "school-id",
+          value: school_id
+        }];
+        $.post({% url "get-class-list" %}, school_info, function (ret) {
+          $class_in.html("");
+          //noinspection JSUnresolvedVariable
+          ret.class_list.forEach(function (class_) {
+            $class_in.append("<option value=\"" + class_.id + "\">" + class_.name + "</option>");
+          });
+        });
+        $("#class-in-wrapper").show();
+      }
+      function destroy_class_list() {
+        $class_in.html("<option value=\"none\" id=\"class-in-placeholder\" selected>班级</option>");
+        $class_in.val("none");
+        $("#class-in-wrapper").hide();
+      }
+      $user_type.mousedown(function () {
+        $("#user-type-placeholder").remove();
+        $(this).change();
+      }).change(function () {
+        destroy_class_list();
+        if ($(this).val() == "school") {
+          $(".input-name").hide();
+          $username.addClass("first-input");
+          $("#school-type-wrapper").show();
+          destroy_school_list();
+          validations.is_validated[3] = true;
+          validations.is_validated[4] = true;
+        } else {
+          $(".input-name").show();
+          $username.removeClass("first-input");
+          $("#school-type-wrapper").hide();
+          show_school_list();
+          validations.is_validated[3] = false;
+          validations.is_validated[4] = false;
+        }
+      });
+      $school_in.mousedown(function () {
+        $("#school-in-placeholder").remove();
+        $(this).change();
+      }).change(function () {
+        if ($user_type.val() == "student") {
+          show_class_list($(this).val());
+        }
+      });
+      $class_in.mousedown(function () {
+        $("#class-in-placeholder").remove();
+      });
       $password.keydown(function () {
         $password_confirm.parent().removeClass("has-success").removeClass("has-error").removeClass("has-feedback");
         $password_confirm.parent().children(".glyphicon").remove();
@@ -267,6 +273,8 @@
         validations.validate(2);
       });
       $("input").keyup(function () {
+        validations.validate($(this).parent().index() + 3);
+      }).change(function () {
         validations.validate($(this).parent().index() + 3);
       });
     </script>

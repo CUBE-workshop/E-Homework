@@ -7,7 +7,7 @@
 {% block content %}
   <h2>{{ vote.name }}</h2>
   <form method="post" action="{% url "do-vote" vote.id %}">{% csrf_token %}
-    {% for question in vote.question_set.all %}
+    {% for question in vote.question_set.all|dictsort:'number' %}
       <div class="form-group checkbox">
         <input type="checkbox" class="form-control" id="{{ question.id }}" name="{{ question.id }}">
         <label for="{{ question.id }}">

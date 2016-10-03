@@ -29,6 +29,11 @@
           {% endfor %}
         </select>
       </div>
+      <div class="clearfix visible-md visible-lg"></div>
+      <div class="col-xs-12 col-md-6">
+        <label for="question-count" class="hidden-md hidden-lg">题目数量</label>
+        <input type="number" class="form-control" id="question-count" name="question-count" placeholder="题目数量">
+      </div>
       <div class="col-xs-12 col-md-6 checkbox">
         <input type="checkbox" class="form-control" id="save-name" name="save-name">
         <label for="save-name">
@@ -72,6 +77,11 @@
           firstOption += '</option>';
           select.prepend(firstOption);
         });
+      }
+    });
+    $("#question-count").change(function () {
+      if ($(this).val() < 1) {
+        $(this).val(1);
       }
     });
   </script>

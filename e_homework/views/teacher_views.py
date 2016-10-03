@@ -52,6 +52,8 @@ def do_create_new_vote(request):
                                    start_date=request.POST['start-date'], end_date=request.POST['end-date'],
                                    save_name='save-name' in request.POST)
     map(lambda class_id: the_vote.class_invited.add(Class.objects.get(id=class_id)), request.POST['class-choosed'])
+    map(lambda question_number: Question.objects.create(number=question_number, belong_to_vote=the_vote),
+        (number for number in range(1, int(request.POST['question-count']))))
     return redirect('/teacher/list')
 
 
@@ -83,7 +85,7 @@ def vote_student_info(request, vote_id):
             the_vote = VotePiece.objects.get(belong_to_vote_id=vote_id, voted_by_id=student_id)
             return JsonResponse({'voted': True,
                                  'voted_questions': map(lambda question: question.number,
-                                                        the_vote.voted_questions.all()),
+                                                        the_vote.voted_questions.order_by('number')),
                                  'ajax_id': ajax_id})
         except ObjectDoesNotExist:
             return JsonResponse({'voted': False, 'ajax_id': ajax_id})
