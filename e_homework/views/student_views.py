@@ -44,7 +44,6 @@ def do_vote(request, vote_id):
     the_vote_piece = VotePiece.objects.get_or_create(voted_by=Student.objects.get(user=request.user),
                                                      belong_to_vote=Vote.objects.get(id=vote_id))[0]
     the_vote_piece.voted_questions.clear()
-    print(list(filter(lambda post_item: post_item != 'csrfmiddlewaretoken', request.POST)))
     for question_id in filter(lambda post_item: post_item != 'csrfmiddlewaretoken', request.POST):
         the_vote_piece.voted_questions.add(Question.objects.get(id=question_id))
     return redirect('/student/')

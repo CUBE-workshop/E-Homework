@@ -48,6 +48,31 @@
         </div>
       </div>
       <canvas id="question-bar-chart" height="370" width="500"></canvas>
+      <span>提问较多的题目有：</span>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>题目编号</th>
+          <th>Tag</th>
+          <th>题目编号</th>
+          <th>Tag</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for question in questions_vote_much %}
+          {% if forloop.counter0|divisibleby:2 %}
+            <tr>
+          {% endif %}
+        <td>{{ question.number }}</td>
+        <td>
+          <div class="tags-input"><input type="text" class="tag-inputbox"></div>
+        </td>
+        {% if forloop.counter|divisibleby:2 %}
+          </tr>
+        {% endif %}
+        {% endfor %}
+        </tbody>
+      </table>
       <button type="submit" class="btn btn-primary center-block">确认</button>
     </form>
   </div>
@@ -132,5 +157,20 @@
     $(function () {
       draw_bar_chart("{{ vote.name }}-提问情况", {{ questions }}, {{ count }});
     });
+    $(".tags-input").click(function () {
+      $(this).find(".tag-inputbox").focus();
+    }).on("click", ".tag", function () {
+      $(this).remove();
+    });
+    $(".tag-inputbox").keydown(function (event) {
+      switch (event.which) {
+        case 13://回车
+        case 32://空格
+          if ($(this).val().trim() != '') {
+            $(this).before('<span class="tag">' + $(this).val().trim() + '</span>');
+          }
+          $(this).val("");
+      }
+    })
   </script>
 {% endblock %}

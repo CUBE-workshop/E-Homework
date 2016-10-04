@@ -34,9 +34,13 @@ def vote_info(request, vote_id):
         return redirect('/teacher/list/')
     voted_question_count = map(lambda question: question.voted_student_count(),
                                the_vote.question_set.order_by("number"))
+    questions_vote_much = sorted(
+        filter(lambda question: question.voted_student_count() != 0, the_vote.question_set.order_by("number")),
+        key=lambda question: question.voted_student_count(), reverse=True)[:6]
     return render(request, "teacher/vote-detail.html", {"vote": the_vote,
                                                         "questions": list(range(1, the_vote.question_set.count() + 1)),
-                                                        "count": voted_question_count})
+                                                        "count": voted_question_count,
+                                                        "questions_vote_much": questions_vote_much})
 
 
 @login_required
@@ -93,3 +97,9 @@ def vote_student_info(request, vote_id):
                                  'ajax_id': ajax_id})
         except ObjectDoesNotExist:
             return JsonResponse({'voted': False, 'ajax_id': ajax_id})
+
+
+@login_required
+@permission_required('e_homework.teachers_permission')
+def add_tag(request):
+    print(request.POST)

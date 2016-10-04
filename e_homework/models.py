@@ -172,3 +172,14 @@ class VotePiece(models.Model):
 
     def __str__(self):
         return str(self.voted_by) + ' 对 ' + str(self.belong_to_vote) + ' 的问题'
+
+
+class Tag(models.Model):
+    """
+    知识点的Tag
+    """
+    name = models.CharField(max_length=64)
+    attach_to_questions = models.ManyToManyField(Question)
+
+    def __str__(self):
+        return self.name
