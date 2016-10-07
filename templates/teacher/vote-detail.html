@@ -176,7 +176,7 @@
     });
     $("#button-submit").click(function () {
       var to_post = [
-        {name: "csrfmiddlewaretoken", value: "{{csrf_token}}"},
+        {name: "csrfmiddlewaretoken", value: "{{ csrf_token }}"},
         {name: "raw-html", value: $("#tag-table").html()}
       ];
       $.post("{% url "modify-vote" vote.id %}", to_post, function () {
