@@ -1,3 +1,5 @@
+from re import compile
+
 from django.contrib.auth.decorators import login_required, permission_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import JsonResponse
@@ -65,14 +67,26 @@ def do_create_new_vote(request):
     return redirect('/teacher/list')
 
 
+questions_with_tag_re = compile(
+    r'<td id="question-(.+?)">(.+?)</td>(.+?)<td>(.+?)</td>')
+tags_re = compile(r'<span class="tag">(.+?)</span>')
+
+
 @login_required
 @permission_required('e_homework.teachers_permission')
 def modify_vote(request, vote_id):
     the_vote = Vote.objects.get(id=vote_id)
     if the_vote.raised_by != Teacher.objects.get(user=request.user):
         return redirect('/teacher/list/')
-    the_vote.start_date = request.POST['start-date']
-    the_vote.end_date = request.POST['end-date']
+    for question in questions_with_tag_re.findall(request.POST['raw-html'].replace('\n', '')):
+        question_id = question[0]
+        tags = tags_re.findall(question[3])
+        the_question = Question.objects.get(id=question_id)
+        the_question.tag_set.clear()
+        for tag in tags:
+            the_tag = Tag.objects.get_or_create(name=tag)[0]
+            the_tag.attach_to_questions.add(the_question)
+            the_tag.save()
     the_vote.save()
     return redirect('/teacher/list')
 
@@ -97,9 +111,3 @@ def vote_student_info(request, vote_id):
                                  'ajax_id': ajax_id})
         except ObjectDoesNotExist:
             return JsonResponse({'voted': False, 'ajax_id': ajax_id})
-
-
-@login_required
-@permission_required('e_homework.teachers_permission')
-def add_tag(request):
-    print(request.POST)

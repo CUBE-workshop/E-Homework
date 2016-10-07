@@ -49,7 +49,7 @@
       </div>
       <canvas id="question-bar-chart" height="370" width="500"></canvas>
       <span>提问较多的题目有：</span>
-      <table class="table">
+      <table class="table" id="tag-table">
         <thead>
         <tr>
           <th>题目编号</th>
@@ -63,9 +63,11 @@
           {% if forloop.counter0|divisibleby:2 %}
             <tr>
           {% endif %}
-        <td>{{ question.number }}</td>
+        <td id="question-{{ question.id }}">{{ question.number }}</td>
         <td>
-          <div class="tags-input"><input type="text" class="tag-inputbox"></div>
+          <div class="tags-input">
+            {% for tag in question.tag_set.all %}<span class="tag">{{ tag.name }}</span>{% endfor %}
+            <input type="text" class="tag-inputbox"></div>
         </td>
         {% if forloop.counter|divisibleby:2 %}
           </tr>
@@ -73,7 +75,7 @@
         {% endfor %}
         </tbody>
       </table>
-      <button type="submit" class="btn btn-primary center-block">确认</button>
+      <button id="button-submit" type="button" class="btn btn-primary center-block">确认</button>
     </form>
   </div>
   {% load staticfiles %}
@@ -171,6 +173,15 @@
           }
           $(this).val("");
       }
-    })
+    });
+    $("#button-submit").click(function () {
+      var to_post = [
+        {name: "csrfmiddlewaretoken", value: "{{csrf_token}}"},
+        {name: "raw-html", value: $("#tag-table").html()}
+      ];
+      $.post("{% url "modify-vote" vote.id %}", to_post, function () {
+        window.location = "{% url "teacher-vote-list" %}";
+      });
+    });
   </script>
 {% endblock %}

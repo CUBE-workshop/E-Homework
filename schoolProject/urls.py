@@ -38,7 +38,6 @@ urlpatterns_teacher = [
     url(r'^do-create-new-vote/', do_create_new_vote, name='do-create-new-vote'),
     url(r'^list/vote/(\d+)/', vote_info, name='teacher-vote-list'),
     url(r'^list/', vote_list, name='teacher-vote-list'),
-    url(r'^add-tag/', add_tag, name='add-tag'),
     url(r'^delete-vote/', delete_vote, name='delete-vote'),
     url(r'modify-vote/(\d+)/student-info/', vote_student_info, name='vote-student-info'),
     url(r'modify-vote/(\d+)/', modify_vote, name='modify-vote'),
