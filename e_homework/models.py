@@ -167,8 +167,8 @@ class VotePiece(models.Model):
     保存一次Vote的信息
     """
     voted_by = models.ForeignKey(Student)
-    voted_questions = models.ManyToManyField(Question)
     belong_to_vote = models.ForeignKey(Vote)
+    voted_questions = models.ManyToManyField(Question)
 
     def __str__(self):
         return str(self.voted_by) + ' 对 ' + str(self.belong_to_vote) + ' 的问题'

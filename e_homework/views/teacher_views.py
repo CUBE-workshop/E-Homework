@@ -111,3 +111,9 @@ def vote_student_info(request, vote_id):
                                  'ajax_id': ajax_id})
         except ObjectDoesNotExist:
             return JsonResponse({'voted': False, 'ajax_id': ajax_id})
+
+
+@login_required
+@permission_required('e_homework.teachers_permission')
+def class_info(request):
+    pass

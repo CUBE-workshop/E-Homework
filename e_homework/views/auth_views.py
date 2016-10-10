@@ -17,7 +17,6 @@ def get_school_list(_):
 
 
 def get_class_list(request):
-    print(School.objects.get(id=request.POST['school-id']).class_set.all())
     class_list = list(map(lambda class_: {'id': class_.id, 'name': class_.str_without_school_name()},
                           School.objects.get(id=request.POST['school-id']).class_set.all()))
     return JsonResponse({'class_list': class_list})

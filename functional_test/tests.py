@@ -1,11 +1,11 @@
-import unittest
 from time import sleep
 
+from django.test import TestCase
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
 
-class ClassInfoTest(unittest.TestCase):
+class TeacherTest(TestCase):
     def setUp(self):
         self.browser = webdriver.Chrome()
 
@@ -74,8 +74,24 @@ class ClassInfoTest(unittest.TestCase):
 
         # 测试教师重新登录了网站
         self.login('functional_test_teacher', 'TDD is good')
-        # 测试教师给Vote添加了Tag(a,b,c,d,e,f)
-
+        # 测试教师给Vote添加了Tag((a,b),c,d,e,f,g)
+        self.browser.get('http://localhost:8000/teacher/list/')
+        sleep(1)
+        self.browser.find_elements_by_class_name('vote-item')[0].click()
+        sleep(1)
+        list(map(lambda input_: input_[1].send_keys(input_[0]),
+                 zip(('a b ', 'c ', 'd ', 'e ', 'f ', 'g '), self.browser.find_elements_by_class_name('tag-inputbox'))))
+        self.browser.find_element_by_id('button-submit').click()
+        sleep(1)
         # 测试教师打开了班级信息页面
+        self.browser.get('http://localhost:8000/teacher/class-info/')
+        self.browser.find_elements_by_class_name('class-info')[0].click()
+        sleep(1)
         # 测试教师发现班级比较易错的知识点
-        self.fail("这个测试还没有编写完成！")
+        self.assertIn('a', self.browser.find_element_by_id('tag-list').text)
+        self.assertIn('b', self.browser.find_element_by_id('tag-list').text)
+        self.assertIn('c', self.browser.find_element_by_id('tag-list').text)
+        self.assertIn('d', self.browser.find_element_by_id('tag-list').text)
+        self.assertIn('e', self.browser.find_element_by_id('tag-list').text)
+        self.assertIn('f', self.browser.find_element_by_id('tag-list').text)
+        self.assertIn('g', self.browser.find_element_by_id('tag-list').text)
