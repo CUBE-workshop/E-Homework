@@ -80,18 +80,20 @@ class TeacherTest(TestCase):
         self.browser.find_elements_by_class_name('vote-item')[0].click()
         sleep(1)
         list(map(lambda input_: input_[1].send_keys(input_[0]),
-                 zip(('a b ', 'c ', 'd ', 'e ', 'f ', 'g '), self.browser.find_elements_by_class_name('tag-inputbox'))))
+                 zip(('a b f ', 'b c f ', 'd ', 'e ', 'f ', 'g f '),
+                     self.browser.find_elements_by_class_name('tag-inputbox'))))
+        sleep(1)
         self.browser.find_element_by_id('button-submit').click()
         sleep(1)
-        # 测试教师打开了班级信息页面
-        self.browser.get('http://localhost:8000/teacher/class-info/')
-        self.browser.find_elements_by_class_name('class-info')[0].click()
+        # 测试教师打开了Tag信息页面
+        self.browser.get('http://localhost:8000/teacher/tag-info/')
         sleep(1)
         # 测试教师发现班级比较易错的知识点
-        self.assertIn('a', self.browser.find_element_by_id('tag-list').text)
-        self.assertIn('b', self.browser.find_element_by_id('tag-list').text)
-        self.assertIn('c', self.browser.find_element_by_id('tag-list').text)
-        self.assertIn('d', self.browser.find_element_by_id('tag-list').text)
-        self.assertIn('e', self.browser.find_element_by_id('tag-list').text)
-        self.assertIn('f', self.browser.find_element_by_id('tag-list').text)
-        self.assertIn('g', self.browser.find_element_by_id('tag-list').text)
+        self.assertIn('a 2', self.browser.find_element_by_id('tag-list').text)
+        self.assertIn('b 4', self.browser.find_element_by_id('tag-list').text)
+        self.assertIn('c 2', self.browser.find_element_by_id('tag-list').text)
+        self.assertIn('d 2', self.browser.find_element_by_id('tag-list').text)
+        self.assertIn('f 8', self.browser.find_element_by_id('tag-list').text)
+        self.assertIn('g 2', self.browser.find_element_by_id('tag-list').text)
+        sleep(1)
+        self.browser.quit()

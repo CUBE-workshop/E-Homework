@@ -3,7 +3,6 @@ from django.http import HttpRequest
 from django.test import LiveServerTestCase
 
 from .models import *
-from .views.teacher_views import class_info
 
 
 class ClassInfoTest(LiveServerTestCase):
@@ -35,16 +34,28 @@ class ClassInfoTest(LiveServerTestCase):
         self.vote_piece2.voted_questions.set(
             [self.questions[0], self.questions[1], self.questions[2], self.questions[6], self.questions[8],
              self.questions[19], self.questions[20]])
-        self.tags = [Tag.objects.create(name=chr(ord('a') + n)) for n in range(6)]
+        self.tags = [Tag.objects.create(name=chr(ord('a') + n)) for n in range(7)]
         self.tags[0].attach_to_questions.add(self.questions[0])
         self.tags[1].attach_to_questions.add(self.questions[2])
         self.tags[2].attach_to_questions.add(self.questions[6])
         self.tags[3].attach_to_questions.add(self.questions[8])
         self.tags[4].attach_to_questions.add(self.questions[19])
         self.tags[5].attach_to_questions.add(self.questions[20])
+        self.tags[6].attach_to_questions.add(self.questions[1])
+
+    def test_tag(self):
+        self.assertEqual(self.tags[0].vote_people_count(), 2)
+        self.assertEqual(self.tags[1].vote_people_count(), 2)
+        self.assertEqual(self.tags[6].vote_people_count(), 1)
 
     def test_can_get_class_info(self):
         request = HttpRequest()
         request.user = User.objects.get(username='test_teacher')
-        response = class_info(request)
-        self.assertInHTML('<th>{{ tag.name }}</th><th>{{ tag.attach_to_questions.count }}</th>', response.content)
+        self.client.force_login(request.user)
+        response = self.client.get('/teacher/tag-info/')
+        self.assertContains(response, '<th>a</th>')
+        self.assertContains(response, '<th>b</th>')
+        self.assertContains(response, '<th>c</th>')
+        self.assertContains(response, '<th>d</th>')
+        self.assertContains(response, '<th>e</th>')
+        self.assertContains(response, '<th>f</th>')

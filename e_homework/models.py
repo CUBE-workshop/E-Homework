@@ -183,3 +183,9 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.name
+
+    def vote_people_count(self):
+        ret = 0
+        for question in self.attach_to_questions.all():
+            ret += question.voted_student_count()
+        return ret

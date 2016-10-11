@@ -2,7 +2,7 @@
 {% block content %}
   <div class="container-fluid">
     <div id="frequent-tags">
-      <table class="table table-hover">
+      <table class="table table-hover" id="tag-list">
         <thead>
         <tr>
           <th>Tag</th>
@@ -13,7 +13,7 @@
         {% for tag in tags %}
           <tr>
             <th>{{ tag.name }}</th>
-            <th>{{ tag.attach_to_questions.count }}</th>
+            <th>{{ tag.vote_people_count }}</th>
           </tr>
         {% endfor %}
         </tbody>

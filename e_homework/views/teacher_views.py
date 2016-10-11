@@ -85,8 +85,8 @@ def modify_vote(request, vote_id):
         the_question.tag_set.clear()
         for tag in tags:
             the_tag = Tag.objects.get_or_create(name=tag)[0]
-            the_tag.attach_to_questions.add(the_question)
-            the_tag.save()
+            the_question.tag_set.add(the_tag)
+        the_question.save()
     the_vote.save()
     return redirect('/teacher/list')
 
@@ -115,5 +115,6 @@ def vote_student_info(request, vote_id):
 
 @login_required
 @permission_required('e_homework.teachers_permission')
-def class_info(request):
-    pass
+def tag_info(request):
+    tags = sorted(Tag.objects.all(), key=lambda tag: tag.vote_people_count(), reverse=True)
+    return render(request, 'teacher/tag-info.html', {'tags': tags})
