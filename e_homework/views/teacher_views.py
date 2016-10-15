@@ -61,7 +61,10 @@ def do_create_new_vote(request):
     the_vote = Vote.objects.create(name=request.POST['name'], raised_by=Teacher.objects.get(user=request.user),
                                    start_date=request.POST['start-date'], end_date=request.POST['end-date'],
                                    save_name='save-name' in request.POST)
-    map(lambda class_id: the_vote.class_invited.add(Class.objects.get(id=class_id)), request.POST['class-choosed'])
+    print(request.POST)
+    print(request.POST.getlist('class-choosed'))
+    for class_id in request.POST.getlist('class-choosed'):
+        the_vote.class_invited.add(Class.objects.get(id=class_id))
     map(lambda question_number: Question.objects.create(number=question_number, belong_to_vote=the_vote),
         (number for number in range(1, int(request.POST['question-count']) + 1)))
     return redirect('/teacher/list')
@@ -116,5 +119,13 @@ def vote_student_info(request, vote_id):
 @login_required
 @permission_required('e_homework.teachers_permission')
 def tag_info(request):
+    if request.method == 'POST':
+        ret = list(sorted(map(
+            lambda tag: {'name': tag.name, 'question_count': tag.voted_people_count_in_class(request.POST['class'])},
+            filter(lambda tag: tag.visible_by_class(request.POST['class']) and tag.voted_people_count_in_class(
+                request.POST['class']) != 0, Tag.objects.all())),
+            key=lambda tag: tag['question_count'], reverse=True))
+        return JsonResponse({'tags': ret})
+    the_teacher = Teacher.objects.get(user=request.user)
     tags = sorted(Tag.objects.all(), key=lambda tag: tag.vote_people_count(), reverse=True)
-    return render(request, 'teacher/tag-info.html', {'tags': tags})
+    return render(request, 'teacher/tag-info.html', {'tags': tags, 'classes': the_teacher.classes_teaching.all()})
