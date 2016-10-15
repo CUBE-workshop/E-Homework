@@ -161,6 +161,12 @@ class Question(models.Model):
     def voted_student_count(self):
         return self.votepiece_set.all().count()
 
+    def voted_student_in_class_count(self, class_):
+        return self.votepiece_set.filter(voted_by__class_belong_to=class_).count()
+
+    def visible_classes(self):
+        return self.belong_to_vote.class_invited.all()
+
 
 class VotePiece(models.Model):
     """
@@ -188,4 +194,19 @@ class Tag(models.Model):
         ret = 0
         for question in self.attach_to_questions.all():
             ret += question.voted_student_count()
+        return ret
+
+    def visible_by_class(self, class_id):
+        the_class = Class.objects.get(id=class_id)
+        for question in self.attach_to_questions.all():
+            if the_class in question.visible_classes():
+                return True
+        return False
+
+    def voted_people_count_in_class(self, class_id):
+        the_class = Class.objects.get(id=class_id)
+        ret = 0
+        for question in self.attach_to_questions.all():
+            if the_class in question.visible_classes():
+                ret += question.voted_student_in_class_count(the_class)
         return ret

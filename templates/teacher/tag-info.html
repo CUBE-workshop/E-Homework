@@ -2,22 +2,55 @@
 {% block content %}
   <div class="container-fluid">
     <div id="frequent-tags">
-      <table class="table table-hover" id="tag-list">
+      <div class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false"><span id="which-class-selected">所有班级</span><span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          {% for class in classes %}
+            <li id="{{ class.id }}" class="class-item dropdown-item">{{ class }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <table class=" table table-hover" id="tag-list">
         <thead>
         <tr>
           <th>Tag</th>
-          <th>问题数量</th>
+          <th>被提问次数（人次）</th>
         </tr>
         </thead>
         <tbody>
         {% for tag in tags %}
-          <tr>
-            <th>{{ tag.name }}</th>
-            <th>{{ tag.vote_people_count }}</th>
-          </tr>
+          {% ifnotequal tag.vote_people_count 0 %}
+            <tr>
+              <th>{{ tag.name }}</th>
+              <th>{{ tag.vote_people_count }}</th>
+            </tr>
+          {% endifnotequal %}
         {% endfor %}
         </tbody>
       </table>
     </div>
   </div>
+  {% load staticfiles %}
+  <script src="{% static "js/bootstrap.min.js" %}"></script>
+  <script>
+    $('.class-item').click(function () {
+      var to_post = [
+        {name: "csrfmiddlewaretoken", value: "{{ csrf_token }}"},
+        {name: "class", value: $(this).attr('id')}
+      ];
+      $.post('{% url 'tag-info' %}', to_post, function (ret) {
+        var html = '';
+        for (var index in ret.tags) {
+          html += '<tr>' +
+                  '<th>' + ret.tags[index].name + '</th>' +
+                  '<th>' + ret.tags[index].question_count + '</th>' +
+                  '</tr>';
+        }
+        $('#tag-list > tbody').html(html);
+      });
+      $('#which-class-selected').html($(this).html());
+    })
+  </script>
 {% endblock %}

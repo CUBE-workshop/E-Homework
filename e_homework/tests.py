@@ -1,5 +1,4 @@
 from django.contrib.auth.models import Permission, Group
-from django.http import HttpRequest
 from django.test import LiveServerTestCase
 
 from .models import *
@@ -49,9 +48,7 @@ class ClassInfoTest(LiveServerTestCase):
         self.assertEqual(self.tags[6].vote_people_count(), 1)
 
     def test_can_get_class_info(self):
-        request = HttpRequest()
-        request.user = User.objects.get(username='test_teacher')
-        self.client.force_login(request.user)
+        self.client.force_login(User.objects.get(username='test_teacher'))
         response = self.client.get('/teacher/tag-info/')
         self.assertContains(response, '<th>a</th>')
         self.assertContains(response, '<th>b</th>')
@@ -59,3 +56,11 @@ class ClassInfoTest(LiveServerTestCase):
         self.assertContains(response, '<th>d</th>')
         self.assertContains(response, '<th>e</th>')
         self.assertContains(response, '<th>f</th>')
+        self.assertContains(response, '高一(1)班')
+
+    def test_can_switch_class(self):
+        self.client.force_login(User.objects.get(username='test_teacher'))
+        response = self.client.post('/teacher/tag-info/', {'class': self._class.id})
+        self.assertIn({'question_count': 2, 'name': 'f'}, response.json()['tags'])
+        self.assertIn({'question_count': 2, 'name': 'b'}, response.json()['tags'])
+        self.assertIn({'question_count': 1, 'name': 'g'}, response.json()['tags'])
