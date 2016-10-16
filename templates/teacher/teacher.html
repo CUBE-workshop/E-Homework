@@ -11,14 +11,14 @@
     <ul>
       <li><a href="{% url "teacher-vote-list" %}">调查列表</a></li>
       <li><a href="{% url "new-vote" %}">新建调查</a></li>
-      <li><a href="{% url "tag-info" %}">知识点情况</a></li>
+      <li><a href="{% url "tag-info-teacher" %}">知识点情况</a></li>
     </ul>
   </nav>
   <div class="content">
     {% block content %}
       <div id="index-content">
         <h2>欢迎访问e&#8209;homework教师端</h2>
-        <a class="btn btn-danger">退出</a>
+        <a class="btn btn-danger" href="{% url "log-out" %}">退出</a>
       </div>
     {% endblock %}
   </div>

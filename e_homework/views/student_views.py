@@ -47,3 +47,12 @@ def do_vote(request, vote_id):
     for question_id in filter(lambda post_item: post_item != 'csrfmiddlewaretoken', request.POST):
         the_vote_piece.voted_questions.add(Question.objects.get(id=question_id))
     return redirect('/student/')
+
+
+@login_required
+@permission_required('e_homework.students_permission')
+def tag_info(request):
+    the_student = Student.objects.get(user=request.user)
+    tags = map(lambda tag: {'name': tag.name, 'student_vote_count': tag.student_vote_count(the_student)},
+               filter(lambda tag: tag.voted_by_student(the_student), Tag.objects.all()))
+    return render(request, 'student/tag-info.html', {'tags': tags})

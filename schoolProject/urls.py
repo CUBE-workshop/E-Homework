@@ -18,14 +18,16 @@ from django.contrib import admin
 
 from e_homework.views.auth_views import *
 from e_homework.views.student_views import *
+from e_homework.views.student_views import tag_info as tag_info_student
 from e_homework.views.teacher_views import *
+from e_homework.views.teacher_views import tag_info as tag_info_teacher
 
 urlpatterns_auth = [
     url(r'^sign-in/do-sign-in/', do_sign_in, name='do-sign-in'),
     url(r'^sign-in/', sign_in),
     url(r'^sign-up/do-sign-up/', do_sign_up, name='do-sign-up'),
     url(r'^sign-up/', sign_up, name='sign-up'),
-    url(r'^logout/', do_logout),
+    url(r'^logout/', do_logout, name='log-out'),
     url(r'get-school-list/', get_school_list, name='get-school-list'),
     url(r'get-class-list/', get_class_list, name='get-class-list'),
     url(r'validate-username/', validate_username, name='validate-username'),
@@ -38,7 +40,7 @@ urlpatterns_teacher = [
     url(r'^do-create-new-vote/', do_create_new_vote, name='do-create-new-vote'),
     url(r'^list/vote/(\d+)/', vote_info, name='teacher-vote-list'),
     url(r'^list/', vote_list, name='teacher-vote-list'),
-    url(r'^tag-info/', tag_info, name='tag-info'),
+    url(r'^tag-info/', tag_info_teacher, name='tag-info-teacher'),
     url(r'^delete-vote/', delete_vote, name='delete-vote'),
     url(r'^modify-vote/(\d+)/student-info/', vote_student_info, name='vote-student-info'),
     url(r'^modify-vote/(\d+)/', modify_vote, name='modify-vote'),
@@ -47,6 +49,7 @@ urlpatterns_teacher = [
 urlpatterns_student = [
     url(r'^vote/(\d+)/', vote, name='vote'),
     url(r'^do-vote/(\d+)/', do_vote, name='do-vote'),
+    url(r'^tag-info/', tag_info_student, name='tag-info-student'),
     url(r'^$', student, name='student')
 ]
 urlpatterns = urlpatterns_auth + [

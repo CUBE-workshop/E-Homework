@@ -32,7 +32,7 @@
   <div class="content">
     {% block content %}
       <h2>欢迎访问e&#8209;homework学生端</h2>
-      <a class="btn btn-danger">退出</a>
+      <a class="btn btn-danger" href="{% url "log-out" %}">退出</a>
     {% endblock %}
   </div>
   <script>

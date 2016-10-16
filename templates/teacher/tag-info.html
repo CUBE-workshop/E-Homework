@@ -40,7 +40,7 @@
         {name: "csrfmiddlewaretoken", value: "{{ csrf_token }}"},
         {name: "class", value: $(this).attr('id')}
       ];
-      $.post('{% url 'tag-info' %}', to_post, function (ret) {
+      $.post('{% url 'tag-info-teacher' %}', to_post, function (ret) {
         var html = '';
         for (var index in ret.tags) {
           html += '<tr>' +

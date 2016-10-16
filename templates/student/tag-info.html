@@ -1,0 +1,24 @@
+{% extends 'student/student.html' %}
+{% block content %}
+  <div class="container-fluid">
+    <div id="frequent-tags">
+      <table class=" table table-hover" id="tag-list">
+        <thead>
+        <tr>
+          <th>Tag</th>
+          <th>提问次数</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for tag in tags %}
+          <tr>
+            <th>{{ tag.name }}</th>
+            <th>{{ tag.student_vote_count }}</th>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  {% load staticfiles %}
+{% endblock %}

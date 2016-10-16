@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 from django.utils.timezone import now
 
@@ -167,6 +168,16 @@ class Question(models.Model):
     def visible_classes(self):
         return self.belong_to_vote.class_invited.all()
 
+    def visible_by_student(self, student):
+        return student in self.belong_to_vote.invited_students()
+
+    def voted_by_student(self, student):
+        try:
+            # todo:这个貌似可以化简
+            return self in self.votepiece_set.get(voted_by=student).voted_questions.all()
+        except ObjectDoesNotExist:
+            return False
+
 
 class VotePiece(models.Model):
     """
@@ -203,6 +214,9 @@ class Tag(models.Model):
                 return True
         return False
 
+    def voted_by_student(self, student):
+        return any(map(lambda question: question.voted_by_student(student), self.attach_to_questions.all()))
+
     def voted_people_count_in_class(self, class_id):
         the_class = Class.objects.get(id=class_id)
         ret = 0
@@ -210,3 +224,6 @@ class Tag(models.Model):
             if the_class in question.visible_classes():
                 ret += question.voted_student_in_class_count(the_class)
         return ret
+
+    def student_vote_count(self, student):
+        return sum((1 if question.voted_by_student(student) else 0 for question in self.attach_to_questions.all()))
