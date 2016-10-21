@@ -8,12 +8,12 @@
       <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/db.sqlite3</jdbc-url>
     </data-source>
     <data-source source="LOCAL" name="Django default" uuid="98cc29b0-28a1-4870-aafa-e8acec29c989">
-      <driver-ref>sqlite.xerial</driver-ref>
+      <driver-ref>60121db6-eef7-40b8-8011-38b72cc03bab</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
       <remarks>$PROJECT_DIR$/schoolProject/settings.py</remarks>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/db.sqlite3</jdbc-url>
+      <jdbc-url>jdbc:mysql://tcp://10.10.32.51:3306/V2va5fLhCGq4BOT1</jdbc-url>
       <explain-plan-config>
         <provider>com.intellij.database.plan.ExplainPlanProvider.NullExplainPlanProvider</provider>
       </explain-plan-config>
