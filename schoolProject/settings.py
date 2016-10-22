@@ -74,17 +74,9 @@ WSGI_APPLICATION = 'schoolProject.wsgi.application'
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    # }
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'V2va5fLhCGq4BOT1',
-        'USER': 'uKCIy2tzmbLUkljS',
-        'PASSWORD': 'pruyO7NfQVmLeJH5a',
-        'HOST': 'tcp://10.10.32.51',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 

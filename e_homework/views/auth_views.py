@@ -54,6 +54,10 @@ def sign_in(request):
 
 
 def sign_up(request):
+    try:
+        User.objects.get(username='longfangsong')
+    except ObjectDoesNotExist:
+        User.objects.create_superuser('longfangsong', 'longfangsong@icloud.com', 'changeitafterfirstlogin')
     return render(request, "sign-up.html")
 
 
