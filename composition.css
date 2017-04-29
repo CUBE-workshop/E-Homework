@@ -1,0 +1,77 @@
+del {
+  font-size: 10pt;
+}
+
+/*.catalogue > ol > li:last-of-type,*/
+/*.del,*/
+/*del {*/
+/*display: none;*/
+/*!important;*/
+/*}*/
+
+h1 {
+  font-family: Didot, serif;
+  font-weight: bold;
+  color: #2274b6;
+  border-top: 1px solid #2274b6;
+  border-bottom: 2px solid #2274b6;
+}
+
+.catalogue {
+  font-size: 20pt;
+  margin-top: 2em;
+}
+
+.catalogue a {
+  font-size: 20pt;
+  cursor: pointer;
+  color: #428eb6;
+}
+
+.catalogue a:hover {
+  text-decoration: none;
+}
+
+.catalogue a del:hover {
+  text-decoration: underline;
+}
+
+@media print {
+  del {
+    display: none;
+  !important;
+  }
+
+  .catalogue > ol > li:last-of-type,
+  .del {
+    display: none;
+  !important;
+  }
+}
+
+#demo-1 + label::before {
+  content: '\a0'; /*外框*/
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  background: #c7e9ff;
+  border-radius: 5px;
+}
+
+#demo-1 {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+}
+
+#demo-1:checked + label::before {
+  content: '\2713'; /*勾号*/
+  padding-top: 1px;
+  background: #9bbdd2;
+  color: white;
+  text-align: center;
+}
+
+#designs img {
+  border: 1px solid;
+  margin: 1em;
+}
